@@ -1,10 +1,7 @@
-A default Google AppEngine app with multithread 2.7 support
+# /r/soccer database
 
-Includes:
+All the source code behind the reddit /r/soccer database web application.
 
-* Twitter Bootstrap
-* jQuery
-* Backbone.js
-* Helper script to start, deploy etc.
-* Custom handlers for jinja templates
-* Default html5 template
+http://rsoccerdb.appspot.com/
+
+Used to generate match threads and other future features.
