@@ -9,8 +9,10 @@ class Main(reqhandlers.BaseHandler):
     ws = Whoscored()
     sched = ws.get_schedule()
     table = ws.get_table()
+    team = ws.get_team(26)
     for a in sched:
       logging.info(a[0], a[1], a[3])
     for l in table:
       logging.info(l[0], l[1], l[2])
-    return self.render('index', {'sched': sched, 'table': table})
+
+    return self.render('index', {'sched': sched, 'table': table, 'team': team})
