@@ -1,9 +1,6 @@
 ## {{ home.full_name }} vs {{ away.full_name }}
 
-
 ## Overview
-
-Another Change
 
  | **Match Day {{ match.roundno }}**
 :----|:------
