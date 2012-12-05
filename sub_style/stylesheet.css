@@ -1,0 +1,1442 @@
+/* Simple rules */
+#siteTable a.title[href*="/14011e/"] {
+ font-weight: bold;
+}
+
+/* Official news */
+.content a:before {
+ display: none;
+ background-image: url(%%s1%%);
+ background-repeat: no-repeat;
+ width: 20px;
+ height: 20px;
+ vertical-align: middle;
+ border-width: 0;
+ padding: 0;
+ background-color: transparent;
+ cursor: default;
+}
+.commentarea a:before {
+ display: none!important;
+}
+
+#siteTable a.title {
+ line-height: 22px;
+ margin: 2px 0 0 0;
+ vertical-align: middle;
+}
+
+#siteTable a.title:before {
+ display: inline-block;
+ vertical-align: bottom;
+ margin-right: 3px;
+}
+
+/* Match threads */
+#siteTable a.title[href*="/pre_match_thread"],
+#siteTable a.title[href*="/prematch_thread"],
+#siteTable a.title[href*="/match_thread"],
+#siteTable a.title[href*="/post_match_thread"],
+#siteTable a.title[href*="/postmatch_thread"],
+#siteTable a.title[href*="/match_report"],
+#siteTable a.title[href*="/league_roundup"] {
+ line-height: 26px;
+ color: green;
+}
+#siteTable a.title[href*="/pre_match_thread"]:before,
+#siteTable a.title[href*="/prematch_thread"]:before,
+#siteTable a.title[href*="/match_thread"]:before,
+#siteTable a.title[href*="/post_match_thread"]:before,
+#siteTable a.title[href*="/postmatch_thread"]:before,
+#siteTable a.title[href*="/match_report"]:before,
+#siteTable a.title[href*="/league_roundup"]:before {
+ content: "";
+ width: 24px;
+ height: 24px;
+ background-image: url(%%icons-large%%);
+ background-position: 0 -204px;
+ vertical-align: bottom;
+}
+#siteTable a.title[href*="/match_thread"]:before {
+ background-position: 0 0;
+}
+#siteTable a.title[href*="/pre_match_thread"]:before,
+#siteTable a.title[href*="/prematch_thread"]:before {
+ background-position: 0 -34px;
+}
+#siteTable a.title[href*="/post_match_thread"]:before,
+#siteTable a.title[href*="/postmatch_thread"]:before {
+ background-position: 0 -408px;
+}
+
+/* Match thread team icons */
+.md a:before {
+ display: inline-block;
+ margin-right: 4px;
+}
+.md [align=right] > a:before {
+ float: right;
+ margin-left: 4px;
+ margin-right: 0;
+}
+.md a[href^="/"]:before,
+.md a[href*="twitter.com/"]:before,
+.md a[href*="reddit.com/r/"]:before {
+ display: none;
+}
+.md a[href^="//"]:before {
+ display: inline-block;
+}
+
+/* Icons */
+a[href^="//#"] {
+ display: inline-block;
+ width: 16px;
+ height: 16px;
+ line-height: normal;
+ background-repeat: no-repeat;
+ background-image: url(%%icons%%);
+ background-position: -999px -999px;
+ vertical-align: middle;
+ padding: 0;
+ border-width: 0;
+ background-color: transparent;
+ cursor: default;
+}
+a[href^="//#"][href$="-big"] {
+ width: 24px;
+ height: 24px;
+ line-height: 24px;
+ background-image: url(%%icons-large%%);
+}
+
+a[href^="//#ball"]{background-position:0 0}
+a[href^="//#clock"]{background-position:0 -34px}
+a[href^="//#down"]{background-position:0 -68px}
+a[href^="//#flag"]{background-position:0 -102px}
+a[href^="//#info"]{background-position:0 -136px}
+a[href^="//#net"]{background-position:0 -170px}
+a[href^="//#news"]{background-position:0 -204px}
+a[href^="//#notes"]{background-position:0 -238px}
+a[href^="//#red"]{background-position:0 -272px}
+a[href^="//#stream"]{background-position:0 -306px}
+a[href^="//#sub"]{background-position:0 -340px}
+a[href^="//#up"]{background-position:0 -374px}
+a[href^="//#whistle"]{background-position:0 -408px}
+a[href^="//#yellow"]{background-position:0 -442px}
+
+.titlebox a[href^="//#redditch"] {
+ width: 20px;
+ height: 20px;
+ line-height: 20px;
+ background-position: 0 0;
+ background-image: url(%%redditch%%);
+}
+
+/* Video icon */
+.md a[href*="youtube.com/watch"],
+.md a[href*="youtu.be/"],
+.md a[href*="vimeo.com/"],
+.md a[href*="twitvid.com/"],
+.md a[href*="/video/"],
+.md a[href*="/videok/"],
+.md a[href*="/gvideos/"] {
+ background-image: url(%%video%%);
+ background-repeat: no-repeat;
+ background-position: left center;
+ padding-left: 20px;
+}
+
+/* User area */
+#header-bottom-right {
+ border-top: 1px solid #5f99cf;
+ border-left: 1px solid #5f99cf;
+}
+
+/* off-white background */
+html, body {
+ background-color: #fdfefd;
+}
+.side, .icon-menu a {
+ background-color: transparent;
+}
+.sidecontentbox, .footer {
+ background-color: white;
+}
+
+/* Restrict the size of the logo */
+#header-img {
+ max-width: 400px;
+ max-height: 160px;
+ width: auto;
+ height: auto;
+ border: 1px solid black;
+ margin-left: 1px;
+}
+
+/* Make it harder to knee-jerk upvote image posts */
+.listing-page .toggleImage {
+ display: none!important;
+}
+
+/* Tables */
+.md table {
+ border: 2px solid white;
+ background-color: white;
+ box-shadow: 0 0 5px #ccc;
+}
+.md th, .md td {
+ padding: 2px 1ex;
+}
+.md th {
+ color: black;
+ background-color: #eee;
+ border-color: #ccc;
+}
+.md td[align=left],
+.md th[align=left] {
+  text-align: left;
+}
+.md td[align=center],
+.md th[align=center] {
+  text-align: center;
+}
+.md td[align=right],
+.md th[align=right] {
+  text-align: right;
+}
+.md th a {
+ color: black;
+}
+
+/* Headings */
+.md h1, .md h2, .md h3, .md h4 {
+ margin: 1em 0;
+ font-weight: bold;
+}
+
+/* About box */
+.titlebox {
+ border: 1px solid #5fcf99;
+ background-color: #effff7;
+ padding: 1ex;
+ border-radius: 3px;
+}
+.titlebox form.toggle {
+ background-color: transparent;
+}
+.titlebox a {
+ color: green;
+}
+.titlebox .md a {
+ font-weight: bold;
+}
+.side .titlebox h1.redditname {
+ font-size: 3em;
+ font-style: italic;
+ border-bottom: 1px solid black;
+ margin: 0 0 1ex 0;
+ background-color: transparent!important;
+}
+.titlebox h1:before {
+ content: "";
+ background-image: url(%%soccer-alien%%);
+ display: inline-block;
+ width: 29px;
+ height: 40px;
+ margin-right: 4px;
+ vertical-align: baseline;
+}
+.titlebox .usertext .usertext-body p {
+ margin: 1em 0;
+ font-size: inherit;
+}
+.titlebox .usertext .usertext-body p:first-child {
+ font-size: larger;
+}
+.titlebox .subscribers .number {
+ font-style: italic;
+}
+.titlebox .subscribers .number:before {
+ content: "Attendance: ";
+}
+.titlebox .users-online {
+ display: inline;
+}
+.titlebox .users-online:before {
+ display: none;
+}
+.titlebox .users-online .number {
+ font-style: italic;
+ vertical-align: super;
+ font-size: smaller;
+ color: green;
+}
+.titlebox .users-online .number:before {
+ content: "(";
+}
+.titlebox .users-online .number:after{
+ content: ")";
+}
+.titlebox .word {
+ display: none;
+}
+.titlebox li {
+ list-style-type: square;
+ line-height: 1.4;
+}
+
+.leavemoderator {
+ background-color: transparent;
+}
+
+/* Twitter feed */
+.titlebox a[href="http://twitter.com/redditsoccer"] {
+ display: inline-block;
+ width: 68px;
+ height: 16px;
+ background-image: url(%%twitter%%);
+ background-position: 0 0;
+ text-indent: -9999px;
+}
+
+/* tweet_poster */
+.commentarea .author[href$="/user/tweet_poster"]:before {
+ display: inline-block !important;
+ content: "";
+ width: 20px;
+ height: 20px;
+ display: inline-block;
+ background-repeat: no-repeat;
+ vertical-align: middle;
+ margin-right: 4px;
+ background-image: url(%%tweet%%);
+}
+
+/* r/Soccer */
+.redditname {
+ text-transform: capitalize;
+ font-variant: normal;
+}
+.redditname a:before {
+ content: "r/";
+ text-transform: lowercase;
+}
+
+/* stop RES from breaking layout */
+.redditname a {
+ float: none !important;
+}
+
+/* Spam */
+.thing.spam {
+ background-color: #fcc;
+}
+
+/* Tab */
+.pagename a {
+ background-color: #fdfefd;
+ color: #369;
+ padding: 2px 6px 0 6px;
+ font-family: inherit;
+ font-size: 12px;
+}
+
+/* Nesting */
+.md blockquote {
+ color: #334;
+ border-left: 1em solid #ccd;
+ padding-left: 1ex;
+ margin: 1em 0;
+}
+.md blockquote blockquote {
+ color: #343;
+ border-color: #cdc;
+}
+.md blockquote blockquote blockquote {
+ color: #433;
+ border-color: #dcc;
+}
+
+/* Spacing */
+form + .sitetable > .link {
+ margin-bottom: 1em;
+}
+form + .sitetable .rank {
+ margin-top: 0;
+}
+.md ol {
+ margin: 1em 3em;
+}
+.md ul {
+ margin: 1em 2em;
+}
+
+/* Alien team */
+.footer-parent {
+ padding-bottom: 80px;
+ background-image: url(%%alien-team%%);
+ background-repeat: no-repeat;
+ background-position: center bottom;
+}
+
+/* Links */
+a.moderator {
+ font-weight: bold;
+}
+a:link:hover, a:visited:hover,
+#siteTable a:hover {
+ color: darkred!important;
+ background-color: #ffc!important;
+ text-decoration: none!important;
+}
+.fancy-toggle-button a:hover {
+ color: white!important;
+}
+#header-img-a, .morelink a:hover, .sidebox a:hover, a[href^="//#"]:hover {
+ color: white!important;
+ background-color: transparent!important;
+}
+
+/* RES night mode */
+
+.res-nightmode #siteTable a.title[href*="/daily_fan_thread"],
+.res-nightmode #siteTable a.title[href*="/match_thread"],
+.res-nightmode #siteTable a.title[href*="/matchthread_"],
+.res-nightmode #siteTable a.title[href*="/pre_match_thread"],
+.res-nightmode #siteTable a.title[href*="/prematch_thread"],
+.res-nightmode #siteTable a.title[href*="/post_match_thread"],
+.res-nightmode #siteTable a.title[href*="/match_report"],
+.res-nightmode #siteTable a.title[href*="/league_roundup"] {
+ color: #6c0!important;
+}
+.res-nightmode .titlebox {
+ background-color: #042008;
+ border-color: #5fcf99;
+}
+.res-nightmode .titlebox a {
+ color: #5fcf99!important;
+}
+.res-nightmode .titlebox h1:before {
+ display: none;
+}
+.res-nightmode .titlebox a:hover,
+.res-nightmode #siteTable a.title:hover {
+ color: darkred!important;
+ background-color: #ffc!important;
+}
+.res-nightmode .fancy-toggle-button a {
+ color: white!important;
+}
+.res-nightmode .commentarea .flair {
+ border: 2px solid white!important;
+ background-color: white!important;
+ outline: 1px solid black;
+ margin-top: 2px;
+}
+.res-nightmode .sidecontentbox, .footer {
+ background-color: transparent;
+}
+.res-nightmode .footer-parent {
+ padding-bottom: 0;
+ background-image: none;
+}
+.res-nightmode .titlebox a[href="http://twitter.com/redditsoccer"] {
+ background-image: none;
+ width: auto;
+ text-indent: 0;
+}
+.res-nightmode .usertext.grayed .usertext-body {
+ color: gray;
+ background-color: #111!important;
+}
+.res-nightmode .thing.spam {
+ background-color: #854e51!important;
+}
+.res-nightmode .md #livescores table td {
+ color: #ddd;
+}
+/* Live Scores plugin (night mode) */
+.res-nightmode .md #livescores table td.live {
+ color: #6c0;
+}
+.res-nightmode .md #livescores tr:hover td {
+ color: #222!important;
+}
+
+/* Default CSS for a crest */
+.commentarea .flair {
+ display: inline-block;
+ width: 20px;
+ height: 20px;
+ line-height: 20px;
+ text-indent: 40px;
+ overflow: hidden;
+ background-image: url(%%s1%%);
+ background-color: transparent;
+ background-repeat: no-repeat;
+ vertical-align: middle;
+ padding: 0;
+ margin-right: 4px;
+ border-width: 0;
+ cursor: help;
+}
+.flairtoggle + .tagline, .flairtoggle, .flair {
+ display: none; /* Only show crests in comments */
+}
+.collapsed .flair {
+ opacity: 0.4
+}
+
+.commentarea .flair[class*="-s2"] {
+ background-image: url(%%s2%%);
+}
+.flair[class*="-s3"] {
+ width: 40px;
+}
+.commentarea .flair[class*="-s3"] {
+ background-image: url(%%s3%%);
+ width: 40px;
+}
+
+/* GENERATED BY SOCCERBOT: 25 Oct 2012 19:31:13 */
+
+.flair-aalborg,a[href*="aabsport.dk"]:before{background-position:0 -21px;content:""}
+.flair-aalesunds-fk,a[href*="aafk.no"]:before{background-position:0 -42px;content:""}
+.flair-aarhus-gf,a[href*="agf.dk"]:before{background-position:0 -63px;content:""}
+.flair-aberdeen,a[href*="afc.co.uk"]:before,a[href*="/AberdeenFC/"]:before{background-position:0 -84px;content:""}
+.flair-ac-milan,a[href*="acmilan.com"]:before,a[href*="/acmilan/"]:before{background-position:0 -105px;content:""}
+.flair-ac-pistoiese,a[href*="uspistoiese1921.it"]:before,a[href*="/uspistoiese1921/"]:before{background-position:0 -126px;content:""}
+.flair-academica,a[href*="academica-oaf.pt"]:before,a[href*="/AAC_Briosa/"]:before{background-position:0 -147px;content:""}
+.flair-adelaide-utd,a[href*="footballaustralia.com.au/adelaideunited"]:before{background-position:0 -168px;content:""}
+.flair-aek-athens,a[href*="aekfc.gr"]:before,a[href*="/aek_fc_official/"]:before{background-position:0 -189px;content:""}
+.flair-ael,a[href*="ael.gr"]:before{background-position:0 -210px;content:""}
+.flair-aik,a[href*="aikfotboll.se"]:before{background-position:0 -231px;content:""}
+.flair-ajax,a[href*="ajax.nl"]:before,a[href*="/afcajax/"]:before{background-position:0 -252px;content:""}
+.flair-al-ahly{background-position:0 -273px}
+.flair-al-hilal{background-position:0 -294px}
+.flair-alianza-fc{background-position:0 -315px}
+.flair-alianza-lima{background-position:0 -336px}
+.flair-almeria{background-position:0 -357px}
+.flair-anderlecht,a[href*="rsca.be"]:before{background-position:0 -378px;content:""}
+.flair-apoel-nikosia,a[href*="apoelfc.com.cy"]:before,a[href*="/apoelfcofficial/"]:before{background-position:0 -399px;content:""}
+.flair-argentina{background-position:0 -420px}
+.flair-argentinos-juniors{background-position:0 -441px}
+.flair-arminia-bielefeld{background-position:0 -462px}
+.flair-arsenal,a[href*="arsenal.com"]:before,a[href*="/Arsenal/"]:before{background-position:0 -483px;content:""}
+.flair-aston-villa,a[href*="avfc.co.uk"]:before,a[href*="/AVFCOfficial/"]:before{background-position:0 -504px;content:""}
+.flair-atalanta,a[href*="atalanta.it"]:before{background-position:0 -525px;content:""}
+.flair-athletic-bilbao,a[href*="athletic-club.net"]:before,a[href*="/AthleticClub/"]:before{background-position:0 -546px;content:""}
+.flair-atlante{background-position:0 -567px}
+.flair-atletico-bucaramanga{background-position:0 -588px}
+.flair-atletico-madrid,a[href*="clubatleticodemadrid.com"]:before,a[href*="/atleti/"]:before{background-position:0 -609px;content:""}
+.flair-atletico-mineiro,a[href*="atletico.com.br"]:before,a[href*="/sitedogalo/"]:before{background-position:0 -630px;content:""}
+.flair-augsburg,a[href*="fcaugsburg.de"]:before,a[href*="/FCAugsburg/"]:before{background-position:0 -651px;content:""}
+.flair-austin-aztex,a[href*="austinaztex.com"]:before{background-position:0 -672px;content:""}
+.flair-australia{background-position:0 -693px}
+.flair-auxerre{background-position:0 -714px}
+.flair-ayr-united{background-position:0 -735px}
+.flair-az-alkmaar,a[href*="az.nl"]:before,a[href*="/wwwAZnl/"]:before{background-position:0 -756px;content:""}
+.flair-bangor-fc,a[href*="bangorfc.com"]:before{background-position:0 -777px;content:""}
+.flair-barcelona,a[href*="fcbarcelona.com"]:before,a[href*="/FCBarcelona/"]:before{background-position:0 -798px;content:""}
+.flair-barcelona-sc{background-position:0 -819px}
+.flair-bari,a[href*="asbari.it"]:before{background-position:0 -840px;content:""}
+.flair-barnet,a[href*="barnetfc.com"]:before,a[href*="/barnetfc/"]:before{background-position:0 -861px;content:""}
+.flair-barnsley,a[href*="barnsleyfc.co.uk"]:before,a[href*="/bfc_official/"]:before{background-position:0 -882px;content:""}
+.flair-barrow,a[href*="barrowafc.com"]:before{background-position:0 -903px;content:""}
+.flair-bayer-leverkusen,a[href*="bayer04.de"]:before,a[href*="/bayer04fussball/"]:before{background-position:0 -924px;content:""}
+.flair-bayern-munich,a[href*="fcbayern.telekom.de"]:before,a[href*="/FCBayern/"]:before{background-position:0 -945px;content:""}
+.flair-beitar-jerusalem,a[href*="beitarfc.co.il"]:before{background-position:0 -966px;content:""}
+.flair-belenenses,a[href*="osbelenenses.com"]:before,a[href*="/CFosBelenenses/"]:before{background-position:0 -987px;content:""}
+.flair-benfica,a[href*="slbenfica.pt"]:before,a[href*="/SL_Benfica/"]:before{background-position:0 -1008px;content:""}
+.flair-bestikas,a[href*="bjk.com.tr"]:before,a[href*="/Besiktas/"]:before{background-position:0 -1029px;content:""}
+.flair-betis,a[href*="realbetisbalompie.es"]:before,a[href*="/RBetisOficial/"]:before{background-position:0 -1050px;content:""}
+.flair-birmingham,a[href*="bcfc.com"]:before,a[href*="/BcfcDotCom/"]:before{background-position:0 -1071px;content:""}
+.flair-blackburn,a[href*="rovers.co.uk"]:before,a[href*="/OneRovers/"]:before{background-position:0 -1092px;content:""}
+.flair-blackpool,a[href*="blackpoolfc.co.uk"]:before,a[href*="/BFC1887/"]:before{background-position:0 -1113px;content:""}
+.flair-boca-juniors,a[href*="bocajuniors.com.ar"]:before,a[href*="/BocaJrsOficial/"]:before{background-position:0 -1134px;content:""}
+.flair-bochum,a[href*="vfl-bochum.de"]:before,a[href*="/VfLBochum1848eV/"]:before{background-position:0 -1155px;content:""}
+.flair-bologna,a[href*="bolognafc.it"]:before,a[href*="/BfcOfficialPage/"]:before{background-position:0 -1176px;content:""}
+.flair-bolton,a[href*="bwfc.co.uk"]:before,a[href*="/OfficialBWFC/"]:before{background-position:0 -1197px;content:""}
+.flair-borac{background-position:0 -1218px}
+.flair-bordeaux,a[href*="girondins.com"]:before,a[href*="/girondins/"]:before{background-position:0 -1239px;content:""}
+.flair-borussia-dortmund,a[href*="bvb.de"]:before,a[href*="/BVB/"]:before{background-position:0 -1260px;content:""}
+.flair-borussia-monchengladbach,a[href*="borussia.de"]:before,a[href*="/VfLBorussia/"]:before{background-position:0 -1281px;content:""}
+.flair-bosnia-herzegovina,a[href*="nsfbih.net"]:before,a[href*="/Football_Federation_of_Bosnia_and_Herzegovina/"]:before{background-position:0 -1302px;content:""}
+.flair-bournemouth,a[href*="afcb.co.uk"]:before,a[href*="/afcbournemouth/"]:before{background-position:0 -1323px;content:""}
+.flair-bradford,a[href*="bradfordcityfc.co.uk"]:before,a[href*="/officialbantams/"]:before{background-position:0 -1344px;content:""}
+.flair-braga,a[href*="scbraga.pt"]:before,a[href*="/SCBragaOficial/"]:before{background-position:0 -1365px;content:""}
+.flair-brazil,a[href*="cbf.com.br"]:before,a[href*="/CBF_Futebol/"]:before{background-position:0 -1386px;content:""}
+.flair-brentford,a[href*="brentfordfc.co.uk"]:before,a[href*="/brentfordfc/"]:before{background-position:0 -1407px;content:""}
+.flair-brighton,a[href*="seagulls.co.uk"]:before,a[href*="/OfficialBHAFC/"]:before{background-position:0 -1428px;content:""}
+.flair-brisbane-roar,a[href*="footballaustralia.com.au/brisbaneroar"]:before{background-position:0 -1449px;content:""}
+.flair-bristol-city,a[href*="bcfc.co.uk"]:before,a[href*="/bcfctweets/"]:before{background-position:0 -1470px;content:""}
+.flair-bristol-rovers,a[href*="bristolrovers.co.uk"]:before,a[href*="/official_brfc/"]:before{background-position:0 -1491px;content:""}
+.flair-brondby,a[href*="brondby.com"]:before{background-position:0 -1512px;content:""}
+.flair-bsg-chemie-leipzig,a[href*="chemie-leipzig.de"]:before,a[href*="/nur_die_bsg/"]:before{background-position:0 -1533px;content:""}
+.flair-burnley,a[href*="burnleyfc.com"]:before,a[href*="/BurnleyOfficial/"]:before{background-position:0 -1554px;content:""}
+.flair-bursaspor,a[href*="bursaspor.org.tr"]:before,a[href*="/BursasporSk/"]:before{background-position:0 -1575px;content:""}
+.flair-bury,a[href*="buryfc.co.uk"]:before,a[href*="/buryfcofficial/"]:before{background-position:0 -1596px;content:""}
+.flair-ca-colon,a[href*="clubcolon.com.ar"]:before,a[href*="/Colonoficial/"]:before{background-position:0 -1617px;content:""}
+.flair-ca-penarol{background-position:0 -1638px}
+.flair-cadiz{background-position:0 -1659px}
+.flair-cagliari,a[href*="cagliaricalcio.net"]:before,a[href*="/Cagliari_Calcio/"]:before{background-position:0 -1680px;content:""}
+.flair-caracas-fc{background-position:0 -1701px}
+.flair-cardiff,a[href*="cardiffcityfc.co.uk"]:before,a[href*="/CardiffCityFC/"]:before{background-position:0 -1722px;content:""}
+.flair-carlisle,a[href*="carlisleunited.co.uk"]:before,a[href*="/officialcufc/"]:before{background-position:0 -1743px;content:""}
+.flair-carshalton,a[href*="carshaltonathletic.co.uk"]:before,a[href*="/carshaltona_fc/"]:before{background-position:0 -1764px;content:""}
+.flair-catania,a[href*="ilcalciocatania.it"]:before,a[href*="/MomentiRossazzu/"]:before{background-position:0 -1785px;content:""}
+.flair-cd-motagua{background-position:0 -1806px}
+.flair-celta-vigo,a[href*="celtavigo.net"]:before,a[href*="/rccelta_oficial/"]:before{background-position:0 -1827px;content:""}
+.flair-celtic,a[href*="celticfc.net"]:before,a[href*="/celticfc/"]:before{background-position:0 -1848px;content:""}
+.flair-central-coast-mariners,a[href*="footballaustralia.com.au/centralcoastmariners"]:before{background-position:0 -1869px;content:""}
+.flair-cerezo-osaka,a[href*="cerezo.co.jp"]:before{background-position:0 -1890px;content:""}
+.flair-cfr-cluj{background-position:0 -1911px}
+.flair-charlton,a[href*="cafc.co.uk"]:before,a[href*="/CAFCofficial/"]:before{background-position:0 -1932px;content:""}
+.flair-chelsea,a[href*="chelseafc.com"]:before,a[href*="/chelseafc/"]:before{background-position:0 -1953px;content:""}
+.flair-cheltenham-town,a[href*="ctfc.com"]:before,a[href*="/ctfcofficial/"]:before{background-position:0 -1974px;content:""}
+.flair-chicago-fire,a[href*="chicago-fire.com"]:before,a[href*="/ChicagoFire/"]:before{background-position:0 -1995px;content:""}
+.flair-chievo{background-position:0 -2016px}
+.flair-chile,a[href*="anfp.cl"]:before{background-position:0 -2037px;content:""}
+.flair-chivas{background-position:0 -2058px}
+.flair-chivas-usa,a[href*="cdchivasusa.com"]:before,a[href*="/cdchivasusa/"]:before{background-position:0 -2079px;content:""}
+.flair-cienciano{background-position:0 -2100px}
+.flair-club-america,a[href*="clubamerica.com.mx"]:before{background-position:0 -2121px;content:""}
+.flair-club-atlas{background-position:0 -2142px}
+.flair-club-brugge,a[href*="clubbrugge.be"]:before{background-position:0 -2163px;content:""}
+.flair-club-leon{background-position:0 -2184px}
+.flair-club-tijuana{background-position:0 -2205px}
+.flair-colchester,a[href*="cu-fc.com"]:before,a[href*="/colu_official/"]:before{background-position:0 -2226px;content:""}
+.flair-colo-colo,a[href*="colocolo.cl"]:before{background-position:0 -2247px;content:""}
+.flair-colorado-rapids,a[href*="coloradorapids.com"]:before,a[href*="/ColoradoRapids/"]:before{background-position:0 -2268px;content:""}
+.flair-columbus-crew,a[href*="thecrew.com"]:before,a[href*="/ColumbusCrew/"]:before{background-position:0 -2289px;content:""}
+.flair-corinthians,a[href*="corinthians.com.br"]:before,a[href*="/SiteCorinthians/"]:before{background-position:0 -2310px;content:""}
+.flair-cork-city,a[href*="corkcityfc.net"]:before{background-position:0 -2331px;content:""}
+.flair-costa-rica,a[href*="dh1.fedefutbol.org"]:before,a[href*="/fedefutbol/"]:before{background-position:0 -2352px;content:""}
+.flair-coventry,a[href*="ccfc.co.uk"]:before,a[href*="/Coventry_City/"]:before{background-position:0 -2373px;content:""}
+.flair-crewe,a[href*="crewealex.net"]:before,a[href*="/crewealexfc/"]:before{background-position:0 -2394px;content:""}
+.flair-cruz-azul{background-position:0 -2415px}
+.flair-cruzeiro,a[href*="cruzeiro.com.br"]:before{background-position:0 -2436px;content:""}
+.flair-crystal-palace,a[href*="cpfc.co.uk"]:before,a[href*="/Official_CPFC/"]:before{background-position:0 -2457px;content:""}
+.flair-cska-moscow,a[href*="pfc-cska.com"]:before,a[href*="/PFC_CSKA_MOSCOW/"]:before{background-position:0 -2478px;content:""}
+.flair-cska-sofia{background-position:0 -2499px}
+.flair-dc-united,a[href*="dcunited.com"]:before,a[href*="/dcunited/"]:before{background-position:0 -2520px;content:""}
+.flair-den-haag,a[href*="adodenhaag.nl"]:before,a[href*="/ADODenHaag/"]:before{background-position:0 -2541px;content:""}
+.flair-denmark,a[href*="dbu.dk"]:before{background-position:0 -2562px;content:""}
+.flair-deportivo-cali{background-position:0 -2583px}
+.flair-deportivo-la-coruna,a[href*="canaldeportivo.com"]:before,a[href*="/canaldeportivo/"]:before{background-position:0 -2604px;content:""}
+.flair-deportivo-wanka{background-position:0 -2625px}
+.flair-derby,a[href*="dcfc.co.uk"]:before,a[href*="/dcfcofficial/"]:before{background-position:0 -2646px;content:""}
+.flair-dinamo-bucuresti{background-position:0 -2667px}
+.flair-dinamo-kiev,a[href*="fcdynamo.kiev.ua"]:before,a[href*="/fc_dk/"]:before{background-position:0 -2688px;content:""}
+.flair-dinamo-moscow,a[href*="fcdinamo.ru"]:before,a[href*="/fcdm_official/"]:before{background-position:0 -2709px;content:""}
+.flair-dinamo-tbilisi{background-position:0 -2730px}
+.flair-dinamo-zagreb,a[href*="gnkdinamo.hr"]:before{background-position:0 -2751px;content:""}
+.flair-djurgardens,a[href*="dif.se"]:before{background-position:0 -2772px;content:""}
+.flair-doncaster,a[href*="doncasterroversfc.co.uk"]:before,a[href*="/drfc_official/"]:before{background-position:0 -2793px;content:""}
+.flair-dos-kampen,a[href*="doskampen.nl"]:before,a[href*="/VVDOSK/"]:before{background-position:0 -2814px;content:""}
+.flair-dundee-utd,a[href*="dundeeunitedfc.co.uk"]:before,a[href*="/dundeeunitedfc/"]:before{background-position:0 -2835px;content:""}
+.flair-dunfermline{background-position:0 -2856px}
+.flair-east-bengal{background-position:0 -2877px}
+.flair-east-fife{background-position:0 -2898px}
+.flair-eintracht-frankfurt,a[href*="eintracht.de"]:before,a[href*="/eintracht_news/"]:before{background-position:0 -2919px;content:""}
+.flair-elgin{background-position:0 -2940px}
+.flair-england,a[href*="thefa.com"]:before,a[href*="/FA/"]:before{background-position:0 -2961px;content:""}
+.flair-espanyol,a[href*="rcdespanyol.com"]:before,a[href*="/RCDEspanyol/"]:before{background-position:0 -2982px;content:""}
+.flair-estonia,a[href*="jalgpall.ee"]:before,a[href*="/ESTfootball/"]:before{background-position:0 -3003px;content:""}
+.flair-everton,a[href*="evertonfc.com"]:before,a[href*="/Everton/"]:before{background-position:0 -3024px;content:""}
+.flair-exeter,a[href*="exetercityfc.co.uk"]:before,a[href*="/officialecfc/"]:before{background-position:0 -3045px;content:""}
+.flair-falkirk{background-position:0 -3066px}
+.flair-famagusta,a[href*="anorthosis.com"]:before,a[href*="/AnoFamagusta/"]:before{background-position:0 -3087px;content:""}
+.flair-faroe-islands{background-position:0 -3108px}
+.flair-fbk-kaunas{background-position:0 -3129px}
+.flair-fc-basel,a[href*="fcb.ch"]:before{background-position:0 -3150px;content:""}
+.flair-fc-copenhagen,a[href*="fck.dk"]:before{background-position:0 -3171px;content:""}
+.flair-fc-dallas,a[href*="fcdallas.com"]:before,a[href*="/FCDallas/"]:before{background-position:0 -3192px;content:""}
+.flair-fc-porto,a[href*="fcporto.pt"]:before,a[href*="/FC_Porto/"]:before{background-position:0 -3213px;content:""}
+.flair-fc-tokyo,a[href*="fctokyo.co.jp"]:before{background-position:0 -3234px;content:""}
+.flair-fc-united,a[href*="fc-utd.co.uk"]:before{background-position:0 -3255px;content:""}
+.flair-fc-volendam,a[href*="fcvolendam.nl"]:before,a[href*="/andereoranje/"]:before{background-position:0 -3276px;content:""}
+.flair-fc-zurich,a[href*="fcz.ch"]:before{background-position:0 -3297px;content:""}
+.flair-fenerbahce,a[href*="fenerbahce.org"]:before,a[href*="/Fenerbahce/"]:before{background-position:0 -3318px;content:""}
+.flair-feyenoord,a[href*="feyenoord.nl"]:before,a[href*="/feyenoord/"]:before{background-position:0 -3339px;content:""}
+.flair-fiorentina,a[href*="violachannel.tv"]:before{background-position:0 -3360px;content:""}
+.flair-flamengo,a[href*="flamengo.com.br"]:before,a[href*="/cr_flamengo/"]:before{background-position:0 -3381px;content:""}
+.flair-fluminense,a[href*="fluminense.com.br"]:before,a[href*="/oficialflu/"]:before{background-position:0 -3402px;content:""}
+.flair-forest-green-rovers,a[href*="forestgreenroversfc.com"]:before{background-position:0 -3423px;content:""}
+.flair-france,a[href*="fff.fr"]:before,a[href*="/fffootball/"]:before{background-position:0 -3444px;content:""}
+.flair-freiburg,a[href*="scfreiburg.com"]:before,a[href*="/sc_freiburg/"]:before{background-position:0 -3465px;content:""}
+.flair-fulham,a[href*="fulhamfc.com"]:before,a[href*="/FulhamFC/"]:before{background-position:0 -3486px;content:""}
+.flair-gais,a[href*="gais.se"]:before{background-position:0 -3507px;content:""}
+.flair-galatasaray,a[href*="galatasaray.org"]:before,a[href*="/GalatasaraySK/"]:before{background-position:0 -3528px;content:""}
+.flair-galway-united,a[href*="galwayunitedfc.ie"]:before{background-position:0 -3549px;content:""}
+.flair-genk,a[href*="krcgenk.be"]:before{background-position:0 -3570px;content:""}
+.flair-genoa,a[href*="genoacfc.it"]:before,a[href*="/GenoaCFCtweet/"]:before{background-position:0 -3591px;content:""}
+.flair-germany,a[href*="team.dfb.de"]:before,a[href*="/DFB_Team/"]:before{background-position:0 -3612px;content:""}
+.flair-getafe,a[href*="getafecf.com"]:before,a[href*="/elgetafe/"]:before{background-position:0 -3633px;content:""}
+.flair-gijon{background-position:0 -3654px}
+.flair-gillingham,a[href*="gillinghamfootballclub.com"]:before,a[href*="/thegillsfc/"]:before{background-position:0 -3675px;content:""}
+.flair-glentoran,a[href*="glentoran.com"]:before{background-position:0 -3696px;content:""}
+.flair-goztepe,a[href*="goztepe.org.tr"]:before,a[href*="/Goztepe/"]:before{background-position:0 -3717px;content:""}
+.flair-granada,a[href*="granadacf.es"]:before,a[href*="/GranadaCdeF/"]:before{background-position:0 -3738px;content:""}
+.flair-grasshopper,a[href*="gcz.ch"]:before{background-position:0 -3759px;content:""}
+.flair-greenock-morton{background-position:0 -3780px}
+.flair-gremio,a[href*="gremio.net"]:before,a[href*="/gremiooficial/"]:before{background-position:0 -3801px;content:""}
+.flair-grenoble{background-position:0 -3822px}
+.flair-grimsby,a[href*="grimsby-townfc.co.uk"]:before,a[href*="/officialgtfc/"]:before{background-position:0 -3843px;content:""}
+.flair-groningen,a[href*="fcgroningen.nl"]:before,a[href*="/fcgroningen/"]:before{background-position:0 -3864px;content:""}
+.flair-hajduk-split,a[href*="hajduk.hr"]:before{background-position:0 -3885px;content:""}
+.flair-halifax,a[href*="halifaxafc.co.uk"]:before,a[href*="/fchtonline/"]:before{background-position:0 -3906px;content:""}
+.flair-halmstads,a[href*="hbk.se"]:before{background-position:0 -3927px;content:""}
+.flair-hamburg,a[href*="hsv.de"]:before,a[href*="/HSV/"]:before{background-position:0 -3948px;content:""}
+.flair-hammarby-if,a[href*="hammarbyfotboll.se"]:before{background-position:0 -3969px;content:""}
+.flair-hannover96,a[href*="hannover96.de"]:before,a[href*="/Hannover96/"]:before{background-position:0 -3990px;content:""}
+.flair-hansa-rostock,a[href*="fc-hansa.de"]:before,a[href*="/HansaRostock/"]:before{background-position:0 -4011px;content:""}
+.flair-hapoel-tel-aviv,a[href*="hapoelta-fc.co.il"]:before{background-position:0 -4032px;content:""}
+.flair-hartlepool,a[href*="hartlepoolunited.co.uk"]:before,a[href*="/official_hufc/"]:before{background-position:0 -4053px;content:""}
+.flair-hearts,a[href*="heartsfc.co.uk"]:before,a[href*="/JamTarts/"]:before{background-position:0 -4074px;content:""}
+.flair-heerenveen,a[href*="sc-heerenveen.nl"]:before,a[href*="/scheerenveen/"]:before{background-position:0 -4095px;content:""}
+.flair-helsingborgs,a[href*="hif.se"]:before{background-position:0 -4116px;content:""}
+.flair-heracles,a[href*="heracles.nl"]:before,a[href*="/HeraclesTweet/"]:before{background-position:0 -4137px;content:""}
+.flair-hertha-berlin{background-position:0 -4158px}
+.flair-hibernian,a[href*="hibernianfc.co.uk"]:before,a[href*="/HibernianFCClub/"]:before{background-position:0 -4179px;content:""}
+.flair-hjk-helsinki,a[href*="hjk.fi"]:before{background-position:0 -4200px;content:""}
+.flair-hoffenheim,a[href*="achtzehn99.de"]:before,a[href*="/achtzehn99/"]:before{background-position:0 -4221px;content:""}
+.flair-holland,a[href*="onsoranje.nl"]:before,a[href*="/OnsOranjeNL/"]:before{background-position:0 -4242px;content:""}
+.flair-honduras{background-position:0 -4263px}
+.flair-honka,a[href*="fchonka.fi"]:before{background-position:0 -4284px;content:""}
+.flair-horsens,a[href*="achorsens.dk"]:before{background-position:0 -4305px;content:""}
+.flair-houston-dynamo,a[href*="houstondynamo.com"]:before,a[href*="/HoustonDynamo/"]:before{background-position:0 -4326px;content:""}
+.flair-huddersfield,a[href*="htafc.com"]:before,a[href*="/htafcdotcom/"]:before{background-position:0 -4347px;content:""}
+.flair-hull,a[href*="hullcityafc.net"]:before,a[href*="/hullcityteam/"]:before{background-position:0 -4368px;content:""}
+.flair-huracan{background-position:0 -4389px}
+.flair-if-brommapojkarna,a[href*="brommapojkarna.se"]:before{background-position:0 -4410px;content:""}
+.flair-ifk-gothenberg,a[href*="ifkgoteborg.se"]:before{background-position:0 -4431px;content:""}
+.flair-independiente{background-position:0 -4452px}
+.flair-indios-juarez{background-position:0 -4473px}
+.flair-inter,a[href*="inter.it"]:before,a[href*="/inter/"]:before{background-position:0 -4494px;content:""}
+.flair-internacional,a[href*="internacional.com.br"]:before,a[href*="/scinternacional/"]:before{background-position:0 -4515px;content:""}
+.flair-inverness,a[href*="ictfc.com"]:before,a[href*="/ICTFC/"]:before{background-position:0 -4536px;content:""}
+.flair-ipswich,a[href*="itfc.co.uk"]:before,a[href*="/Official_ITFC/"]:before{background-position:0 -4557px;content:""}
+.flair-ireland,a[href*="fai.ie"]:before{background-position:0 -4578px;content:""}
+.flair-israel,a[href*="football.org.il"]:before{background-position:0 -4599px;content:""}
+.flair-ittihad{background-position:0 -4620px}
+.flair-japan,a[href*="jfa.or.jp"]:before,a[href*="/jfa_en/"]:before{background-position:0 -4641px;content:""}
+.flair-jjk-jyvaskyla,a[href*="fcjjk.com"]:before{background-position:0 -4662px;content:""}
+.flair-js-kabylie{background-position:0 -4683px}
+.flair-juventus,a[href*="juventus.com"]:before,a[href*="/juventusfc/"]:before{background-position:0 -4704px;content:""}
+.flair-kaiserslautern,a[href*="fck.de"]:before,a[href*="/Rote_Teufel/"]:before{background-position:0 -4725px;content:""}
+.flair-kaizer-chiefs{background-position:0 -4746px}
+.flair-karlsruher-sc{background-position:0 -4767px}
+.flair-kashima-antlers,a[href*="so-net.ne.jp/antlers"]:before{background-position:0 -4788px;content:""}
+.flair-kilmarnock,a[href*="kilmarnockfc.co.uk"]:before,a[href*="/OfficialKillie/"]:before{background-position:0 -4809px;content:""}
+.flair-koln{background-position:0 -4830px}
+.flair-la-galaxy,a[href*="lagalaxy.com"]:before,a[href*="/LAGalaxy/"]:before{background-position:0 -4851px;content:""}
+.flair-lazio,a[href*="sslazio.it"]:before{background-position:0 -4872px;content:""}
+.flair-ldu-quito{background-position:0 -4893px}
+.flair-le-havre,a[href*="hac-foot.com"]:before{background-position:0 -4914px;content:""}
+.flair-lecce,a[href*="uslecce.it"]:before,a[href*="/Lecce_official/"]:before{background-position:0 -4935px;content:""}
+.flair-lech-poznan{background-position:0 -4956px}
+.flair-leeds,a[href*="leedsunited.com"]:before,a[href*="/OfficialLUFC/"]:before{background-position:0 -4977px;content:""}
+.flair-legia-warsaw{background-position:0 -4998px}
+.flair-leicester,a[href*="lcfc.com"]:before,a[href*="/OfficialFOXES/"]:before{background-position:0 -5019px;content:""}
+.flair-leiknir-reykjavik,a[href*="leiknir.com"]:before{background-position:0 -5040px;content:""}
+.flair-lens{background-position:0 -5061px}
+.flair-levski-sofia{background-position:0 -5082px}
+.flair-lille,a[href*="losc.fr"]:before,a[href*="/losclive/"]:before{background-position:0 -5103px;content:""}
+.flair-lincoln-city,a[href*="redimps.co.uk"]:before,a[href*="/lincolncity_fc/"]:before{background-position:0 -5124px;content:""}
+.flair-linfield,a[href*="linfieldfc.com"]:before{background-position:0 -5145px;content:""}
+.flair-lisburn-distillery,a[href*="blue.srv2.com/~lisburn/"]:before{background-position:0 -5166px;content:""}
+.flair-liverpool,a[href*="liverpoolfc.com"]:before,a[href*="/LFC/"]:before{background-position:0 -5187px;content:""}
+.flair-livorno,a[href*="livornocalcio.it"]:before{background-position:0 -5208px;content:""}
+.flair-luton,a[href*="lutontown.co.uk"]:before,a[href*="/LTFC_Official/"]:before{background-position:0 -5229px;content:""}
+.flair-luzern,a[href*="fcl.ch"]:before{background-position:0 -5250px;content:""}
+.flair-lyon,a[href*="olweb.fr"]:before,a[href*="/ol_officiel/"]:before{background-position:0 -5271px;content:""}
+.flair-maccabi,a[href*="maccabi-haifafc.walla.co.il"]:before{background-position:0 -5292px;content:""}
+.flair-macclesfield,a[href*="mtfc.co.uk"]:before,a[href*="/thesilkmen/"]:before{background-position:0 -5313px;content:""}
+.flair-mainz,a[href*="mainz05.de"]:before,a[href*="/1FSVMainz05/"]:before{background-position:0 -5334px;content:""}
+.flair-malaga,a[href*="malagacf.com"]:before,a[href*="/MalagaCF/"]:before{background-position:0 -5355px;content:""}
+.flair-malaysia,a[href*="fam.org.my"]:before{background-position:0 -5376px;content:""}
+.flair-mallorca,a[href*="rcdmallorca.es"]:before,a[href*="/RCD_Mallorca/"]:before{background-position:0 -5397px;content:""}
+.flair-malmo,a[href*="mff.se"]:before{background-position:0 -5418px;content:""}
+.flair-man-city,a[href*="mcfc.co.uk"]:before,a[href*="/MCFC/"]:before{background-position:0 -5439px;content:""}
+.flair-man-utd,a[href*="manutd.com"]:before{background-position:0 -5460px;content:""}
+.flair-marseille,a[href*="om.net"]:before,a[href*="/om_officiel/"]:before{background-position:0 -5481px;content:""}
+.flair-melbourne-heart,a[href*="footballaustralia.com.au/melbourneheart"]:before{background-position:0 -5502px;content:""}
+.flair-melbourne-victory,a[href*="footballaustralia.com.au/melbournevictory"]:before{background-position:0 -5523px;content:""}
+.flair-metalist-kharkov,a[href*="metalist.ua"]:before,a[href*="/fcmetalist/"]:before{background-position:0 -5544px;content:""}
+.flair-metz{background-position:0 -5565px}
+.flair-mexico{background-position:0 -5586px}
+.flair-miami-fc{background-position:0 -5607px}
+.flair-miami-fusion{background-position:0 -5628px}
+.flair-middlesboro,a[href*="mfc.co.uk"]:before,a[href*="/BoroFCOfficial/"]:before{background-position:0 -5649px;content:""}
+.flair-millonarios{background-position:0 -5670px}
+.flair-millwall,a[href*="millwallfc.co.uk"]:before,a[href*="/Millwall__FC/"]:before{background-position:0 -5691px;content:""}
+.flair-minnesota-stars,a[href*="mnstarsfc.com"]:before,a[href*="/mnstarsfc/"]:before{background-position:0 -5712px;content:""}
+.flair-mk-dons,a[href*="mkdons.com"]:before,a[href*="/mkdonsfc/"]:before{background-position:0 -5733px;content:""}
+.flair-molde-fk,a[href*="moldefk.no"]:before{background-position:0 -5754px;content:""}
+.flair-monaco,a[href*="asm-fc.com"]:before,a[href*="/ASMFC_MONACO/"]:before{background-position:0 -5775px;content:""}
+.flair-monarcas-morelia{background-position:0 -5796px}
+.flair-montenegro{background-position:0 -5817px}
+.flair-monterrey{background-position:0 -5838px}
+.flair-montpellier,a[href*="mhscfoot.com"]:before,a[href*="/MontpellierHSC/"]:before{background-position:0 -5859px;content:""}
+.flair-montreal-impact,a[href*="impactmontreal.com"]:before,a[href*="/impactmontreal/"]:before{background-position:0 -5880px;content:""}
+.flair-morecambe,a[href*="morecambefc.com"]:before{background-position:0 -5901px;content:""}
+.flair-motherwell,a[href*="motherwellfc.co.uk"]:before,a[href*="/MotherwellFC/"]:before{background-position:0 -5922px;content:""}
+.flair-nacional{background-position:0 -5943px}
+.flair-nagoya-grampus,a[href*="nagoya-grampus.jp"]:before{background-position:0 -5964px;content:""}
+.flair-napoli,a[href*="sscnapoli.it"]:before,a[href*="/sscnapoli/"]:before{background-position:0 -5985px;content:""}
+.flair-new-england-revolution,a[href*="revolutionsoccer.net"]:before,a[href*="/NERevolution/"]:before{background-position:0 -6006px;content:""}
+.flair-new-york-red-bulls,a[href*="newyorkredbulls.com"]:before,a[href*="/NewYorkRedBulls/"]:before{background-position:0 -6027px;content:""}
+.flair-new-zealand{background-position:0 -6048px}
+.flair-newcastle,a[href*="nufc.co.uk"]:before,a[href*="/NUFCOfficial/"]:before{background-position:0 -6069px;content:""}
+.flair-newcastle-jets,a[href*="footballaustralia.com.au/newcastlejets"]:before{background-position:0 -6090px;content:""}
+.flair-newport,a[href*="newport-county.co.uk"]:before,a[href*="/NewportCounty/"]:before{background-position:0 -6111px;content:""}
+.flair-nk-maribor{background-position:0 -6132px}
+.flair-nk-osijek,a[href*="nk-osijek.hr"]:before{background-position:0 -6153px;content:""}
+.flair-nomme-kalju,a[href*="jkkalju.ee"]:before{background-position:0 -6174px;content:""}
+.flair-north-queensland-fury{background-position:0 -6195px}
+.flair-northampton,a[href*="ntfc.co.uk"]:before,a[href*="/ntfc/"]:before{background-position:0 -6216px;content:""}
+.flair-norwich,a[href*="canaries.co.uk"]:before,a[href*="/NorwichCityFC/"]:before{background-position:0 -6237px;content:""}
+.flair-nottm-forest,a[href*="nottinghamforest.co.uk"]:before,a[href*="/Official_NFFC/"]:before{background-position:0 -6258px;content:""}
+.flair-notts-co,a[href*="nottscountyfc.co.uk"]:before,a[href*="/official_ncfc/"]:before{background-position:0 -6279px;content:""}
+.flair-nurnberg,a[href*="fcn.de"]:before,a[href*="/1_fc_nuernberg/"]:before{background-position:0 -6300px;content:""}
+.flair-odense-bk,a[href*="ob.dk"]:before{background-position:0 -6321px;content:""}
+.flair-ofk-bar{background-position:0 -6342px}
+.flair-oldham,a[href*="oldhamathletic.co.uk"]:before{background-position:0 -6363px;content:""}
+.flair-olimpo{background-position:0 -6384px}
+.flair-olympiacos,a[href*="olympiacos.org"]:before,a[href*="/olympiacos_org/"]:before{background-position:0 -6405px;content:""}
+.flair-omonoia,a[href*="omonoia.com.cy"]:before{background-position:0 -6426px;content:""}
+.flair-orebro-sk,a[href*="oskfotboll.se"]:before{background-position:0 -6447px;content:""}
+.flair-orient,a[href*="leytonorient.com"]:before,a[href*="/leytonorientfc/"]:before{background-position:0 -6468px;content:""}
+.flair-orlando-city,a[href*="orlandocitysoccer.com"]:before{background-position:0 -6489px;content:""}
+.flair-osasuna,a[href*="osasuna.es"]:before,a[href*="/CAOsasuna/"]:before{background-position:0 -6510px;content:""}
+.flair-oxford,a[href*="oufc.co.uk"]:before,a[href*="/oufclive/"]:before{background-position:0 -6531px;content:""}
+.flair-pachuca{background-position:0 -6552px}
+.flair-pakistan,a[href*="pff.com.pk"]:before{background-position:0 -6573px;content:""}
+.flair-palermo,a[href*="palermocalcio.it"]:before,a[href*="/palermocalcio/"]:before{background-position:0 -6594px;content:""}
+.flair-palmeiras,a[href*="palmeiras.com.br"]:before,a[href*="/SitePalmeiras/"]:before{background-position:0 -6615px;content:""}
+.flair-panama{background-position:0 -6636px}
+.flair-panathinaikos,a[href*="pao.gr"]:before{background-position:0 -6657px;content:""}
+.flair-paok,a[href*="paokfc.gr"]:before,a[href*="/paok_fc/"]:before{background-position:0 -6678px;content:""}
+.flair-paris-sg,a[href*="psg.fr"]:before,a[href*="/psg_inside/"]:before{background-position:0 -6699px;content:""}
+.flair-parma,a[href*="fcparma.com"]:before,a[href*="/fcparmacalcio/"]:before{background-position:0 -6720px;content:""}
+.flair-partizan{background-position:0 -6741px}
+.flair-persepolis{background-position:0 -6762px}
+.flair-perth-glory,a[href*="footballaustralia.com.au/perthglory"]:before{background-position:0 -6783px;content:""}
+.flair-peru{background-position:0 -6804px}
+.flair-peterboro,a[href*="theposh.com"]:before,a[href*="/theposhdotcom/"]:before{background-position:0 -6825px;content:""}
+.flair-philadelphia-union,a[href*="philadelphiaunion.com"]:before,a[href*="/PhilaUnion/"]:before{background-position:0 -6846px;content:""}
+.flair-philippines,a[href*="futbolpilipinas.com"]:before,a[href*="/philfootball/"]:before{background-position:0 -6867px;content:""}
+.flair-plymouth,a[href*="pafc.co.uk"]:before,a[href*="/only1argyle/"]:before{background-position:0 -6888px;content:""}
+.flair-pohang-steelers,a[href*="steelers.co.kr"]:before{background-position:0 -6909px;content:""}
+.flair-polonia-warszawa{background-position:0 -6930px}
+.flair-port-vale,a[href*="port-vale.co.uk"]:before,a[href*="/officialpvfc/"]:before{background-position:0 -6951px;content:""}
+.flair-portland-timbers,a[href*="portlandtimbers.com"]:before,a[href*="/TimbersFC/"]:before{background-position:0 -6972px;content:""}
+.flair-portsmouth,a[href*="portsmouthfc.co.uk"]:before,a[href*="/officialpompey/"]:before{background-position:0 -6993px;content:""}
+.flair-preston,a[href*="pnefc.net"]:before,a[href*="/pnefc/"]:before{background-position:0 -7014px;content:""}
+.flair-preussen{background-position:0 -7035px}
+.flair-prottur-reykjavik,a[href*="trottur.is"]:before{background-position:0 -7056px;content:""}
+.flair-psv,a[href*="psv.nl"]:before,a[href*="/PSV/"]:before{background-position:0 -7077px;content:""}
+.flair-puebla-fc{background-position:0 -7098px}
+.flair-pumas{background-position:0 -7119px}
+.flair-qpr,a[href*="qpr.co.uk"]:before,a[href*="/OfficialQPR/"]:before{background-position:0 -7140px;content:""}
+.flair-queretaro{background-position:0 -7161px}
+.flair-racing-club,a[href*="realracingclub.es"]:before{background-position:0 -7182px;content:""}
+.flair-rangers,a[href*="rangers.co.uk"]:before,a[href*="/rfc_official/"]:before{background-position:0 -7203px;content:""}
+.flair-rapid-wien,a[href*="skrapid.at"]:before{background-position:0 -7224px;content:""}
+.flair-reading,a[href*="readingfc.co.uk"]:before,a[href*="/ReadingFC/"]:before{background-position:0 -7245px;content:""}
+.flair-real-madrid,a[href*="realmadrid.com"]:before,a[href*="/realmadrid/"]:before{background-position:0 -7266px;content:""}
+.flair-real-salt-lake,a[href*="realsaltlake.com"]:before,a[href*="/realsaltlake/"]:before{background-position:0 -7287px;content:""}
+.flair-real-sociedad,a[href*="realsociedad.com"]:before,a[href*="/RealSociedad/"]:before{background-position:0 -7308px;content:""}
+.flair-reboceros-de-la-piedad{background-position:0 -7329px}
+.flair-red-star-belgrade{background-position:0 -7350px}
+.flair-redditch,a[href*="redditchutdfc.co.uk"]:before,a[href*="/redditch_united/"]:before{background-position:0 -7371px;content:""}
+.flair-river-plate,a[href*="cariverplate.com"]:before,a[href*="/carpoficial/"]:before{background-position:0 -7392px;content:""}
+.flair-rochdale,a[href*="rochdaleafc.co.uk"]:before,a[href*="/officiallydale/"]:before{background-position:0 -7413px;content:""}
+.flair-roda,a[href*="rodajc.nl"]:before,a[href*="/rodajckerkrade/"]:before{background-position:0 -7434px;content:""}
+.flair-roma,a[href*="asroma.it"]:before,a[href*="/officialasroma/"]:before{background-position:0 -7455px;content:""}
+.flair-rosenborg,a[href*="rbk.no"]:before{background-position:0 -7476px;content:""}
+.flair-rostov,a[href*="fc-rostov.ru"]:before,a[href*="/rostovfc/"]:before{background-position:0 -7497px;content:""}
+.flair-rubin-kazan,a[href*="rubin-kazan.ru"]:before,a[href*="/rubin_kazan_eng/"]:before{background-position:0 -7518px;content:""}
+.flair-sampdoria,a[href*="sampdoria.it"]:before,a[href*="/sampdoria/"]:before{background-position:0 -7539px;content:""}
+.flair-san-jose-clash{background-position:0 -7560px}
+.flair-san-jose-earthquakes,a[href*="sjearthquakes.com"]:before,a[href*="/SJEarthquakes/"]:before{background-position:0 -7581px;content:""}
+.flair-san-lorenzo{background-position:0 -7602px}
+.flair-santander,a[href*="realracingclub.es"]:before{background-position:0 -7623px;content:""}
+.flair-santos,a[href*="santosfc.com.br"]:before,a[href*="/santosfc/"]:before{background-position:0 -7644px;content:""}
+.flair-santos-laguna{background-position:0 -7665px}
+.flair-sao-paulo,a[href*="saopaulofc.net"]:before,a[href*="/SaoPauloFC/"]:before{background-position:0 -7686px;content:""}
+.flair-saprissa,a[href*="saprissa.co.cr"]:before{background-position:0 -7707px;content:""}
+.flair-sc-goa{background-position:0 -7728px}
+.flair-schalke04,a[href*="schalke04.de"]:before,a[href*="/s04/"]:before{background-position:0 -7749px;content:""}
+.flair-scunthorpe,a[href*="scunthorpe-united.co.uk"]:before,a[href*="/sufcofficial/"]:before{background-position:0 -7770px;content:""}
+.flair-seattle-sounders,a[href*="soundersfc.com"]:before,a[href*="/SoundersFC/"]:before{background-position:0 -7791px;content:""}
+.flair-selangor{background-position:0 -7812px}
+.flair-serbia{background-position:0 -7833px}
+.flair-servette,a[href*="servettefc.ch"]:before{background-position:0 -7854px;content:""}
+.flair-sevilla,a[href*="sevillafc.es"]:before,a[href*="/SevillaFC/"]:before{background-position:0 -7875px;content:""}
+.flair-shakhtar-donetsk,a[href*="shakhtar.com"]:before,a[href*="/shakhtar_ua/"]:before{background-position:0 -7896px;content:""}
+.flair-shanghai-shenhua{background-position:0 -7917px}
+.flair-sheff-utd,a[href*="sufc.co.uk"]:before,a[href*="/SUFC_tweets/"]:before{background-position:0 -7938px;content:""}
+.flair-sheff-wed,a[href*="swfc.co.uk"]:before,a[href*="/swfc/"]:before{background-position:0 -7959px;content:""}
+.flair-shelbourne,a[href*="shelbournefc.ie"]:before{background-position:0 -7980px;content:""}
+.flair-siena,a[href*="acsiena.it"]:before,a[href*="/acsienaofficial/"]:before{background-position:0 -8001px;content:""}
+.flair-sigma-olomouc,a[href*="sigmafotbal.cz"]:before{background-position:0 -8022px;content:""}
+.flair-sivasspor,a[href*="sivasspor.org.tr"]:before,a[href*="/SivassporKulubu/"]:before{background-position:0 -8043px;content:""}
+.flair-slavia-praha,a[href*="slavia.cz"]:before{background-position:0 -8064px;content:""}
+.flair-sligo-rovers,a[href*="sligorovers.com"]:before{background-position:0 -8085px;content:""}
+.flair-slovan-bratislava{background-position:0 -8106px}
+.flair-sm-caen{background-position:0 -8127px}
+.flair-sochaux{background-position:0 -8148px}
+.flair-south-africa{background-position:0 -8169px}
+.flair-south-korea,a[href*="kfa.or.kr"]:before,a[href*="/theKFA/"]:before{background-position:0 -8190px;content:""}
+.flair-southampton,a[href*="saintsfc.co.uk"]:before,a[href*="/officialsaints/"]:before{background-position:0 -8211px;content:""}
+.flair-southend,a[href*="southendunited.co.uk"]:before,a[href*="/sufcrootshall/"]:before{background-position:0 -8232px;content:""}
+.flair-spain,a[href*="rfef.es"]:before,a[href*="/rfef_es/"]:before{background-position:0 -8253px;content:""}
+.flair-sparta,a[href*="sparta-rotterdam.nl"]:before,a[href*="/SpartaRotterdam/"]:before{background-position:0 -8274px;content:""}
+.flair-sparta-prague,a[href*="sparta.cz"]:before{background-position:0 -8295px;content:""}
+.flair-spartak-moscow,a[href*="spartak.com"]:before,a[href*="/fcsm_official/"]:before{background-position:0 -8316px;content:""}
+.flair-sporting-club,a[href*="sporting.pt"]:before,a[href*="/Sporting_CP/"]:before{background-position:0 -8337px;content:""}
+.flair-sporting-kc,a[href*="sportingkc.com"]:before,a[href*="/SportingKC/"]:before{background-position:0 -8358px;content:""}
+.flair-st-etienne{background-position:0 -8379px}
+.flair-st-johnstone,a[href*="perthstjohnstonefc.co.uk"]:before,a[href*="/St_Johnstone_FC/"]:before{background-position:0 -8400px;content:""}
+.flair-st-mirren,a[href*="saintmirren.net"]:before,a[href*="/saintmirrenfc/"]:before{background-position:0 -8421px;content:""}
+.flair-st-patricks,a[href*="stpatsfc.com"]:before{background-position:0 -8442px;content:""}
+.flair-st-pauli,a[href*="fcstpauli.com"]:before,a[href*="/fcstpauli/"]:before{background-position:0 -8463px;content:""}
+.flair-stabak,a[href*="stabak.no"]:before{background-position:0 -8484px;content:""}
+.flair-stade-brest{background-position:0 -8505px}
+.flair-standard-liege,a[href*="standard.be"]:before{background-position:0 -8526px;content:""}
+.flair-steaua-bucharest,a[href*="steauafc.com"]:before{background-position:0 -8547px;content:""}
+.flair-stevenage,a[href*="stevenagefc.com"]:before,a[href*="/stevenagefc/"]:before{background-position:0 -8568px;content:""}
+.flair-stockport,a[href*="stockportcounty.com"]:before,a[href*="/scfcmedia/"]:before{background-position:0 -8589px;content:""}
+.flair-stoke,a[href*="stokecityfc.com"]:before,a[href*="/stokecity/"]:before{background-position:0 -8610px;content:""}
+.flair-stromsgodset,a[href*="stromsgodset.no"]:before{background-position:0 -8631px;content:""}
+.flair-sturm-graz,a[href*="sksturm.at"]:before{background-position:0 -8652px;content:""}
+.flair-stuttgart,a[href*="vfb.de"]:before,a[href*="/VfB/"]:before{background-position:0 -8673px;content:""}
+.flair-sunderland,a[href*="safc.com"]:before,a[href*="/SAFCofficial/"]:before{background-position:0 -8694px;content:""}
+.flair-swansea,a[href*="swanseacity.net"]:before,a[href*="/swanseacity/"]:before{background-position:0 -8715px;content:""}
+.flair-swindon,a[href*="swindontownfc.co.uk"]:before,a[href*="/Official_STFC/"]:before{background-position:0 -8736px;content:""}
+.flair-sydney-fc,a[href*="footballaustralia.com.au/sydneyfc"]:before{background-position:0 -8757px;content:""}
+.flair-tenerife{background-position:0 -8778px}
+.flair-thor-akureyri,a[href*="thorsport.is"]:before{background-position:0 -8799px;content:""}
+.flair-tigres{background-position:0 -8820px}
+.flair-toluca{background-position:0 -8841px}
+.flair-toronto-fc,a[href*="torontofc.ca"]:before,a[href*="/TorontoFC/"]:before{background-position:0 -8862px;content:""}
+.flair-torquay,a[href*="torquayunited.com"]:before,a[href*="/insideplainmoor/"]:before{background-position:0 -8883px;content:""}
+.flair-tottenham,a[href*="tottenhamhotspur.com"]:before,a[href*="/SpursOfficial/"]:before{background-position:0 -8904px;content:""}
+.flair-tps,a[href*="fc.tps.fi"]:before{background-position:0 -8925px;content:""}
+.flair-trabzonspor,a[href*="trabzonspor.org.tr"]:before,a[href*="/Trabzonspor/"]:before{background-position:0 -8946px;content:""}
+.flair-tranmere,a[href*="tranmererovers.co.uk"]:before,a[href*="/tranmererovers/"]:before{background-position:0 -8967px;content:""}
+.flair-tromso,a[href*="til.no"]:before{background-position:0 -8988px;content:""}
+.flair-twente,a[href*="fctwente.nl"]:before,a[href*="/fctwente/"]:before{background-position:0 -9009px;content:""}
+.flair-udinese,a[href*="udinese.it"]:before,a[href*="/udinese_1896/"]:before{background-position:0 -9030px;content:""}
+.flair-union-berlin,a[href*="fc-union-berlin.de"]:before,a[href*="/fcunion/"]:before{background-position:0 -9051px;content:""}
+.flair-universidad-catolica,a[href*="lacatolica.cl"]:before{background-position:0 -9072px;content:""}
+.flair-universidad-de-chile,a[href*="udechile.cl"]:before{background-position:0 -9093px;content:""}
+.flair-universidad-de-guadalajara{background-position:0 -9114px}
+.flair-universitario-de-deportes{background-position:0 -9135px}
+.flair-uruguay{background-position:0 -9156px}
+.flair-usmnt,a[href*="ussoccer.com"]:before,a[href*="/ussoccer/"]:before{background-position:0 -9177px;content:""}
+.flair-utrecht,a[href*="fcutrecht.nl"]:before,a[href*="/fcutrecht/"]:before{background-position:0 -9198px;content:""}
+.flair-valencia,a[href*="valenciacf.com"]:before,a[href*="/valenciacf/"]:before{background-position:0 -9219px;content:""}
+.flair-valerenga,a[href*="vif-fotball.no"]:before{background-position:0 -9240px;content:""}
+.flair-valladolid,a[href*="realvalladolid.es"]:before,a[href*="/realvalladolid/"]:before{background-position:0 -9261px;content:""}
+.flair-vancouver-whitecaps,a[href*="whitecapsfc.com"]:before,a[href*="/WhitecapsFC/"]:before{background-position:0 -9282px;content:""}
+.flair-vasco-da-gama,a[href*="vasco.com.br"]:before,a[href*="/crvascodagama/"]:before{background-position:0 -9303px;content:""}
+.flair-vasco-sc{background-position:0 -9324px}
+.flair-vb-sports-club{background-position:0 -9345px}
+.flair-velez{background-position:0 -9366px}
+.flair-velez-mostar{background-position:0 -9387px}
+.flair-verona,a[href*="hellasverona.it"]:before{background-position:0 -9408px;content:""}
+.flair-videoton{background-position:0 -9429px}
+.flair-viking-fk,a[href*="viking-fk.no"]:before{background-position:0 -9450px;content:""}
+.flair-villarreal,a[href*="villarrealcf.es"]:before,a[href*="/VillarrealCF/"]:before{background-position:0 -9471px;content:""}
+.flair-vitesse,a[href*="vitesse.nl"]:before,a[href*="/MijnVitesse/"]:before{background-position:0 -9492px;content:""}
+.flair-vitoria,a[href*="vitoriasc.pt"]:before{background-position:0 -9513px;content:""}
+.flair-vojvodina{background-position:0 -9534px}
+.flair-vvv-venlo,a[href*="vvv-venlo.nl"]:before,a[href*="/vvvvenlo/"]:before{background-position:0 -9555px;content:""}
+.flair-walsall,a[href*="saddlers.co.uk"]:before,a[href*="/wfcofficial/"]:before{background-position:0 -9576px;content:""}
+.flair-watford,a[href*="watfordfc.com"]:before,a[href*="/wfcbadgemoose/"]:before{background-position:0 -9597px;content:""}
+.flair-wehen-wiesbaden{background-position:0 -9618px}
+.flair-wellington-phoenix,a[href*="footballaustralia.com.au/wellingtonphoenix"]:before{background-position:0 -9639px;content:""}
+.flair-werder-bremen,a[href*="werder.de"]:before,a[href*="/werderbremen/"]:before{background-position:0 -9660px;content:""}
+.flair-west-brom,a[href*="wba.co.uk"]:before,a[href*="/WBAFCOfficial/"]:before{background-position:0 -9681px;content:""}
+.flair-west-ham,a[href*="whufc.com"]:before,a[href*="/whufc_official/"]:before{background-position:0 -9702px;content:""}
+.flair-western-new-york-flash,a[href*="wnyflash.com"]:before{background-position:0 -9723px;content:""}
+.flair-widzew-lodz{background-position:0 -9744px}
+.flair-wigan,a[href*="wiganlatics.co.uk"]:before,a[href*="/LaticsOfficial/"]:before{background-position:0 -9765px;content:""}
+.flair-wimbledon,a[href*="afcwimbledon.co.uk"]:before,a[href*="/afcwimbledon/"]:before{background-position:0 -9786px;content:""}
+.flair-wisla-krakow{background-position:0 -9807px}
+.flair-wolfsburg,a[href*="vfl-wolfsburg.de"]:before,a[href*="/VfL_Wolfsburg/"]:before{background-position:0 -9828px;content:""}
+.flair-wolves,a[href*="wolves.co.uk"]:before,a[href*="/OfficialWolves/"]:before{background-position:0 -9849px;content:""}
+.flair-wrexham,a[href*="wrexhamafc.co.uk"]:before,a[href*="/Wrexham_FC/"]:before{background-position:0 -9870px;content:""}
+.flair-wycombe,a[href*="wwfc.com"]:before,a[href*="/wwfcofficial/"]:before{background-position:0 -9891px;content:""}
+.flair-wydad-ac{background-position:0 -9912px}
+.flair-xerez{background-position:0 -9933px}
+.flair-yeovil,a[href*="ytfc.net"]:before{background-position:0 -9954px;content:""}
+.flair-york,a[href*="yorkcityfootballclub.co.uk"]:before,a[href*="/yorkcityfc/"]:before{background-position:0 -9975px;content:""}
+.flair-young-boys,a[href*="bscyb.ch"]:before{background-position:0 -9996px;content:""}
+.flair-zaragoza,a[href*="realzaragoza.com"]:before,a[href*="/RZ_oficial/"]:before{background-position:0 -10017px;content:""}
+.flair-zeljeznicar-sarajevo{background-position:0 -10038px}
+.flair-zenit,a[href*="fc-zenit.ru"]:before,a[href*="/zenit_spb/"]:before{background-position:0 -10059px;content:""}
+.flair-accrington-stanley-s2,a[href*="accringtonstanley.co.uk"]:before{background:url(%%s2%%) 0 -21px;content:""}
+.flair-aek-lanarca-s2,a[href*="aek.com.cy"]:before{background:url(%%s2%%) 0 -42px;content:""}
+.flair-air-india-s2{background-position:0 -63px}
+.flair-ajaccio-s2{background-position:0 -84px}
+.flair-al-ahli-s2{background-position:0 -105px}
+.flair-al-ahli-sc-s2{background-position:0 -126px}
+.flair-al-ahly-benghazi-s2{background-position:0 -147px}
+.flair-al-ahly-tripoli-s2{background-position:0 -168px}
+.flair-al-ain-s2,a[href*="alainfc.net"]:before{background:url(%%s2%%) 0 -189px;content:""}
+.flair-al-ansar-s2{background-position:0 -210px}
+.flair-al-arabi-kwt-s2{background-position:0 -231px}
+.flair-al-faisaly-s2{background-position:0 -252px}
+.flair-al-masry-s2{background-position:0 -273px}
+.flair-al-sadd-s2,a[href*="al-saddclub.com"]:before{background:url(%%s2%%) 0 -294px;content:""}
+.flair-al-wahdat-s2{background-position:0 -315px}
+.flair-alajuelense-s2,a[href*="lda.cr"]:before{background:url(%%s2%%) 0 -336px;content:""}
+.flair-albacete-s2{background-position:0 -357px}
+.flair-albirex-niigata-s2,a[href*="albirex.co.jp"]:before{background:url(%%s2%%) 0 -378px;content:""}
+.flair-alemannia-aachen-s2{background-position:0 -399px}
+.flair-algeria-s2{background-position:0 -420px}
+.flair-altrincham-s2,a[href*="altrinchamfc.co.uk/alty1.htm"]:before{background:url(%%s2%%) 0 -441px;content:""}
+.flair-america-de-cali-s2{background-position:0 -462px}
+.flair-amiens-sc-s2{background-position:0 -483px}
+.flair-amkar-perm-s2,a[href*="fc-amkar.org"]:before{background:url(%%s2%%) 0 -504px;content:""}
+.flair-angers-s2{background-position:0 -525px}
+.flair-antigua-barracuda-s2,a[href*="antiguabarracudafc.com"]:before{background:url(%%s2%%) 0 -546px;content:""}
+.flair-anzhi-s2,a[href*="fc-anji.ru"]:before,a[href*="/fc_anji/"]:before{background:url(%%s2%%) 0 -567px;content:""}
+.flair-arbroath-s2{background-position:0 -588px}
+.flair-aris-s2,a[href*="arisfc.gr"]:before{background:url(%%s2%%) 0 -609px;content:""}
+.flair-arles-s2{background-position:0 -630px}
+.flair-armenia-s2,a[href*="ffa.am"]:before{background:url(%%s2%%) 0 -651px;content:""}
+.flair-asante-kotoko-s2{background-position:0 -672px}
+.flair-asm-oran-s2{background-position:0 -693px}
+.flair-aso-chlef-s2{background-position:0 -714px}
+.flair-atlanta-silverbacks-s2,a[href*="atlantasilverbacks.com"]:before{background:url(%%s2%%) 0 -735px;content:""}
+.flair-atletico-nacional-s2{background-position:0 -756px}
+.flair-atletico-paranaense-s2,a[href*="atleticoparanaense.com"]:before{background:url(%%s2%%) 0 -777px;content:""}
+.flair-austria-s2,a[href*="oefb.at"]:before,a[href*="/oefb1904/"]:before{background:url(%%s2%%) 0 -798px;content:""}
+.flair-austria-wien-s2,a[href*="fk-austria.at"]:before{background:url(%%s2%%) 0 -819px;content:""}
+.flair-avispa-fukuoka-s2,a[href*="avispa.co.jp"]:before{background:url(%%s2%%) 0 -840px;content:""}
+.flair-badajoz-s2{background-position:0 -861px}
+.flair-bahrain-s2,a[href*="bahrainfootball.org"]:before{background:url(%%s2%%) 0 -882px;content:""}
+.flair-bastia-s2{background-position:0 -903px}
+.flair-bate-s2,a[href*="fcbate.by"]:before{background:url(%%s2%%) 0 -924px;content:""}
+.flair-bbcu-s2{background-position:0 -945px}
+.flair-beerschot-s2,a[href*="beerschot.be"]:before{background:url(%%s2%%) 0 -966px;content:""}
+.flair-beijing-guoan-s2{background-position:0 -987px}
+.flair-beira-mar-s2,a[href*="beiramar.pt"]:before{background:url(%%s2%%) 0 -1008px;content:""}
+.flair-belarus-s2,a[href*="bff.by"]:before{background:url(%%s2%%) 0 -1029px;content:""}
+.flair-belgium-s2,a[href*="footbel.com"]:before,a[href*="/Belgianfootball/"]:before{background:url(%%s2%%) 0 -1050px;content:""}
+.flair-belgrano-s2{background-position:0 -1071px}
+.flair-bizertin-s2{background-position:0 -1092px}
+.flair-bk-hacken-s2,a[href*="bkhacken.se"]:before{background:url(%%s2%%) 0 -1113px;content:""}
+.flair-blyth-spartans-s2,a[href*="blythspartansafc.co.uk"]:before{background:url(%%s2%%) 0 -1134px;content:""}
+.flair-boavista-s2,a[href*="boavistafc.pt"]:before,a[href*="/boavistaoficial/"]:before{background:url(%%s2%%) 0 -1155px;content:""}
+.flair-bohemians-s2,a[href*="bohemians.ie"]:before{background:url(%%s2%%) 0 -1176px;content:""}
+.flair-bolivia-s2,a[href*="fbf.com.bo"]:before,a[href*="///"]:before{background:url(%%s2%%) 0 -1197px;content:""}
+.flair-botafogo-s2,a[href*="botafogo.com"]:before,a[href*="/botafogocom/"]:before{background:url(%%s2%%) 0 -1218px;content:""}
+.flair-botev-plovdiv-s2{background-position:0 -1239px}
+.flair-botswana-s2{background-position:0 -1260px}
+.flair-botswana-meat-s2{background-position:0 -1281px}
+.flair-boulogne-s2{background-position:0 -1302px}
+.flair-bray-wanderers-s2,a[href*="braywanderers.com"]:before{background:url(%%s2%%) 0 -1323px;content:""}
+.flair-brunei-s2{background-position:0 -1344px}
+.flair-brunei-dpmm-s2{background-position:0 -1365px}
+.flair-bulgaria-s2{background-position:0 -1386px}
+.flair-burton-albion-s2,a[href*="burtonalbionfc.co.uk"]:before{background:url(%%s2%%) 0 -1407px;content:""}
+.flair-busan-i-park-s2,a[href*="busanipark.com"]:before{background:url(%%s2%%) 0 -1428px;content:""}
+.flair-cambridge-utd-s2,a[href*="cambridge-united.co.uk"]:before,a[href*="/CambridgeUtdFC/"]:before{background:url(%%s2%%) 0 -1449px;content:""}
+.flair-cambuur-s2,a[href*="cambuur.nl"]:before,a[href*="/SCCambuurLwd/"]:before{background:url(%%s2%%) 0 -1470px;content:""}
+.flair-cameroon-s2{background-position:0 -1491px}
+.flair-canada-s2,a[href*="canadasoccer.com"]:before,a[href*="/CanadaSoccerEN/"]:before{background:url(%%s2%%) 0 -1512px;content:""}
+.flair-canberra-united-s2{background-position:0 -1533px}
+.flair-carolina-railhawks-s2,a[href*="carolinarailhawks.com"]:before{background:url(%%s2%%) 0 -1554px;content:""}
+.flair-catalonia-s2{background-position:0 -1575px}
+.flair-ce-belouizdad-s2{background-position:0 -1596px}
+.flair-celik-s2{background-position:0 -1617px}
+.flair-cercle-brugge-s2,a[href*="cerclebrugge.be"]:before{background:url(%%s2%%) 0 -1638px;content:""}
+.flair-cerro-porteno-s2{background-position:0 -1659px}
+.flair-cesena-s2,a[href*="cesenacalcio.it"]:before{background:url(%%s2%%) 0 -1680px;content:""}
+.flair-changchun-yatai-s2{background-position:0 -1701px}
+.flair-charleston-battery-s2,a[href*="charlestonbattery.com"]:before{background:url(%%s2%%) 0 -1722px;content:""}
+.flair-charlotte-eagles-s2,a[href*="charlotteeagles.com"]:before{background:url(%%s2%%) 0 -1743px;content:""}
+.flair-chateauroux-s2{background-position:0 -1764px}
+.flair-chengdu-blades-s2{background-position:0 -1785px}
+.flair-chernomorets-s2{background-position:0 -1806px}
+.flair-chesterfield-s2,a[href*="chesterfield-fc.co.uk"]:before,a[href*="/chesterfieldfc/"]:before{background:url(%%s2%%) 0 -1827px;content:""}
+.flair-china-s2,a[href*="fa.org.cn"]:before{background:url(%%s2%%) 0 -1848px;content:""}
+.flair-chirag-united-s2{background-position:0 -1869px}
+.flair-chunnam-dragons-s2,a[href*="dragons.co.kr"]:before{background:url(%%s2%%) 0 -1890px;content:""}
+.flair-churchill-brothers-s2{background-position:0 -1911px}
+.flair-clermont-s2{background-position:0 -1932px}
+.flair-club-africain-s2{background-position:0 -1953px}
+.flair-clyde-s2{background-position:0 -1974px}
+.flair-cobreloa-s2,a[href*="cobreloa.cl"]:before{background:url(%%s2%%) 0 -1995px;content:""}
+.flair-coleraine-s2,a[href*="colerainefc.com"]:before{background:url(%%s2%%) 0 -2016px;content:""}
+.flair-colombia-s2,a[href*="fcf.com.co"]:before,a[href*="/Seleccion_col/"]:before{background:url(%%s2%%) 0 -2037px;content:""}
+.flair-colwyn-bay-s2,a[href*="colwynbayfc.co.uk"]:before,a[href*="/ColwynBayFC/"]:before{background:url(%%s2%%) 0 -2058px;content:""}
+.flair-comunicaciones-s2{background-position:0 -2079px}
+.flair-consadole-sapporo-s2,a[href*="consadole-sapporo.jp"]:before{background:url(%%s2%%) 0 -2100px;content:""}
+.flair-corby-town-s2,a[href*="corbytownfc.co.uk"]:before{background:url(%%s2%%) 0 -2121px;content:""}
+.flair-coritiba-s2,a[href*="coritiba.com.br"]:before{background:url(%%s2%%) 0 -2142px;content:""}
+.flair-cote-d-ivoire-s2,a[href*="fif-ci.com"]:before{background:url(%%s2%%) 0 -2163px;content:""}
+.flair-crawley-s2,a[href*="crawleytownfc.com"]:before,a[href*="/crawleytown/"]:before{background:url(%%s2%%) 0 -2184px;content:""}
+.flair-croatia-s2,a[href*="hns-cff.hr"]:before{background:url(%%s2%%) 0 -2205px;content:""}
+.flair-crusaders-s2,a[href*="crusadersfc.com"]:before{background:url(%%s2%%) 0 -2226px;content:""}
+.flair-cyprus-s2{background-position:0 -2247px}
+.flair-czech-republic-s2,a[href*="nv.fotbal.cz"]:before,a[href*="/fotbalova_repre/"]:before{background:url(%%s2%%) 0 -2268px;content:""}
+.flair-daegu-fc-s2,a[href*="daegufc.co.kr"]:before{background:url(%%s2%%) 0 -2289px;content:""}
+.flair-daejeon-citizen-s2,a[href*="dcfc.co.kr"]:before{background:url(%%s2%%) 0 -2310px;content:""}
+.flair-dagenham-redbridge-s2,a[href*="daggers.co.uk"]:before{background:url(%%s2%%) 0 -2331px;content:""}
+.flair-dalian-shide-s2{background-position:0 -2352px}
+.flair-darlington-s2{background-position:0 -2373px}
+.flair-darmstadt-98-s2{background-position:0 -2394px}
+.flair-dayton-dutch-lions-s2,a[href*="daytondutchlionsfc.com"]:before{background:url(%%s2%%) 0 -2415px;content:""}
+.flair-de-graafschap-s2,a[href*="degraafschap.nl"]:before,a[href*="/degraafschap/"]:before{background:url(%%s2%%) 0 -2436px;content:""}
+.flair-debrecen-s2{background-position:0 -2457px}
+.flair-dempo-s2{background-position:0 -2478px}
+.flair-den-bosch-s2,a[href*="fcdenbosch.nl"]:before{background:url(%%s2%%) 0 -2499px;content:""}
+.flair-deportes-tolima-s2{background-position:0 -2520px}
+.flair-deportivo-lara-s2{background-position:0 -2541px}
+.flair-deportivo-tachira-s2{background-position:0 -2562px}
+.flair-derry-city-s2,a[href*="derrycityfc.net"]:before{background:url(%%s2%%) 0 -2583px;content:""}
+.flair-detroit-city-s2,a[href*="detcityfc.com"]:before{background:url(%%s2%%) 0 -2604px;content:""}
+.flair-dijon-s2{background-position:0 -2625px}
+.flair-drogheda-s2,a[href*="droghedaunited.ie"]:before{background:url(%%s2%%) 0 -2646px;content:""}
+.flair-dundalk-s2,a[href*="dundalkfc.com"]:before{background:url(%%s2%%) 0 -2667px;content:""}
+.flair-dundee-s2,a[href*="dundeefc.co.uk"]:before,a[href*="/dundeefconline/"]:before{background:url(%%s2%%) 0 -2688px;content:""}
+.flair-ecuador-s2{background-position:0 -2709px}
+.flair-egypt-s2{background-position:0 -2730px}
+.flair-eintracht-braunschweig-s2{background-position:0 -2751px}
+.flair-el-salvador-s2{background-position:0 -2772px}
+.flair-elfsborg-s2,a[href*="elfsborg.se"]:before{background:url(%%s2%%) 0 -2793px;content:""}
+.flair-emelec-s2{background-position:0 -2814px}
+.flair-energie-cottbus-s2,a[href*="fcenergie.com"]:before{background:url(%%s2%%) 0 -2835px;content:""}
+.flair-enyimba-s2{background-position:0 -2856px}
+.flair-es-setif-s2{background-position:0 -2877px}
+.flair-esperance-tunis-s2{background-position:0 -2898px}
+.flair-esteghlal-s2{background-position:0 -2919px}
+.flair-estudiantes-s2{background-position:0 -2940px}
+.flair-etoile-sahel-s2{background-position:0 -2961px}
+.flair-evian-s2{background-position:0 -2982px}
+.flair-excelsior-s2,a[href*="sbvexcelsior.nl"]:before,a[href*="/excelsiorrdam/"]:before{background:url(%%s2%%) 0 -3003px;content:""}
+.flair-far-rabat-s2{background-position:0 -3024px}
+.flair-farnborough-s2,a[href*="farnboroughfc.co.uk"]:before,a[href*="/farnboroughfc/"]:before{background:url(%%s2%%) 0 -3045px;content:""}
+.flair-fc-buffalo-s2,a[href*="fcbuffalo.org"]:before{background:url(%%s2%%) 0 -3066px;content:""}
+.flair-fc-edmonton-s2{background-position:0 -3087px}
+.flair-fc-midtjylland-s2,a[href*="fcm.dk"]:before{background:url(%%s2%%) 0 -3108px;content:""}
+.flair-fc-new-york-s2{background-position:0 -3129px}
+.flair-fc-nordsjalland-s2,a[href*="fcn.dk"]:before{background:url(%%s2%%) 0 -3150px;content:""}
+.flair-fc-seoul-s2,a[href*="fcseoul.com"]:before{background:url(%%s2%%) 0 -3171px;content:""}
+.flair-fc-tampa-bay-s2{background-position:0 -3192px}
+.flair-fc-tucson-s2,a[href*="fctucson.com"]:before{background:url(%%s2%%) 0 -3213px;content:""}
+.flair-ferencvarosi-s2{background-position:0 -3234px}
+.flair-fh-s2,a[href*="fh.is"]:before{background:url(%%s2%%) 0 -3255px;content:""}
+.flair-finland-s2{background-position:0 -3276px}
+.flair-finn-harps-s2,a[href*="finnharps.com"]:before{background:url(%%s2%%) 0 -3297px;content:""}
+.flair-fk-vardar-s2{background-position:0 -3318px}
+.flair-forest-city-london-s2{background-position:0 -3339px}
+.flair-forfar-s2{background-position:0 -3360px}
+.flair-fort-lauderdale-strikers-s2,a[href*="strikers.com"]:before{background:url(%%s2%%) 0 -3381px;content:""}
+.flair-fortuna-dusseldorf-s2,a[href*="f95.de"]:before{background:url(%%s2%%) 0 -3402px;content:""}
+.flair-fortuna-sittard-s2,a[href*="fortunasittard.nl"]:before,a[href*="/FortunaSittard/"]:before{background:url(%%s2%%) 0 -3423px;content:""}
+.flair-fredrikstad-s2,a[href*="fredrikstadfk.no"]:before{background:url(%%s2%%) 0 -3444px;content:""}
+.flair-fresno-fuego-s2,a[href*="fresnofuego.com"]:before{background:url(%%s2%%) 0 -3465px;content:""}
+.flair-fus-rabat-s2{background-position:0 -3486px}
+.flair-fylkir-s2,a[href*="fylkir.com"]:before{background:url(%%s2%%) 0 -3507px;content:""}
+.flair-gabon-s2{background-position:0 -3528px}
+.flair-gamba-osaka-s2,a[href*="gamba-osaka.net"]:before{background:url(%%s2%%) 0 -3549px;content:""}
+.flair-gangwon-fc-s2,a[href*="gangwon-fc.com"]:before{background:url(%%s2%%) 0 -3570px;content:""}
+.flair-gent-s2,a[href*="kaagent.be"]:before{background:url(%%s2%%) 0 -3591px;content:""}
+.flair-georgia-s2{background-position:0 -3612px}
+.flair-ghana-s2{background-position:0 -3633px}
+.flair-gif-sundsvall-s2,a[href*="gifsundsvall.se"]:before{background:url(%%s2%%) 0 -3654px;content:""}
+.flair-gloucester-city-s2,a[href*="gloucestercityafc.com"]:before,a[href*="/gcafcofficial/"]:before{background:url(%%s2%%) 0 -3675px;content:""}
+.flair-goias-s2,a[href*="goiasec.com.br"]:before{background:url(%%s2%%) 0 -3696px;content:""}
+.flair-gold-coast-utd-s2{background-position:0 -3717px}
+.flair-greece-s2{background-position:0 -3738px}
+.flair-greuther-furth-s2,a[href*="greuther-fuerth.de"]:before,a[href*="/kleeblattfuerth/"]:before{background:url(%%s2%%) 0 -3759px;content:""}
+.flair-guangzhou-evergrande-s2{background-position:0 -3780px}
+.flair-guatemala-s2{background-position:0 -3801px}
+.flair-guingamp-s2{background-position:0 -3822px}
+.flair-guizhou-renhe-s2{background-position:0 -3843px}
+.flair-gwangju-fc-s2,a[href*="gwangjufc.com"]:before{background:url(%%s2%%) 0 -3864px;content:""}
+.flair-gyeongnam-fc-s2,a[href*="gyeongnamfc.com"]:before{background:url(%%s2%%) 0 -3885px;content:""}
+.flair-gyori-s2{background-position:0 -3906px}
+.flair-haka-s2,a[href*="fchaka.fi"]:before{background:url(%%s2%%) 0 -3927px;content:""}
+.flair-hal-s2{background-position:0 -3948px}
+.flair-hanau-93-s2{background-position:0 -3969px}
+.flair-hangzhou-greentown-s2{background-position:0 -3990px}
+.flair-hapoel-katamon-s2,a[href*="katamon.co.il"]:before{background:url(%%s2%%) 0 -4011px;content:""}
+.flair-harrisburg-city-islanders-s2,a[href*="cityislanders.com"]:before{background:url(%%s2%%) 0 -4032px;content:""}
+.flair-hassania-agadir-s2{background-position:0 -4053px}
+.flair-haugesund-s2,a[href*="fkh.no"]:before{background:url(%%s2%%) 0 -4074px;content:""}
+.flair-hb-koge-s2,a[href*="hb.dk"]:before{background:url(%%s2%%) 0 -4095px;content:""}
+.flair-helmond-sport-s2,a[href*="helmondsport.nl"]:before{background:url(%%s2%%) 0 -4116px;content:""}
+.flair-henan-construction-s2{background-position:0 -4137px}
+.flair-hifk-s2{background-position:0 -4158px}
+.flair-histon-s2,a[href*="histonfc.co.uk"]:before,a[href*="/histonfc/"]:before{background:url(%%s2%%) 0 -4179px;content:""}
+.flair-honved-s2{background-position:0 -4200px}
+.flair-hungary-s2{background-position:0 -4221px}
+.flair-iceland-s2{background-position:0 -4242px}
+.flair-incheon-united-s2,a[href*="incheonutd.com"]:before{background:url(%%s2%%) 0 -4263px;content:""}
+.flair-india-s2,a[href*="the-aiff.com"]:before{background:url(%%s2%%) 0 -4284px;content:""}
+.flair-indonesia-s2,a[href*="pssi-football.com"]:before{background:url(%%s2%%) 0 -4305px;content:""}
+.flair-invincible-xi-s2{background-position:0 -4326px}
+.flair-ir-s2,a[href*="ir.is"]:before{background:url(%%s2%%) 0 -4347px;content:""}
+.flair-iran-s2,a[href*="ffiri.ir"]:before{background:url(%%s2%%) 0 -4368px;content:""}
+.flair-iraq-s2,a[href*="ifa.iq"]:before,a[href*="/IRAQFA/"]:before{background:url(%%s2%%) 0 -4389px;content:""}
+.flair-ismaily-s2{background-position:0 -4410px}
+.flair-istres-s2{background-position:0 -4431px}
+.flair-italy-s2{background-position:0 -4452px}
+.flair-jagiellonia-s2{background-position:0 -4473px}
+.flair-jamaica-s2{background-position:0 -4494px}
+.flair-jef-united-s2,a[href*="so-net.ne.jp/JEFUNITED/"]:before{background:url(%%s2%%) 0 -4515px;content:""}
+.flair-jeju-united-s2,a[href*="jeju-utd.com"]:before{background:url(%%s2%%) 0 -4536px;content:""}
+.flair-jeonbuk-s2,a[href*="hyundai-motorsfc.com"]:before{background:url(%%s2%%) 0 -4557px;content:""}
+.flair-jiangsu-sainty-s2{background-position:0 -4578px}
+.flair-jordan-s2,a[href*="jfa.com.jo"]:before,a[href*="/JFA_JORDAN/"]:before{background:url(%%s2%%) 0 -4599px;content:""}
+.flair-jubilo-iwata-s2,a[href*="jubilo-iwata.co.jp"]:before{background:url(%%s2%%) 0 -4620px;content:""}
+.flair-junior-s2{background-position:0 -4641px}
+.flair-kac-kentira-s2{background-position:0 -4662px}
+.flair-kalmar-ff-s2,a[href*="kalmarff.se"]:before{background:url(%%s2%%) 0 -4683px;content:""}
+.flair-kano-pillars-s2{background-position:0 -4704px}
+.flair-kaposvari-s2{background-position:0 -4725px}
+.flair-kashiwa-reysol-s2,a[href*="reysol.co.jp"]:before{background:url(%%s2%%) 0 -4746px;content:""}
+.flair-kawasaki-frontale-s2,a[href*="frontale.co.jp"]:before{background:url(%%s2%%) 0 -4767px;content:""}
+.flair-kazma-s2{background-position:0 -4788px}
+.flair-kedah-fa-s2{background-position:0 -4809px}
+.flair-keflavik-s2,a[href*="keflavik.is"]:before{background:url(%%s2%%) 0 -4830px;content:""}
+.flair-kickers-offenbach-s2{background-position:0 -4851px}
+.flair-kidderminster-s2,a[href*="harriers.co.uk"]:before{background:url(%%s2%%) 0 -4872px;content:""}
+.flair-kr-s2,a[href*="kr.is"]:before{background:url(%%s2%%) 0 -4893px;content:""}
+.flair-krasnodar-s2,a[href*="fckrasnodar.ru"]:before,a[href*="/fckrasnodar/"]:before{background:url(%%s2%%) 0 -4914px;content:""}
+.flair-krylia-sovetov-s2,a[href*="kc-camapa.ru"]:before{background:url(%%s2%%) 0 -4935px;content:""}
+.flair-kuban-s2,a[href*="fckuban.ru"]:before{background:url(%%s2%%) 0 -4956px;content:""}
+.flair-kuwait-s2,a[href*="kfa.org.kw"]:before,a[href*="/KuwaitFA/"]:before{background:url(%%s2%%) 0 -4977px;content:""}
+.flair-kuwait-sc-s2{background-position:0 -4998px}
+.flair-kv-s2,a[href*="fckv.com"]:before{background:url(%%s2%%) 0 -5019px;content:""}
+.flair-la-blues-s2,a[href*="bluessoccerclub.com"]:before{background:url(%%s2%%) 0 -5040px;content:""}
+.flair-la-firpo-s2{background-position:0 -5061px}
+.flair-larne-s2,a[href*="larnefootballclub.co.uk"]:before{background:url(%%s2%%) 0 -5082px;content:""}
+.flair-las-palmas-s2{background-position:0 -5103px}
+.flair-latvia-s2{background-position:0 -5124px}
+.flair-laval-s2{background-position:0 -5145px}
+.flair-le-mans-s2{background-position:0 -5166px}
+.flair-lebanon-s2{background-position:0 -5187px}
+.flair-lechia-gdansk-s2{background-position:0 -5208px}
+.flair-levante-s2,a[href*="es.levanteud.com"]:before,a[href*="/LevanteUD/"]:before{background:url(%%s2%%) 0 -5229px;content:""}
+.flair-liaoning-whowin-s2{background-position:0 -5250px}
+.flair-liberia-s2{background-position:0 -5271px}
+.flair-libertad-s2{background-position:0 -5292px}
+.flair-libya-s2{background-position:0 -5313px}
+.flair-lillestrom-s2,a[href*="lsk.no"]:before{background:url(%%s2%%) 0 -5334px;content:""}
+.flair-limerick-s2,a[href*="limerickfc.ie"]:before{background:url(%%s2%%) 0 -5355px;content:""}
+.flair-lithuania-s2{background-position:0 -5376px}
+.flair-lokeren-s2,a[href*="sporting.be"]:before{background:url(%%s2%%) 0 -5397px;content:""}
+.flair-lokomotiv-s2,a[href*="fclm.ru"]:before,a[href*="/fclm_press/"]:before{background:url(%%s2%%) 0 -5418px;content:""}
+.flair-lorient-s2{background-position:0 -5439px}
+.flair-luxembourg-s2{background-position:0 -5460px}
+.flair-lyngby-s2,a[href*="lyngby-boldklub.dk"]:before{background:url(%%s2%%) 0 -5481px;content:""}
+.flair-maccabi-tel-aviv-s2,a[href*="maccabi-tlv.co.il"]:before{background:url(%%s2%%) 0 -5502px;content:""}
+.flair-macedonia-s2{background-position:0 -5523px}
+.flair-magdeburg-s2{background-position:0 -5544px}
+.flair-malta-s2{background-position:0 -5565px}
+.flair-mamelodi-sundowns-s2{background-position:0 -5586px}
+.flair-mas-fez-s2{background-position:0 -5607px}
+.flair-matsumoto-yamaga-s2,a[href*="yamaga-fc.com"]:before{background:url(%%s2%%) 0 -5628px;content:""}
+.flair-mc-alger-s2{background-position:0 -5649px}
+.flair-mc-oran-s2{background-position:0 -5670px}
+.flair-mechelen-s2,a[href*="kvmechelen.be"]:before{background:url(%%s2%%) 0 -5691px;content:""}
+.flair-mineros-de-guayana-s2{background-position:0 -5712px}
+.flair-moghreb-tetouan-s2{background-position:0 -5733px}
+.flair-mohammedan-sc-s2{background-position:0 -5754px}
+.flair-mohun-bagan-s2{background-position:0 -5775px}
+.flair-monagas-s2{background-position:0 -5796px}
+.flair-monaghan-s2,a[href*="monaghanunited.tv"]:before{background:url(%%s2%%) 0 -5817px;content:""}
+.flair-monastir-s2{background-position:0 -5838px}
+.flair-montedio-yamagata-s2,a[href*="montedio.or.jp"]:before{background:url(%%s2%%) 0 -5859px;content:""}
+.flair-morocco-s2{background-position:0 -5880px}
+.flair-msv-duisburg-s2{background-position:0 -5901px}
+.flair-mtk-budapest-s2{background-position:0 -5922px}
+.flair-mumbai-s2{background-position:0 -5943px}
+.flair-municipal-s2{background-position:0 -5964px}
+.flair-myanmar-s2{background-position:0 -5985px}
+.flair-mypa-s2,a[href*="mypa.fi"]:before{background:url(%%s2%%) 0 -6006px;content:""}
+.flair-n-ireland-s2,a[href*="irishfa.com"]:before,a[href*="/OfficialIrishFA/"]:before{background:url(%%s2%%) 0 -6027px;content:""}
+.flair-na-hussein-dey-s2{background-position:0 -6048px}
+.flair-nac-breda-s2,a[href*="nac.nl"]:before,a[href*="/NACnl/"]:before{background:url(%%s2%%) 0 -6069px;content:""}
+.flair-nacional-s2{background-position:0 -6090px}
+.flair-nanchang-hengyuan-s2{background-position:0 -6111px}
+.flair-nancy-s2{background-position:0 -6132px}
+.flair-nantes-s2{background-position:0 -6153px}
+.flair-nashville-metros-s2,a[href*="metrossoccer.com"]:before{background:url(%%s2%%) 0 -6174px;content:""}
+.flair-nec-s2,a[href*="nec-nijmegen.nl"]:before,a[href*="/NEC_Nijmegen/"]:before{background:url(%%s2%%) 0 -6195px;content:""}
+.flair-nejmeh-s2{background-position:0 -6216px}
+.flair-nepal-s2,a[href*="the-anfa.com"]:before{background:url(%%s2%%) 0 -6237px;content:""}
+.flair-new-caledonia-s2{background-position:0 -6258px}
+.flair-newells-old-boys-s2{background-position:0 -6279px}
+.flair-nigeria-s2{background-position:0 -6300px}
+.flair-nk-domzale-s2{background-position:0 -6321px}
+.flair-norrkoping-s2,a[href*="ifknorrkoping.se"]:before{background:url(%%s2%%) 0 -6342px;content:""}
+.flair-north-korea-s2{background-position:0 -6363px}
+.flair-north-sound-seawolves-s2,a[href*="seawolvesfc.com"]:before{background:url(%%s2%%) 0 -6384px;content:""}
+.flair-norway-s2,a[href*="fotboll.no"]:before,a[href*="/nff_info/"]:before{background:url(%%s2%%) 0 -6405px;content:""}
+.flair-ny-cosmos-s2,a[href*="nycosmos.com"]:before,a[href*="/TheNYCosmos/"]:before{background:url(%%s2%%) 0 -6426px;content:""}
+.flair-ogc-nice-s2{background-position:0 -6447px}
+.flair-ohl-s2,a[href*="ohl.be"]:before{background:url(%%s2%%) 0 -6468px;content:""}
+.flair-oldenburg-s2,a[href*="vfb-oldenburg.de"]:before{background:url(%%s2%%) 0 -6489px;content:""}
+.flair-olimpia-s2{background-position:0 -6510px}
+.flair-olimpija-ljubljana-s2{background-position:0 -6531px}
+.flair-oman-s2,a[href*="ofa.om"]:before{background:url(%%s2%%) 0 -6552px;content:""}
+.flair-omiya-ardija-s2,a[href*="ardija.co.jp"]:before{background:url(%%s2%%) 0 -6573px;content:""}
+.flair-orgryte-s2,a[href*="fotboll.ois.se"]:before{background:url(%%s2%%) 0 -6594px;content:""}
+.flair-orlando-pirates-s2{background-position:0 -6615px}
+.flair-otelul-galati-s2{background-position:0 -6636px}
+.flair-paderborn-s2{background-position:0 -6657px}
+.flair-pahang-fa-s2{background-position:0 -6678px}
+.flair-pailan-arrows-s2{background-position:0 -6699px}
+.flair-palestine-s2,a[href*="pfa.ps"]:before{background:url(%%s2%%) 0 -6720px;content:""}
+.flair-paraguay-s2{background-position:0 -6741px}
+.flair-partick-thistle-s2{background-position:0 -6762px}
+.flair-pescara-s2,a[href*="pescaracalcio.com"]:before{background:url(%%s2%%) 0 -6783px;content:""}
+.flair-pittsburgh-riverhounds-s2,a[href*="riverhounds.com"]:before{background:url(%%s2%%) 0 -6804px;content:""}
+.flair-podbeszkidzie-s2{background-position:0 -6825px}
+.flair-poland-s2{background-position:0 -6846px}
+.flair-poli-timisoara-s2{background-position:0 -6867px}
+.flair-portugal-s2,a[href*="fpf.pt"]:before{background:url(%%s2%%) 0 -6888px;content:""}
+.flair-prayag-united-s2{background-position:0 -6909px}
+.flair-pro-vercelli-s2,a[href*="fcprovercelli.it"]:before,a[href*="/ProVercelli1892/"]:before{background:url(%%s2%%) 0 -6930px;content:""}
+.flair-puerto-rico-islanders-s2,a[href*="prislandersfc.com"]:before{background:url(%%s2%%) 0 -6951px;content:""}
+.flair-pune-s2,a[href*="punefc.com"]:before{background:url(%%s2%%) 0 -6972px;content:""}
+.flair-qadsia-s2{background-position:0 -6993px}
+.flair-qatar-s2,a[href*="qfa.com.qa"]:before,a[href*="/FollowQFA/"]:before{background:url(%%s2%%) 0 -7014px;content:""}
+.flair-qingdao-jonoon-s2{background-position:0 -7035px}
+.flair-queens-park-s2{background-position:0 -7056px}
+.flair-raja-club-s2{background-position:0 -7077px}
+.flair-randers-fc-s2,a[href*="randersfc.dk"]:before{background:url(%%s2%%) 0 -7098px;content:""}
+.flair-rapid-bucuresti-s2{background-position:0 -7119px}
+.flair-rayo-vallecano-s2,a[href*="rayovallecano.es"]:before,a[href*="/RVMOficial/"]:before{background:url(%%s2%%) 0 -7140px;content:""}
+.flair-reims-s2{background-position:0 -7161px}
+.flair-rekreativo-banja-luka-s2{background-position:0 -7182px}
+.flair-rennes-s2{background-position:0 -7203px}
+.flair-richmond-kickers-s2,a[href*="richmondkickers.com"]:before{background:url(%%s2%%) 0 -7224px;content:""}
+.flair-rijeka-s2,a[href*="nk-rijeka.hr"]:before{background:url(%%s2%%) 0 -7245px;content:""}
+.flair-rkc-waalwijk-s2,a[href*="rkcwaalwijk.nl"]:before,a[href*="/RKCWAALWIJK/"]:before{background:url(%%s2%%) 0 -7266px;content:""}
+.flair-rochester-rhinos-s2,a[href*="rhinossoccer.com"]:before{background:url(%%s2%%) 0 -7287px;content:""}
+.flair-romania-s2{background-position:0 -7308px}
+.flair-ross-county-s2,a[href*="rosscountyfootballclub.co.uk"]:before,a[href*="/TheStaggies/"]:before{background:url(%%s2%%) 0 -7329px;content:""}
+.flair-rot-weiss-essen-s2{background-position:0 -7350px}
+.flair-rotherham-s2,a[href*="themillers.co.uk"]:before{background:url(%%s2%%) 0 -7371px;content:""}
+.flair-royal-antwerp-s2,a[href*="rafc.be"]:before{background:url(%%s2%%) 0 -7392px;content:""}
+.flair-rushden-s2,a[href*="afcdiamonds.com"]:before,a[href*="/afcrd/"]:before{background:url(%%s2%%) 0 -7413px;content:""}
+.flair-russia-s2,a[href*="rfs.ru"]:before,a[href*="/official_rfs/"]:before{background:url(%%s2%%) 0 -7434px;content:""}
+.flair-saarbrucken-s2{background-position:0 -7455px}
+.flair-sabah-s2{background-position:0 -7476px}
+.flair-sagan-tosu-s2,a[href*="sagantosu.jp"]:before{background:url(%%s2%%) 0 -7497px;content:""}
+.flair-salamanca-s2,a[href*="udsalamanca.es"]:before,a[href*="/UD_Salamanca/"]:before{background:url(%%s2%%) 0 -7518px;content:""}
+.flair-salgaocar-s2{background-position:0 -7539px}
+.flair-salzburg-s2,a[href*="redbulls.com"]:before{background:url(%%s2%%) 0 -7560px;content:""}
+.flair-san-antonio-scorpions-s2,a[href*="sanantonioscorpions.com"]:before{background:url(%%s2%%) 0 -7581px;content:""}
+.flair-san-luis-s2{background-position:0 -7602px}
+.flair-sandnessjoen-s2,a[href*="silfootball.no"]:before{background:url(%%s2%%) 0 -7623px;content:""}
+.flair-sanfrecce-hiroshima-s2,a[href*="sanfrecce.co.jp"]:before{background:url(%%s2%%) 0 -7644px;content:""}
+.flair-sangju-sangmu-s2,a[href*="sangjufc.co.kr"]:before{background:url(%%s2%%) 0 -7665px;content:""}
+.flair-santa-fe-s2,a[href*="santafecd.net"]:before{background:url(%%s2%%) 0 -7686px;content:""}
+.flair-saudi-arabia-s2,a[href*="thesaff.com.sa"]:before{background:url(%%s2%%) 0 -7707px;content:""}
+.flair-scotland-s2,a[href*="scottishfa.co.uk"]:before,a[href*="/Scottish_FA/"]:before{background:url(%%s2%%) 0 -7728px;content:""}
+.flair-sedan-s2{background-position:0 -7749px}
+.flair-senegal-s2{background-position:0 -7770px}
+.flair-seongnam-ilhwa-chunma-s2,a[href*="esifc.com"]:before{background:url(%%s2%%) 0 -7791px;content:""}
+.flair-sepahan-s2{background-position:0 -7812px}
+.flair-sfaxien-s2{background-position:0 -7833px}
+.flair-shamrock-rovers-s2,a[href*="shamrockrovers.ie"]:before{background:url(%%s2%%) 0 -7854px;content:""}
+.flair-shandong-luneng-s2{background-position:0 -7875px}
+.flair-shenzhen-ruby-s2{background-position:0 -7896px}
+.flair-shillong-lajong-s2{background-position:0 -7917px}
+.flair-shimizu-s-pulse-s2,a[href*="s-pulse.co.jp"]:before{background:url(%%s2%%) 0 -7938px;content:""}
+.flair-shooting-stars-s2{background-position:0 -7959px}
+.flair-shrewsbury-town-s2,a[href*="shrewsburytown.com"]:before,a[href*="/shrewsweb/"]:before{background:url(%%s2%%) 0 -7980px;content:""}
+.flair-silkeborg-s2,a[href*="silkeborgif.com"]:before{background:url(%%s2%%) 0 -8001px;content:""}
+.flair-singapore-s2,a[href*="fas.org.sg"]:before{background:url(%%s2%%) 0 -8022px;content:""}
+.flair-sirius-s2,a[href*="siriusfotboll.com"]:before{background:url(%%s2%%) 0 -8043px;content:""}
+.flair-skonto-s2{background-position:0 -8064px}
+.flair-slovakia-s2{background-position:0 -8085px}
+.flair-slovenia-s2{background-position:0 -8106px}
+.flair-spartak-nalchik-s2,a[href*="spartak-nalchik.ru"]:before{background:url(%%s2%%) 0 -8127px;content:""}
+.flair-sport-recife-s2,a[href*="sportrecife.com.br"]:before{background:url(%%s2%%) 0 -8148px;content:""}
+.flair-sporting-cristal-s2{background-position:0 -8169px}
+.flair-sri-lanka-s2{background-position:0 -8190px}
+.flair-ssv-ulm-s2{background-position:0 -8211px}
+.flair-st-gallen-s2,a[href*="fcsg.ch"]:before{background:url(%%s2%%) 0 -8232px;content:""}
+.flair-stade-tunisien-s2{background-position:0 -8253px}
+.flair-stjarnan-s2,a[href*="stjarnan.is"]:before{background:url(%%s2%%) 0 -8274px;content:""}
+.flair-strongest-s2,a[href*="club-thestrongest.com"]:before{background:url(%%s2%%) 0 -8295px;content:""}
+.flair-suwon-s2,a[href*="bluewings.kr"]:before{background:url(%%s2%%) 0 -8316px;content:""}
+.flair-sv-austria-salzburg-s2,a[href*="austria-salzburg.at"]:before{background:url(%%s2%%) 0 -8337px;content:""}
+.flair-sweden-s2,a[href*="svenskfotboll.se"]:before{background:url(%%s2%%) 0 -8358px;content:""}
+.flair-switzerland-s2,a[href*="football.ch"]:before{background:url(%%s2%%) 0 -8379px;content:""}
+.flair-tampa-bay-rowdies-s2,a[href*="rowdiessoccer.com"]:before{background:url(%%s2%%) 0 -8400px;content:""}
+.flair-tampico-madero-s2{background-position:0 -8421px}
+.flair-terek-s2,a[href*="fc-terek.ru"]:before{background:url(%%s2%%) 0 -8442px;content:""}
+.flair-terengganu-s2{background-position:0 -8463px}
+.flair-tersana-s2{background-position:0 -8484px}
+.flair-thailand-s2,a[href*="fat.or.th"]:before{background:url(%%s2%%) 0 -8505px;content:""}
+.flair-tianjin-teda-s2{background-position:0 -8526px}
+.flair-tigre-s2{background-position:0 -8547px}
+.flair-tom-s2,a[href*="fctomtomsk.ru"]:before,a[href*="/fctomtomsk/"]:before{background:url(%%s2%%) 0 -8568px;content:""}
+.flair-torino-s2,a[href*="torinofc.it"]:before,a[href*="/TorinoFC_1906/"]:before{background:url(%%s2%%) 0 -8589px;content:""}
+.flair-totton-s2,a[href*="afctotton.com"]:before{background:url(%%s2%%) 0 -8610px;content:""}
+.flair-toulouse-s2{background-position:0 -8631px}
+.flair-tours-s2{background-position:0 -8652px}
+.flair-tp-mazembe-s2,a[href*="tpmazembe.com"]:before{background:url(%%s2%%) 0 -8673px;content:""}
+.flair-tractor-sazi-s2{background-position:0 -8694px}
+.flair-trento-s2{background-position:0 -8715px}
+.flair-troyes-s2{background-position:0 -8736px}
+.flair-tsv-munchen-s2,a[href*="tsv1860.de"]:before{background:url(%%s2%%) 0 -8757px;content:""}
+.flair-tunisia-s2{background-position:0 -8778px}
+.flair-turkey-s2,a[href*="tff.org"]:before,a[href*="/Federasyon/"]:before{background:url(%%s2%%) 0 -8799px;content:""}
+.flair-tyreso-s2,a[href*="tyresoff.se"]:before{background:url(%%s2%%) 0 -8820px;content:""}
+.flair-uae-s2,a[href*="uaefa.ae"]:before{background:url(%%s2%%) 0 -8841px;content:""}
+.flair-ucd-s2,a[href*="ucdsoccer.com"]:before{background:url(%%s2%%) 0 -8862px;content:""}
+.flair-ujpest-s2{background-position:0 -8883px}
+.flair-ukraine-s2,a[href*="ukrainiansoccer.net"]:before{background:url(%%s2%%) 0 -8904px;content:""}
+.flair-ulsan-hyundai-s2,a[href*="uhfc.tv"]:before{background:url(%%s2%%) 0 -8925px;content:""}
+.flair-union-saint-gilloise-s2,a[href*="rusg.be"]:before{background:url(%%s2%%) 0 -8946px;content:""}
+.flair-urawa-red-diamonds-s2,a[href*="urawa-reds.co.jp"]:before{background:url(%%s2%%) 0 -8967px;content:""}
+.flair-usm-alger-s2{background-position:0 -8988px}
+.flair-valenciennes-s2{background-position:0 -9009px}
+.flair-valur-s2,a[href*="valur.is"]:before{background:url(%%s2%%) 0 -9030px;content:""}
+.flair-vaslui-s2{background-position:0 -9051px}
+.flair-vegalta-sendai-s2,a[href*="vegalta.co.jp"]:before{background:url(%%s2%%) 0 -9072px;content:""}
+.flair-venezia-s2,a[href*="fbcunionevenezia.com"]:before{background:url(%%s2%%) 0 -9093px;content:""}
+.flair-venezuela-s2{background-position:0 -9114px}
+.flair-ventforet-kofu-s2,a[href*="ventforet.co.jp"]:before{background:url(%%s2%%) 0 -9135px;content:""}
+.flair-veracruz-s2{background-position:0 -9156px}
+.flair-vikingur-s2,a[href*="vikingur.is"]:before{background:url(%%s2%%) 0 -9177px;content:""}
+.flair-vikingur-gota-s2{background-position:0 -9198px}
+.flair-viktoria-plzen-s2,a[href*="fcviktoria.cz"]:before{background:url(%%s2%%) 0 -9219px;content:""}
+.flair-viktoria-zizkov-s2,a[href*="fkvz.cz"]:before{background:url(%%s2%%) 0 -9240px;content:""}
+.flair-vila-nova-s2,a[href*="vilanovafc.com.br"]:before{background:url(%%s2%%) 0 -9261px;content:""}
+.flair-vissel-kobe-s2,a[href*="vissel-kobe.co.jp"]:before{background:url(%%s2%%) 0 -9282px;content:""}
+.flair-vitoria-s2,a[href*="ecvitoria.com.br"]:before{background:url(%%s2%%) 0 -9303px;content:""}
+.flair-volga-s2,a[href*="fcvolgann.ru"]:before,a[href*="/fcvolgann/"]:before{background:url(%%s2%%) 0 -9324px;content:""}
+.flair-vorskla-s2,a[href*="vorskla.com.ua"]:before,a[href*="/vorsklacomua/"]:before{background:url(%%s2%%) 0 -9345px;content:""}
+.flair-vps-s2,a[href*="vepsu.fi"]:before{background:url(%%s2%%) 0 -9366px;content:""}
+.flair-wacker-innsbruck-s2,a[href*="fc-wacker-innsbruck.at"]:before{background:url(%%s2%%) 0 -9387px;content:""}
+.flair-wales-s2,a[href*="faw.org.uk"]:before,a[href*="/FAWales/"]:before{background:url(%%s2%%) 0 -9408px;content:""}
+.flair-waterford-s2,a[href*="waterford-united.ie"]:before{background:url(%%s2%%) 0 -9429px;content:""}
+.flair-westerlo-s2,a[href*="kvcwesterlo.be"]:before{background:url(%%s2%%) 0 -9450px;content:""}
+.flair-western-sydney-wanderers-s2,a[href*="footballaustralia.com.au/wswanderersfc"]:before{background:url(%%s2%%) 0 -9471px;content:""}
+.flair-wilmington-hammerheads-s2,a[href*="wilmingtonhammerheads.com"]:before{background:url(%%s2%%) 0 -9492px;content:""}
+.flair-winterthur-s2,a[href*="fcwinterthur.ch"]:before{background:url(%%s2%%) 0 -9513px;content:""}
+.flair-wydad-fes-s2{background-position:0 -9534px}
+.flair-xelaju-s2,a[href*="mixelajumc.com"]:before{background:url(%%s2%%) 0 -9555px;content:""}
+.flair-yokohama-f-marinos-s2,a[href*="f-marinos.com"]:before{background:url(%%s2%%) 0 -9576px;content:""}
+.flair-zabrze-s2{background-position:0 -9597px}
+.flair-zaglebie-lubin-s2{background-position:0 -9618px}
+.flair-zamalek-s2{background-position:0 -9639px}
+.flair-brann-s3,a[href*="brann.no"]:before{background:url(%%s3%%) 0 -21px;content:""}
