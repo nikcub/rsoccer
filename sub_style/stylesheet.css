@@ -33,6 +33,7 @@
 }
 
 /* Match threads */
+#siteTable a.title[href*="/soccer_subreddit_of_the_week"],
 #siteTable a.title[href*="/pre_match_thread"],
 #siteTable a.title[href*="/prematch_thread"],
 #siteTable a.title[href*="/match_thread"],
@@ -43,6 +44,7 @@
  line-height: 26px;
  color: green;
 }
+#siteTable a.title[href*="/soccer_subreddit_of_the_week"]:before,
 #siteTable a.title[href*="/pre_match_thread"]:before,
 #siteTable a.title[href*="/prematch_thread"]:before,
 #siteTable a.title[href*="/match_thread"]:before,
@@ -55,6 +57,7 @@
  height: 24px;
  background-image: url(%%icons-large%%);
  background-position: 0 -204px;
+ background-repeat: no-repeat;
  vertical-align: bottom;
 }
 #siteTable a.title[href*="/match_thread"]:before {
@@ -67,6 +70,9 @@
 #siteTable a.title[href*="/post_match_thread"]:before,
 #siteTable a.title[href*="/postmatch_thread"]:before {
  background-position: 0 -408px;
+}
+#siteTable a.title[href*="/soccer_subreddit_of_the_week"]:before {
+ background-position: 0 0;
 }
 
 /* Match thread team icons */
