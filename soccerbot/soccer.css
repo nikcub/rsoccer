@@ -1,0 +1,502 @@
+
+/* Official news */
+.content a:before {
+ display: none;
+ background-image: url(%%s1%%);
+ background-repeat: no-repeat;
+ width: 20px;
+ height: 20px;
+ vertical-align: middle;
+ border-width: 0;
+ padding: 0;
+ background-color: transparent;
+ cursor: default;
+}
+.commentarea a:before {
+ display: none!important;
+}
+
+#siteTable a.title {
+ line-height: 22px;
+ margin: 2px 0 0 0;
+ vertical-align: middle;
+}
+
+#siteTable a.title:before {
+ display: inline-block;
+ vertical-align: bottom;
+ margin-right: 3px;
+}
+
+/* Match threads */
+#siteTable a.title[href*="/soccer_subreddit_of_the_week"],
+#siteTable a.title[href*="/pre_match_thread"],
+#siteTable a.title[href*="/prematch_thread"],
+#siteTable a.title[href*="/match_thread"],
+#siteTable a.title[href*="/post_match_thread"],
+#siteTable a.title[href*="/postmatch_thread"],
+#siteTable a.title[href*="/match_report"],
+#siteTable a.title[href*="/league_roundup"] {
+ line-height: 26px;
+ color: green;
+}
+#siteTable a.title[href*="/soccer_subreddit_of_the_week"]:before,
+#siteTable a.title[href*="/pre_match_thread"]:before,
+#siteTable a.title[href*="/prematch_thread"]:before,
+#siteTable a.title[href*="/match_thread"]:before,
+#siteTable a.title[href*="/post_match_thread"]:before,
+#siteTable a.title[href*="/postmatch_thread"]:before,
+#siteTable a.title[href*="/match_report"]:before,
+#siteTable a.title[href*="/league_roundup"]:before {
+ content: "";
+ width: 24px;
+ height: 24px;
+ background-image: url(%%icons-large%%);
+ background-position: 0 -204px;
+ vertical-align: bottom;
+}
+#siteTable a.title[href*="/match_thread"]:before {
+ background-position: 0 0;
+}
+#siteTable a.title[href*="/pre_match_thread"]:before,
+#siteTable a.title[href*="/prematch_thread"]:before {
+ background-position: 0 -34px;
+}
+#siteTable a.title[href*="/post_match_thread"]:before,
+#siteTable a.title[href*="/postmatch_thread"]:before {
+ background-position: 0 -408px;
+}
+#siteTable a.title[href*="/soccer_subreddit_of_the_week"]:before {
+ background-image: url(%%trophy%%);
+ background-position: 0 0;
+}
+
+/* Match thread team icons */
+.md a:before {
+ display: inline-block;
+ margin-right: 4px;
+}
+.md [align=right] > a:before {
+ float: right;
+ margin-left: 4px;
+ margin-right: 0;
+}
+.md a[href^="/"]:before,
+.md a[href*="twitter.com/"]:before,
+.md a[href*="reddit.com/r/"]:before {
+ display: none;
+}
+.md a[href^="//"]:before {
+ display: inline-block;
+}
+
+/* Icons */
+a[href^="//#"] {
+ display: inline-block;
+ width: 16px;
+ height: 16px;
+ line-height: normal;
+ background-repeat: no-repeat;
+ background-image: url(%%icons%%);
+ background-position: -999px -999px;
+ vertical-align: middle;
+ padding: 0;
+ border-width: 0;
+ background-color: transparent;
+ cursor: default;
+}
+a[href^="//#"][href$="-big"] {
+ width: 24px;
+ height: 24px;
+ line-height: 24px;
+ background-image: url(%%icons-large%%);
+}
+
+a[href^="//#ball"]{background-position:0 0}
+a[href^="//#clock"]{background-position:0 -34px}
+a[href^="//#down"]{background-position:0 -68px}
+a[href^="//#flag"]{background-position:0 -102px}
+a[href^="//#info"]{background-position:0 -136px}
+a[href^="//#net"]{background-position:0 -170px}
+a[href^="//#news"]{background-position:0 -204px}
+a[href^="//#notes"]{background-position:0 -238px}
+a[href^="//#red"]{background-position:0 -272px}
+a[href^="//#stream"]{background-position:0 -306px}
+a[href^="//#sub"]{background-position:0 -340px}
+a[href^="//#up"]{background-position:0 -374px}
+a[href^="//#whistle"]{background-position:0 -408px}
+a[href^="//#yellow"]{background-position:0 -442px}
+
+.titlebox a[href^="//#redditch"] {
+ width: 20px;
+ height: 20px;
+ line-height: 20px;
+ background-position: 0 0;
+ background-image: url(%%redditch%%);
+}
+
+/* Video icon */
+.md a[href*="youtube.com/watch"],
+.md a[href*="youtu.be/"],
+.md a[href*="vimeo.com/"],
+.md a[href*="twitvid.com/"],
+.md a[href*="/video/"],
+.md a[href*="/videok/"],
+.md a[href*="/gvideos/"] {
+ background-image: url(%%video%%);
+ background-repeat: no-repeat;
+ background-position: left center;
+ padding-left: 20px;
+}
+
+/* User area */
+#header-bottom-right {
+ border-top: 1px solid #5f99cf;
+ border-left: 1px solid #5f99cf;
+}
+
+/* off-white background */
+html, body {
+ background-color: #fdfefd;
+}
+.side, .icon-menu a {
+ background-color: transparent;
+}
+.sidecontentbox, .footer {
+ background-color: white;
+}
+
+/* Restrict the size of the logo */
+#header-img {
+ max-width: 400px;
+ max-height: 160px;
+ width: auto;
+ height: auto;
+ border: 1px solid black;
+ margin-left: 1px;
+}
+
+/* Make it harder to knee-jerk upvote image posts */
+.listing-page .toggleImage {
+ display: none!important;
+}
+
+/* Tables */
+.md table {
+ border: 2px solid white;
+ background-color: white;
+ box-shadow: 0 0 5px #ccc;
+}
+.md th, .md td {
+ padding: 2px 1ex;
+}
+.md th {
+ color: black;
+ background-color: #eee;
+ border-color: #ccc;
+}
+.md td[align=left],
+.md th[align=left] {
+  text-align: left;
+}
+.md td[align=center],
+.md th[align=center] {
+  text-align: center;
+}
+.md td[align=right],
+.md th[align=right] {
+  text-align: right;
+}
+.md th a {
+ color: black;
+}
+
+/* Headings */
+.md h1, .md h2, .md h3, .md h4 {
+ margin: 1em 0;
+ font-weight: bold;
+}
+
+/* About box */
+.titlebox {
+ border: 1px solid #5fcf99;
+ background-color: #effff7;
+ padding: 1ex;
+ border-radius: 3px;
+}
+.titlebox form.toggle {
+ background-color: transparent;
+}
+.titlebox a {
+ color: green;
+}
+.titlebox .md a {
+ font-weight: bold;
+}
+.side .titlebox h1.redditname {
+ font-size: 3em;
+ font-style: italic;
+ border-bottom: 1px solid black;
+ margin: 0 0 1ex 0;
+ background-color: transparent!important;
+}
+.titlebox h1:before {
+ content: "";
+ background-image: url(%%soccer-alien%%);
+ display: inline-block;
+ width: 29px;
+ height: 40px;
+ margin-right: 4px;
+ vertical-align: baseline;
+}
+.titlebox .usertext .usertext-body p {
+ margin: 1em 0;
+ font-size: inherit;
+}
+.titlebox .usertext .usertext-body p:first-child {
+ font-size: larger;
+}
+.titlebox .subscribers .number {
+ font-style: italic;
+}
+.titlebox .subscribers .number:before {
+ content: "Attendance: ";
+}
+.titlebox .users-online {
+ display: inline;
+}
+.titlebox .users-online:before {
+ display: none;
+}
+.titlebox .users-online .number {
+ font-style: italic;
+ vertical-align: super;
+ font-size: smaller;
+ color: green;
+}
+.titlebox .users-online .number:before {
+ content: "(";
+}
+.titlebox .users-online .number:after{
+ content: ")";
+}
+.titlebox .word {
+ display: none;
+}
+.titlebox li {
+ list-style-type: square;
+ line-height: 1.4;
+}
+
+.leavemoderator {
+ background-color: transparent;
+}
+
+/* Twitter feed */
+.titlebox a[href="http://twitter.com/redditsoccer"] {
+ display: inline-block;
+ width: 68px;
+ height: 16px;
+ background-image: url(%%twitter%%);
+ background-position: 0 0;
+ text-indent: -9999px;
+}
+
+/* tweet_poster */
+.commentarea .author[href$="/user/tweet_poster"]:before {
+ display: inline-block !important;
+ content: "";
+ width: 20px;
+ height: 20px;
+ display: inline-block;
+ background-repeat: no-repeat;
+ vertical-align: middle;
+ margin-right: 4px;
+ background-image: url(%%tweet%%);
+}
+
+/* r/Soccer */
+.redditname {
+ text-transform: capitalize;
+ font-variant: normal;
+}
+.redditname a:before {
+ content: "r/";
+ text-transform: lowercase;
+}
+
+/* stop RES from breaking layout */
+.redditname a {
+ float: none !important;
+}
+
+/* Spam */
+.thing.spam {
+ background-color: #fcc;
+}
+
+/* Tab */
+.pagename a {
+ background-color: #fdfefd;
+ color: #369;
+ padding: 2px 6px 0 6px;
+ font-family: inherit;
+ font-size: 12px;
+}
+
+/* Nesting */
+.md blockquote {
+ color: #334;
+ border-left: 1em solid #ccd;
+ padding-left: 1ex;
+ margin: 1em 0;
+}
+.md blockquote blockquote {
+ color: #343;
+ border-color: #cdc;
+}
+.md blockquote blockquote blockquote {
+ color: #433;
+ border-color: #dcc;
+}
+
+/* Spacing */
+form + .sitetable > .link {
+ margin-bottom: 1em;
+}
+form + .sitetable .rank {
+ margin-top: 0;
+}
+.md ol {
+ margin: 1em 3em;
+}
+.md ul {
+ margin: 1em 2em;
+}
+
+/* Alien team */
+.footer-parent {
+ padding-bottom: 80px;
+ background-image: url(%%alien-team%%);
+ background-repeat: no-repeat;
+ background-position: center bottom;
+}
+
+/* Links */
+a.moderator {
+ font-weight: bold;
+}
+a:link:hover, a:visited:hover,
+#siteTable a:hover {
+ color: darkred!important;
+ background-color: #ffc!important;
+ text-decoration: none!important;
+}
+.fancy-toggle-button a:hover {
+ color: white!important;
+}
+#header-img-a, .morelink a:hover, .sidebox a:hover, a[href^="//#"]:hover {
+ color: white!important;
+ background-color: transparent!important;
+}
+
+/* RES night mode */
+
+.res-nightmode #siteTable a.title[href*="/daily_fan_thread"],
+.res-nightmode #siteTable a.title[href*="/match_thread"],
+.res-nightmode #siteTable a.title[href*="/matchthread_"],
+.res-nightmode #siteTable a.title[href*="/pre_match_thread"],
+.res-nightmode #siteTable a.title[href*="/prematch_thread"],
+.res-nightmode #siteTable a.title[href*="/post_match_thread"],
+.res-nightmode #siteTable a.title[href*="/match_report"],
+.res-nightmode #siteTable a.title[href*="/league_roundup"] {
+ color: #6c0!important;
+}
+.res-nightmode .titlebox {
+ background-color: #042008;
+ border-color: #5fcf99;
+}
+.res-nightmode .titlebox a {
+ color: #5fcf99!important;
+}
+.res-nightmode .titlebox h1:before {
+ display: none;
+}
+.res-nightmode .titlebox a:hover,
+.res-nightmode #siteTable a.title:hover {
+ color: darkred!important;
+ background-color: #ffc!important;
+}
+.res-nightmode .fancy-toggle-button a {
+ color: white!important;
+}
+.res-nightmode .commentarea .flair {
+ border: 2px solid white!important;
+ background-color: white!important;
+ outline: 1px solid black;
+ margin-top: 2px;
+}
+.res-nightmode .sidecontentbox, .footer {
+ background-color: transparent;
+}
+.res-nightmode .footer-parent {
+ padding-bottom: 0;
+ background-image: none;
+}
+.res-nightmode .titlebox a[href="http://twitter.com/redditsoccer"] {
+ background-image: none;
+ width: auto;
+ text-indent: 0;
+}
+.res-nightmode .usertext.grayed .usertext-body {
+ color: gray;
+ background-color: #111!important;
+}
+.res-nightmode .thing.spam {
+ background-color: #854e51!important;
+}
+.res-nightmode .md #livescores table td {
+ color: #ddd;
+}
+/* Live Scores plugin (night mode) */
+.res-nightmode .md #livescores table td.live {
+ color: #6c0;
+}
+.res-nightmode .md #livescores tr:hover td {
+ color: #222!important;
+}
+
+/* Default CSS for a crest */
+.commentarea .flair {
+ display: inline-block;
+ width: 20px;
+ height: 20px;
+ line-height: 20px;
+ text-indent: 40px;
+ overflow: hidden;
+ background-image: url(%%s1%%);
+ background-color: transparent;
+ background-repeat: no-repeat;
+ vertical-align: middle;
+ padding: 0;
+ margin-right: 4px;
+ border-width: 0;
+ cursor: help;
+}
+.flairtoggle + .tagline, .flairtoggle, .flair {
+ display: none; /* Only show crests in comments */
+}
+.collapsed .flair {
+ opacity: 0.4
+}
+
+.commentarea .flair[class*="-s2"] {
+ background-image: url(%%s2%%);
+}
+.flair[class*="-s3"] {
+ width: 40px;
+}
+.commentarea .flair[class*="-s3"] {
+ background-image: url(%%s3%%);
+ width: 40px;
+}

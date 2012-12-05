@@ -1,0 +1,212 @@
+/* Hide a lot of stuff */
+body:not(.moderator) .submit,
+.create,
+.commentarea,
+.tagline,
+.rank,
+.domain,
+.linkinfo,
+.subscribers,
+.users-online,
+#search,
+#subButtons-soccerbot,
+.expando-button,
+.flat-list.buttons a,
+.titlebox > .number,
+.titlebox > .word,
+.titlebox > .toggle,
+.score,
+.midcol.likes,
+.listing-page .link.compressed .flat-list,
+.leavemoderator,
+.tabmenu,
+.titlebox .bottom,
+.sidecontentbox,
+.arrow {
+ display: none!important;
+}
+.flat-list.buttons a.edit-usertext {
+ display: inline-block!important;
+}
+#moderation_tools {
+ display: block!important;
+}
+.styleToggle {
+ max-height: 0!important;
+ overflow: hidden;
+}
+
+/* headings */
+.md h1, .md h2, .md h3, .md h4 {
+ font-weight: bold;
+ text-decoration: none;
+ color: #369;
+ margin: 1em 0;
+ font-size: 1.33em;
+}
+
+.sitetable h1 {
+ color: black;
+ text-decoration: underline;
+}
+
+/* off-white background */
+html, body {
+  background-color: #fdfefd;
+}
+.side, .icon-menu a {
+  background-color: transparent;
+}
+.sidecontentbox, .footer {
+  background-color: white;
+}
+
+/* Content */
+textarea {
+  max-height: 640px;
+}
+.sitetable .usertext .md {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.sitetable .usertext ul {
+  list-style: none;
+}
+.sitetable .usertext li {
+ border-bottom: 1px solid silver;
+}
+.sitetable .usertext li:first-child {
+ border-top: 1px solid silver;
+}
+.sitetable .entry .title {
+ font-weight: bold;
+ font-size: 1.67em;
+ margin: 0;
+}
+.sitetable .entry .title a {
+ display: block;
+ padding: 8px 0;
+ border-bottom: 1px solid silver;
+}
+#siteTable .entry .title a {
+ color: black;
+}
+form + #siteTable .entry .title a {
+ color: #369;
+}
+.sitetable .entry .title a:hover {
+ text-decoration: underline;
+}
+.compressed, .link {
+ margin-bottom: 0;
+}
+.last-clicked {
+ border-width: 0!important;
+}
+
+/* About box */
+.titlebox {
+ border: 1px solid #5FCF99;
+ background-color: #EEF3EE;
+ padding: 1ex;
+ border-radius: 3px;
+}
+.titlebox a {
+ color: #396;
+  font-weight: bold;
+}
+.titlebox .bottom a {
+  font-weight: normal;
+}
+.titlebox h1 {
+ font-size: 3em;
+ margin-top: 0;
+ margin-bottom: 0;
+ border-bottom: 1px solid black;
+ font-variant: small-caps;
+}
+.titlebox h1 a:before {
+ content: url(%%soccer-alien%%);
+ display: inline-block;
+ width: 29px;
+ height: 40px;
+ margin-right: 4px;
+ vertical-align: baseline;
+}
+.titlebox .usertext .usertext-body p {
+ margin: 1em 0;
+ font-size: inherit;
+}
+.titlebox ol {
+ border: 1px solid black;
+ border-radius: 4px;
+ padding: 1ex 1ex 1ex 5ex;
+ background-color: #fffffc;
+ margin: 1em auto;
+}
+.titlebox ol strong {
+ display: inline-block;
+ border: 1px solid black;
+ border-radius: 4px;
+ padding: 0 2px 1px 2px;
+ background-color: #eee;
+}
+.titlebox .usertext .usertext-body p:last-child {
+ padding-top: 1ex;
+ border-top: 1px solid #5FCF99;
+ font-size: smaller;
+ margin-bottom: 0;
+}
+
+/* Link hover */
+a:link:hover, a:visited:hover {
+ color: darkred!important;
+ background-color: #FFC!important;
+}
+.fancy-toggle-button a:hover {
+ color: white!important;
+}
+#header-img-a, .morelink a:hover {
+ color: white!important;
+ background-color: transparent!important;
+}
+
+/* Alien team */
+.footer-parent {
+ padding-bottom: 80px;
+ background-image: url(%%alien-team%%);
+ background-repeat: no-repeat;
+ background-position: center bottom;
+}
+
+/* Default CSS for a crest */
+a[href^="/message/compose/?to=soccerbot"] {
+ display: block;
+ padding: 8px 0;
+ font-weight: bold;
+ color: #369!important;
+}
+a[href^="/message/compose/?to=soccerbot"]:hover {
+ text-decoration: underline;
+}
+a[href^="/message/compose/?to=soccerbot"]:before {
+ margin-right: 3px;
+ width: 20px;
+ height: 20px;
+ display: inline-block;
+ background-repeat: no-repeat;
+ background-image: url(%%s1%%);
+ vertical-align: middle;
+ border-width: 0;
+ padding: 0;
+ background-color: transparent;
+ content: "";
+}
+a[href$="-s2"]:before{
+ background-image: url(%%s2%%);
+}
+a[href$="-s3"]:before{
+ width: 40px;
+ background-image: url(%%s3%%);
+}
