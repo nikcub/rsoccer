@@ -111,6 +111,9 @@ a[href^="//#"][href$="-big"] {
  line-height: 24px;
  background-image: url(%%icons-large%%);
 }
+.commentarea a[href^="//#"] {
+ display: none!important;
+}
 
 a[href^="//#ball"]{background-position:0 0}
 a[href^="//#clock"]{background-position:0 -34px}
