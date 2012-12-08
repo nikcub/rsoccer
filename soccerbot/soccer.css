@@ -306,7 +306,7 @@ html, body {
 }
 
 /* tweet_poster */
-.commentarea .author[href$="/user/tweet_poster"]:before {
+.commentarea .author[href$="/user/TweetPoster"]:before {
  display: inline-block !important;
  content: "";
  width: 20px;
