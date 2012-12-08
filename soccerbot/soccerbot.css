@@ -1,8 +1,8 @@
 /* Hide a lot of stuff */
 body:not(.moderator) .submit,
 .create,
-.commentarea,
 .tagline,
+.commentarea,
 .rank,
 .domain,
 .linkinfo,
@@ -107,13 +107,13 @@ form + #siteTable .entry .title a {
 
 /* About box */
 .titlebox {
- border: 1px solid #5FCF99;
+ border: 1px solid #999;
  background-color: #EEF3EE;
  padding: 1ex;
  border-radius: 3px;
 }
 .titlebox a {
- color: #396;
+ color: darkgreen;
   font-weight: bold;
 }
 .titlebox .bottom a {
@@ -154,7 +154,7 @@ form + #siteTable .entry .title a {
 }
 .titlebox .usertext .usertext-body p:last-child {
  padding-top: 1ex;
- border-top: 1px solid #5FCF99;
+ border-top: 1px solid #999;
  font-size: smaller;
  margin-bottom: 0;
 }
