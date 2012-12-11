@@ -386,9 +386,6 @@ form + .sitetable .rank {
 }
 
 /* Links */
-a.moderator {
- font-weight: bold;
-}
 a:link:hover, a:visited:hover,
 #siteTable a:hover {
  color: darkred!important;
