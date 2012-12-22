@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/plain');
 
-set_time_limit(120);
+set_time_limit(3000);
 
 $db = new PDO('sqlite:crests.db');
 
