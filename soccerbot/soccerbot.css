@@ -210,3 +210,6 @@ a[href$="-s3"]:before{
  width: 40px;
  background-image: url(%%s3%%);
 }
+a[href$="-s4"]:before{
+ background-image: url(%%s4%%);
+}

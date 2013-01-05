@@ -5,7 +5,7 @@ set_time_limit(3000);
 
 $db = new PDO('sqlite:crests.db');
 
-$users = sqlCount("SELECT COUNT(*) AS count FROM users");
+$users = number_format(sqlCount("SELECT COUNT(*) AS count FROM users"));
 $teams = sqlCount("SELECT COUNT(DISTINCT teams.flair) AS count FROM users LEFT JOIN teams WHERE users.team=teams.flair");
 $countries = sqlCount("SELECT COUNT(DISTINCT teams.country) AS count FROM users LEFT JOIN teams WHERE users.team=teams.flair");
 

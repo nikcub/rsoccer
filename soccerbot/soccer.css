@@ -500,3 +500,7 @@ a:link:hover, a:visited:hover,
  background-image: url(%%s3%%);
  width: 40px;
 }
+
+.commentarea .flair[class*="-s4"] {
+ background-image: url(%%s4%%);
+}

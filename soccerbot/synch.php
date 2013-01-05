@@ -2,7 +2,7 @@
 
 $db = new PDO('sqlite:crests.db');
 
-$defaultSprite = 2;
+$defaultSprite = 4;
 
 $db->query("UPDATE teams SET sprite=".$defaultSprite." WHERE ((sprite IS NULL) OR (sprite=0) OR (sprite=''))");
 
