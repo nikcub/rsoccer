@@ -13,15 +13,6 @@ print('LAST UPDATED: '.date('Y-m-d')."\n\n");
 print("Stats from [soccerbot](/r/soccerbot).\n");
 print("\n*There are currently $users users supporting $teams teams from $countries countries.*\n");
 printTable('#Top Teams', 20);
-print("\n#Biggest Leagues\n");
-printTable('##England', 10, array('eng', 'wal'));
-printTable('##USA', 8, array('usa', 'can'));
-printTable('##Spain', 1, array('esp'));
-printTable('##Italy', 1, array('ita'));
-printTable('##Germany', 1, array('deu'));
-printTable('##Mexico', 1, array('mex'));
-printTable('##Holland', 1, array('ned'));
-printTable('##France', 1, array('fra'));
 
 /*
 $query = $db->query('SELECT country, COUNT(user) AS count FROM (SELECT countries.name AS country, teams.flair AS flair1 FROM teams LEFT JOIN countries ON teams.country=countries.code) LEFT JOIN (SELECT users.name AS user, teams.name AS team, teams.flair AS flair2 FROM teams LEFT JOIN users ON teams.flair=users.team) ON flair1=flair2 GROUP BY country ORDER BY count DESC');

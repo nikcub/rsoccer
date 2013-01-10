@@ -118,22 +118,22 @@ a[href^="//#"][href$="-big"] {
  display: none!important;
 }
 
-a[href^="//#ball"]{background-position:0 0}
-a[href^="//#clock"]{background-position:0 -34px}
-a[href^="//#down"]{background-position:0 -68px}
-a[href^="//#flag"]{background-position:0 -102px}
-a[href^="//#info"]{background-position:0 -136px}
-a[href^="//#net"]{background-position:0 -170px}
-a[href^="//#news"]{background-position:0 -204px}
-a[href^="//#notes"]{background-position:0 -238px}
-a[href^="//#red"]{background-position:0 -272px}
-a[href^="//#stream"]{background-position:0 -306px}
-a[href^="//#sub"]{background-position:0 -340px}
-a[href^="//#up"]{background-position:0 -374px}
-a[href^="//#whistle"]{background-position:0 -408px}
-a[href^="//#yellow"]{background-position:0 -442px}
+a[href="//#ball"]{background-position:0 0}
+a[href="//#clock"]{background-position:0 -34px}
+a[href="//#down"]{background-position:0 -68px}
+a[href="//#flag"]{background-position:0 -102px}
+a[href="//#info"]{background-position:0 -136px}
+a[href="//#net"]{background-position:0 -170px}
+a[href="//#news"]{background-position:0 -204px}
+a[href="//#notes"]{background-position:0 -238px}
+a[href="//#red"]{background-position:0 -272px}
+a[href="//#stream"]{background-position:0 -306px}
+a[href="//#sub"]{background-position:0 -340px}
+a[href="//#up"]{background-position:0 -374px}
+a[href="//#whistle"]{background-position:0 -408px}
+a[href="//#yellow"]{background-position:0 -442px}
 
-.titlebox a[href^="//#redditch"] {
+.titlebox a[href="//#redditch"] {
  width: 20px;
  height: 20px;
  line-height: 20px;
@@ -470,8 +470,8 @@ a:link:hover, a:visited:hover,
 }
 
 /* Default CSS for a crest */
-.commentarea .flair {
- display: inline-block;
+.flair {
+ display: none; /* Only show crests in comments */
  width: 20px;
  height: 20px;
  line-height: 20px;
@@ -486,24 +486,24 @@ a:link:hover, a:visited:hover,
  border-width: 0;
  cursor: help;
 }
-.flairtoggle + .tagline, .flairtoggle, .flair {
- display: none; /* Only show crests in comments */
+.flairtoggle, .flairtoggle + .tagline {
+ display: none;
 }
+.commentarea .flair {
+ display: inline-block;
+}
+
 .collapsed .flair {
  opacity: 0.4
 }
 
-.commentarea .flair[class*="-s2"] {
+.flair-s2 {
  background-image: url(%%s2%%);
 }
-.flair[class*="-s3"] {
- width: 40px;
-}
-.commentarea .flair[class*="-s3"] {
+.flair-s3 {
  background-image: url(%%s3%%);
  width: 40px;
 }
-
-.commentarea .flair[class*="-s4"] {
+.flair-s4 {
  background-image: url(%%s4%%);
 }

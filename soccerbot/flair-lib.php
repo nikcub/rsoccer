@@ -13,8 +13,13 @@ function flair_bot($subreddit) {
         if (is_object($query)) {
           $row = $query->fetch();
           $team = $row['name'];
+          $css_class = $message->body;
+          $sprite = $row['sprite'];
+          if ($sprite != 1) {
+            $css_class .= ' s'.$sprite;
+          }
           if ($team) {
-            array_push($data, $message->author.',"'.$team.'",'.$message->body);
+            array_push($data, $message->author.',"'.$team.'","'.$css_class.'"');
           }
         }
       }

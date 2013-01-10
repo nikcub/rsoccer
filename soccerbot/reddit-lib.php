@@ -6,9 +6,29 @@
   // Flair API
   // --------------------------------------
 
+  function reddit_linkflair($subreddit, $link, $text, $css_class) {
+    global $r, $modhash;
+
+    $r->setMethod(HttpRequest::METH_POST);
+    $r->setUrl('http://www.reddit.com/api/flair');
+    $r->setPostFields(array(
+      'r' => $subreddit,
+      'link' => $link,
+      'text' => $text,
+      'css_class' => $css_class,
+      'uh' => $modhash
+    ));
+
+    $response = $r->send();
+    $status = $response->getResponseCode();
+    if ($status != 200) {
+      die('reddit_flair failed, status='.$status);
+    }
+  }
+
   function reddit_flair($subreddit, $user, $text, $css_class, $notifyUser = false) {
     global $r, $modhash;
-    
+
     $r->setMethod(HttpRequest::METH_POST);
     $r->setUrl('http://www.reddit.com/api/flair');
     $r->setPostFields(array(
@@ -24,7 +44,7 @@
     if ($status != 200) {
       die('reddit_flair failed, status='.$status);
     }
-    
+
     if ($notifyUser) {
       $request = json_decode($response->getBody());
       reddit_sendMessage($user, 'Message from soccerbot', 'You have been assigned the crest for '.$text);
