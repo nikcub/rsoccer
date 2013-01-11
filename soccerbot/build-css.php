@@ -23,29 +23,12 @@ function printBlock($sprite) {
 
   $pos = -21;
   while ($row = $query->fetch()) {
-    $extended = false;
-    print('.flair-'.$row['flair']);
-    if ($row['site'] != '') {
-      print(','.'a[href*="'.$row['site'].'"]:before');
-      $extended = TRUE;
+    $flair = $row['flair'];
+    print('.flair-'.$flair);
+    if ($row['site'] != '' || $row['twitter'] != '') {
+      print(',.linkflair-'.$flair.' .linkflairlabel');
     }
-    if ($row['twitter'] != '' && $row['ignore'] != 'x') {
-      print(','.'a[href*="/'.$row['twitter'].'/"]:before');
-      $extended = TRUE;
-    }
-    //if ($row['wikipedia'] != '') {
-    //  print(','.'a[href$="/'.$row['wikipedia'].'"]:before');
-    //  $extended = TRUE;
-    //}
-    if ($extended && $sprite != 1) {
-      print('{background:url(%%s'.$sprite.'%%) 0 '.$pos.'px');
-    } else {
-      print('{background-position:0 '.$pos.'px');
-    }
-    if ($extended) {
-      print(';content:""');
-    }
-    print("}\n");
+    print('{background-position:0 '.$pos.'px}'."\n");
     $pos -= 21;
   }
 }

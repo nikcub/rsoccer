@@ -1,4 +1,5 @@
 <?php
+
 function flair_bot($subreddit) {
   $db = new PDO('sqlite:crests.db');
   $messages = reddit_getUnreadMail();
@@ -13,12 +14,12 @@ function flair_bot($subreddit) {
         if (is_object($query)) {
           $row = $query->fetch();
           $team = $row['name'];
-          $css_class = $message->body;
-          $sprite = $row['sprite'];
-          if ($sprite != 1) {
-            $css_class .= ' s'.$sprite;
-          }
           if ($team) {
+            $css_class = $row['flair'];
+            $sprite = $row['sprite'];
+            if ($sprite != 1) {
+              $css_class .= ' s'.$sprite;
+            }
             array_push($data, $message->author.',"'.$team.'","'.$css_class.'"');
           }
         }
@@ -70,4 +71,5 @@ function flair_batch($subreddit, $data) {
     echo($csv);
   }
 }
+
 ?>

@@ -1,33 +1,11 @@
-/* Official news */
-.content a:before {
- display: none;
- background-image: url(%%s1%%);
- background-repeat: no-repeat;
- width: 20px;
- height: 20px;
- vertical-align: middle;
- border-width: 0;
- padding: 0;
- background-color: transparent;
- cursor: default;
-}
-.commentarea a:before {
- display: none!important;
-}
-
+/* Match threads */
 #siteTable a.title {
  line-height: 22px;
- margin: 2px 0 0 0;
  vertical-align: middle;
 }
-
-#siteTable a.title:before {
- display: inline-block;
- vertical-align: bottom;
- margin-right: 3px;
+#siteTable .compressed .title {
+ margin-top: 0;
 }
-
-/* Match threads */
 #siteTable a.title[href*="/rsoccer_subreddit_of_the_week"],
 #siteTable a.title[href*="/rsoccer_team_of_the_year"],
 #siteTable a.title[href*="/pre_match_thread"],
@@ -50,8 +28,10 @@
 #siteTable a.title[href*="/match_report"]:before,
 #siteTable a.title[href*="/league_roundup"]:before {
  content: "";
+ display: inline-block;
  width: 24px;
  height: 24px;
+ margin-right: 3px;
  background-image: url(%%icons-large%%);
  background-position: 0 -204px;
  background-repeat: no-repeat;
@@ -72,25 +52,6 @@
 #siteTable a.title[href*="/rsoccer_team_of_the_year"]:before {
  background-image: url(%%trophy%%);
  background-position: 0 0;
-}
-
-/* Match thread team icons */
-.md a:before {
- display: inline-block;
- margin-right: 4px;
-}
-.md [align=right] > a:before {
- float: right;
- margin-left: 4px;
- margin-right: 0;
-}
-.md a[href^="/"]:before,
-.md a[href*="twitter.com/"]:before,
-.md a[href*="reddit.com/r/"]:before {
- display: none;
-}
-.md a[href^="//"]:before {
- display: inline-block;
 }
 
 /* Icons */
@@ -255,35 +216,35 @@ html, body {
  margin-right: 4px;
  vertical-align: baseline;
 }
-.titlebox .usertext .usertext-body p {
+.titlebox .usertext-body p {
  margin: 1em 0;
  font-size: inherit;
 }
-.titlebox .usertext .usertext-body p:first-child {
+.titlebox .usertext-body p:first-child {
  font-size: larger;
 }
-.titlebox .subscribers .number {
+.subscribers .number {
  font-style: italic;
 }
-.titlebox .subscribers .number:before {
+.subscribers .number:before {
  content: "Attendance: ";
 }
-.titlebox .users-online {
+.users-online {
  display: inline;
 }
-.titlebox .users-online:before {
+.users-online:before {
  display: none;
 }
-.titlebox .users-online .number {
+.users-online .number {
  font-style: italic;
  vertical-align: super;
  font-size: smaller;
  color: green;
 }
-.titlebox .users-online .number:before {
+.users-online .number:before {
  content: "(";
 }
-.titlebox .users-online .number:after{
+.users-online .number:after{
  content: ")";
 }
 .titlebox .word {
@@ -308,7 +269,7 @@ html, body {
  text-indent: -9999px;
 }
 
-/* tweet_poster */
+/* TweetPoster */
 .commentarea .author[href$="/user/TweetPoster"]:before {
  display: inline-block !important;
  content: "";
@@ -398,7 +359,10 @@ a:link:hover, a:visited:hover,
 .fancy-toggle-button a:hover {
  color: white!important;
 }
-#header-img-a, .morelink a:hover, .sidebox a:hover, a[href^="//#"]:hover {
+#header-img-a,
+.morelink a:hover,
+.sidebox a:hover,
+#siteTable a[href^="//#"]:hover {
  color: white!important;
  background-color: transparent!important;
 }
@@ -470,7 +434,7 @@ a:link:hover, a:visited:hover,
 }
 
 /* Default CSS for a crest */
-.flair {
+.flair, .linkflairlabel {
  display: none; /* Only show crests in comments */
  width: 20px;
  height: 20px;
@@ -484,26 +448,27 @@ a:link:hover, a:visited:hover,
  padding: 0;
  margin-right: 4px;
  border-width: 0;
- cursor: help;
 }
 .flairtoggle, .flairtoggle + .tagline {
  display: none;
 }
-.commentarea .flair {
+.commentarea .flair, .linkflairlabel {
  display: inline-block;
 }
-
+.flair {
+ cursor: help;
+}
 .collapsed .flair {
  opacity: 0.4
 }
 
-.flair-s2 {
+.flair-s2, .linkflair-s2 .linkflairlabel {
  background-image: url(%%s2%%);
 }
-.flair-s3 {
+.flair-s3, .linkflair-s3 .linkflairlabel {
  background-image: url(%%s3%%);
  width: 40px;
 }
-.flair-s4 {
+.flair-s4, .linkflair-s4 .linkflairlabel {
  background-image: url(%%s4%%);
 }

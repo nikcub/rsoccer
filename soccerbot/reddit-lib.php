@@ -1,10 +1,30 @@
 <?php
+
   $r = null;
   $modhash = '';
 
   // --------------------------------------
   // Flair API
   // --------------------------------------
+
+  function reddit_new($subreddit, $before = '') {
+    global $r, $modhash;
+
+    $url = 'http://www.reddit.com/r/'.$subreddit.'/new.json?limit=100&sort=new&before='.$before;
+
+    $r->setMethod(HttpRequest::METH_GET);
+    $r->setUrl($url);
+
+    $response = $r->send();
+    $status = $response->getResponseCode();
+    if ($status != 200) {
+      die('reddit_new failed, status='.$status);
+    }
+
+    $json = json_decode($response->getBody());
+
+    return $json->data->children;
+  }
 
   function reddit_linkflair($subreddit, $link, $text, $css_class) {
     global $r, $modhash;
@@ -22,7 +42,7 @@
     $response = $r->send();
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die('reddit_flair failed, status='.$status);
+      die('reddit_linkflair failed, status='.$status);
     }
   }
 
@@ -46,7 +66,6 @@
     }
 
     if ($notifyUser) {
-      $request = json_decode($response->getBody());
       reddit_sendMessage($user, 'Message from soccerbot', 'You have been assigned the crest for '.$text);
     }
   }
@@ -189,4 +208,5 @@
     ));
     $modhash = $userInfo->json->data->modhash;
   }
+
 ?>
