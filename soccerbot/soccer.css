@@ -79,20 +79,20 @@ a[href^="//#"][href$="-big"] {
  display: none!important;
 }
 
-a[href="//#ball"]{background-position:0 0}
-a[href="//#clock"]{background-position:0 -34px}
-a[href="//#down"]{background-position:0 -68px}
-a[href="//#flag"]{background-position:0 -102px}
-a[href="//#info"]{background-position:0 -136px}
-a[href="//#net"]{background-position:0 -170px}
-a[href="//#news"]{background-position:0 -204px}
-a[href="//#notes"]{background-position:0 -238px}
-a[href="//#red"]{background-position:0 -272px}
-a[href="//#stream"]{background-position:0 -306px}
-a[href="//#sub"]{background-position:0 -340px}
-a[href="//#up"]{background-position:0 -374px}
-a[href="//#whistle"]{background-position:0 -408px}
-a[href="//#yellow"]{background-position:0 -442px}
+a[href^="//#ball"]{background-position:0 0}
+a[href^="//#clock"]{background-position:0 -34px}
+a[href^="//#down"]{background-position:0 -68px}
+a[href^="//#flag"]{background-position:0 -102px}
+a[href^="//#info"]{background-position:0 -136px}
+a[href^="//#net"]{background-position:0 -170px}
+a[href^="//#news"]{background-position:0 -204px}
+a[href^="//#notes"]{background-position:0 -238px}
+a[href^="//#red"]{background-position:0 -272px}
+a[href^="//#stream"]{background-position:0 -306px}
+a[href^="//#sub"]{background-position:0 -340px}
+a[href^="//#up"]{background-position:0 -374px}
+a[href^="//#whistle"]{background-position:0 -408px}
+a[href^="//#yellow"]{background-position:0 -442px}
 
 .titlebox a[href="//#redditch"] {
  width: 20px;
@@ -460,6 +460,9 @@ a:link:hover, a:visited:hover,
 }
 .collapsed .flair {
  opacity: 0.4
+}
+.flair-unknown {
+ background-position:0 0;
 }
 
 .flair-s2, .linkflair-s2 .linkflairlabel {
