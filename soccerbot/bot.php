@@ -9,7 +9,8 @@ include('config.php');
 
 reddit_login($username, $password);
 
-link_bot('soccer');
-alert_bot('soccer');
-flair_bot('soccer');
+link_bot($subreddit);
+alert_bot($subreddit);
+flair_bot($subreddit);
+spam_bot($subreddit);
 ?>

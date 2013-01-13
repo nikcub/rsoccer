@@ -11,6 +11,7 @@
 #siteTable a.title[href*="/pre_match_thread"],
 #siteTable a.title[href*="/prematch_thread"],
 #siteTable a.title[href*="/match_thread"],
+#siteTable a.title[href*="/matchthread"],
 #siteTable a.title[href*="/post_match_thread"],
 #siteTable a.title[href*="/postmatch_thread"],
 #siteTable a.title[href*="/match_report"],
@@ -23,6 +24,7 @@
 #siteTable a.title[href*="/pre_match_thread"]:before,
 #siteTable a.title[href*="/prematch_thread"]:before,
 #siteTable a.title[href*="/match_thread"]:before,
+#siteTable a.title[href*="/matchthread"]:before,
 #siteTable a.title[href*="/post_match_thread"]:before,
 #siteTable a.title[href*="/postmatch_thread"]:before,
 #siteTable a.title[href*="/match_report"]:before,
@@ -37,7 +39,8 @@
  background-repeat: no-repeat;
  vertical-align: bottom;
 }
-#siteTable a.title[href*="/match_thread"]:before {
+#siteTable a.title[href*="/match_thread"]:before,
+#siteTable a.title[href*="/matchthread"]:before {
  background-position: 0 0;
 }
 #siteTable a.title[href*="/pre_match_thread"]:before,
@@ -461,8 +464,12 @@ a:link:hover, a:visited:hover,
 .collapsed .flair {
  opacity: 0.4
 }
-.flair-unknown {
- background-position:0 0;
+.commentarea .flair-unknown {
+ display: none;
+ background-position: 0 0;
+}
+#siteTable_t3_16fue1 .flair-unknown {
+ display: inline-block;
 }
 
 .flair-s2, .linkflair-s2 .linkflairlabel {

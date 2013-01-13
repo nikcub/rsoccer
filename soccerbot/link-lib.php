@@ -38,12 +38,28 @@ function alert_bot($subreddit) { // watches reported links
   }
 }
 
+function spam_bot($subreddit) { // watches the spam queue
+  $list = reddit_spam($subreddit);
+
+  foreach ($list as $entry) {
+    if ($entry->kind == 't3') {
+      $entry = $entry->data;
+      if ($entry->is_self && !$entry->banned_by) {
+        if (preg_match('/^((post|pre)[\s-]?)?match[\s-]thread|^league\sround[\s-]?up/i', $entry->title)) {
+          reddit_approve($entry->name);
+          print("Approved: '".$entry->title."'\n");
+        }
+      }
+    }
+  }
+}
+
 function link_bot($subreddit) { // watches the new queue
-  global $blacklist, $blacklist_reasons;
+  global $blacklist, $blacklist_reasons, $guidelines;
 
   $db = new PDO('sqlite:crests.db');
 
-  $query = $db->query("SELECT * FROM admin");
+  $query = $db->query("SELECT * FROM admin WHERE r='$subreddit'");
   $row = $query->fetch();
 
   $before = $row['last_link'];
@@ -61,7 +77,7 @@ function link_bot($subreddit) { // watches the new queue
         if (isset($blacklist[$domain])) {
           if (!$entry->approved_by) {
             $reason = $blacklist[$domain];
-            $explanation = $blacklist_reasons[$reason];
+            $explanation = $blacklist_reasons[$reason].' '.$guidelines;
             link_remove($subreddit, $entry, $explanation);
           }
         } else if ($domain == 'twitter.com') {
@@ -81,13 +97,13 @@ function link_bot($subreddit) { // watches the new queue
               $css_class .= ' s'.$sprite;
             }
             reddit_linkflair($subreddit, $link, 'Official', $css_class);
-            print($link.',Official,'.$css_class."\n");
+            print("Link flair($css_class): '".$entry->title."'\n");
           }
         }
       }
     }
 
-    $db->query("UPDATE admin SET last_link='".$link."'");
+    $db->query("UPDATE admin SET last_link='".$link."' WHERE r='$subreddit'");
   }
 }
 
@@ -107,7 +123,7 @@ function link_remove($subreddit, $link, $explanation) {
   #$message = "Sorry. Your post was removed by a bot:\n\n> [$title](/$id)\n\n".$explanation.$suffix;
   #reddit_sendMessage($link->author, 'Link Removal', $message);
   reddit_remove($link->name);
-  print("Removed post: '$title'\n");
+  print("Removed: '$title'\n");
 }
 
 ?>

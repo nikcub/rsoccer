@@ -1,4 +1,5 @@
 <?php
-$username = 'soccerbot';
-$password = '';
+$subreddit = 'soccer';
+$username  = 'soccerbot';
+$password  = '';
 ?>

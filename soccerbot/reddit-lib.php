@@ -47,14 +47,34 @@
     return $json->data->children;
   }
 
-  function reddit_remove($id) {
+  function reddit_spam($subreddit) {
+    global $r, $modhash;
+
+    $url = 'http://www.reddit.com/r/'.$subreddit.'/about/spam/.json?limit=25&sort=new';
+
+    $r->setMethod(HttpRequest::METH_GET);
+    $r->setUrl($url);
+
+    $response = $r->send();
+
+    $status = $response->getResponseCode();
+    if ($status != 200) {
+      die('reddit_spam failed, status='.$status);
+    }
+
+    $json = json_decode($response->getBody());
+
+    return $json->data->children;
+  }
+
+  function reddit_remove($id, $spam = 'false') {
     global $r, $modhash;
 
     $r->setMethod(HttpRequest::METH_POST);
     $r->setUrl('http://www.reddit.com/api/remove');
     $r->setPostFields(array(
       'id' => $id,
-      'spam' => 'false',
+      'spam' => $spam,
       'uh' => $modhash
     ));
 
@@ -66,14 +86,13 @@
     }
   }
 
-  function reddit_spam($id) {
+  function reddit_approve($id) {
     global $r, $modhash;
 
     $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/remove');
+    $r->setUrl('http://www.reddit.com/api/approve');
     $r->setPostFields(array(
       'id' => $id,
-      'spam' => 'true',
       'uh' => $modhash
     ));
 
@@ -81,7 +100,7 @@
 
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die('reddit_spam failed, status='.$status);
+      die('reddit_approve failed, status='.$status);
     }
   }
 
