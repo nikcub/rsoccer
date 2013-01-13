@@ -43,7 +43,7 @@ $blacklist_reasons = array(
 );
 
 function getBlacklistExplanation($subdomain) {
-  global $blacklist, $blacklist_reasons, $guidelines;
+  global $blacklist, $blacklist_reasons, $url_shorteners, $guidelines;
 
   $reason = $url_shorteners[$subdomain];
 
