@@ -55,8 +55,6 @@ function spam_bot($subreddit) { // watches the spam queue
 }
 
 function link_bot($subreddit) { // watches the new queue
-  global $blacklist, $blacklist_reasons, $guidelines;
-
   $db = new PDO('sqlite:crests.db');
 
   $query = $db->query("SELECT * FROM admin WHERE r='$subreddit'");
@@ -74,10 +72,9 @@ function link_bot($subreddit) { // watches the new queue
       $link = $entry->name;
       if (!$entry->is_self) {
         $domain = $entry->domain;
-        if (isset($blacklist[$domain])) {
+        $explanation = getBlacklistExplanation($domain);
+        if ($explanation) {
           if (!$entry->approved_by) {
-            $reason = $blacklist[$domain];
-            $explanation = $blacklist_reasons[$reason].' '.$guidelines;
             link_remove($subreddit, $entry, $explanation);
           }
         } else if ($domain == 'twitter.com') {
@@ -97,7 +94,7 @@ function link_bot($subreddit) { // watches the new queue
               $css_class .= ' s'.$sprite;
             }
             reddit_linkflair($subreddit, $link, 'Official', $css_class);
-            print("Link flair($css_class): '".$entry->title."'\n");
+            print("Link flair ($css_class): '".$entry->title."'\n");
           }
         }
       }

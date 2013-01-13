@@ -4,7 +4,7 @@
   $modhash = '';
 
   // --------------------------------------
-  // Listings API
+  // Listings
   // --------------------------------------
 
   function reddit_new($subreddit, $before = '') {
@@ -67,14 +67,18 @@
     return $json->data->children;
   }
 
-  function reddit_remove($id, $spam = 'false') {
+  // --------------------------------------
+  // Moderation
+  // --------------------------------------
+
+  function reddit_remove($id, $spam = false) {
     global $r, $modhash;
 
     $r->setMethod(HttpRequest::METH_POST);
     $r->setUrl('http://www.reddit.com/api/remove');
     $r->setPostFields(array(
       'id' => $id,
-      'spam' => $spam,
+      'spam' => $spam ? 'on' : 'off',
       'uh' => $modhash
     ));
 
@@ -104,8 +108,27 @@
     }
   }
 
+  function reddit_distinguish($id) {
+    global $r, $modhash;
+
+    $r->setMethod(HttpRequest::METH_POST);
+    $r->setUrl('http://www.reddit.com/api/distinguish');
+    $r->setPostFields(array(
+      'how' => 'yes',
+      'id' => $id,
+      'uh' => $modhash
+    ));
+
+    $response = $r->send();
+
+    $status = $response->getResponseCode();
+    if ($status != 200) {
+      die('reddit_distinguish failed, status='.$status);
+    }
+  }
+
   // --------------------------------------
-  // Comment API
+  // Comments
   // --------------------------------------
 
   function reddit_comment($thing_id, $text) {
@@ -132,27 +155,8 @@
     return $json->json->data->things[0]->data;
   }
 
-  function reddit_distinguish($id) {
-    global $r, $modhash;
-
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/distinguish');
-    $r->setPostFields(array(
-      'how' => 'yes',
-      'id' => $id,
-      'uh' => $modhash
-    ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_distinguish failed, status='.$status);
-    }
-  }
-
   // --------------------------------------
-  // Flair API
+  // Flair
   // --------------------------------------
 
   function reddit_linkflair($subreddit, $link, $text, $css_class) {
