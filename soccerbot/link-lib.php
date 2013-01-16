@@ -1,5 +1,8 @@
 <?php
 
+require_once('reddit-lib.php');
+require('blacklist.php');
+
 function alert_bot($subreddit) { // watches reported links
   $db = new PDO('sqlite:crests.db');
 
@@ -107,7 +110,7 @@ function link_bot($subreddit) { // watches the new queue
 function link_remove($subreddit, $link, $explanation) {
   $id = $link->id;
   $title = $link->title;
-  $prefix = "Sorry, this post has been removed by a bot.\n\n";
+  $prefix = "Beep.\n\nSorry, this post has been removed by a bot.\n\n";
   $suffix = "\n\nIf you feel that this post was removed by mistake then please [message the moderators]"
     ."(/message/compose/"
       ."?to=".rawurlencode("/r/$subreddit")

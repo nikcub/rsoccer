@@ -39,7 +39,7 @@ $blacklist_reasons = array(
               "a [match thread](/r/soccer/faq#MatchThreadCreationGuide) and link to streams in the comments.",
 
   'short'  => "Please don't use [URL shorteners](http://en.wikipedia.org/wiki/URL_shortening) in /r/soccer ".
-              "as our users like to know what they are clicking on. Please use the full URL instead."
+              "as our users like to know what they are clicking on. Use the full URL instead."
 );
 
 function getBlacklistExplanation($subdomain) {

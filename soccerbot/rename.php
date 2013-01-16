@@ -3,7 +3,6 @@ header('Content-Type: text/plain');
 
 set_time_limit(60);
 
-include('reddit-lib.php');
 include('flair-lib.php');
 include('config.php');
 

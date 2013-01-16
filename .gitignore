@@ -2,3 +2,5 @@
 .sublime-workspace
 *.pyc
 Thumbs.db
+soccerbot/soccerbot.log
+soccerbot/soccerbot.bat
