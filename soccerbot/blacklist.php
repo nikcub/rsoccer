@@ -22,6 +22,7 @@ $url_shorteners = array(
   'goo.gl' => 'short',
   'su.pr' => 'short',
   'ow.ly' => 'short',
+  't.co' => 'short',
   'is.gd' => 'short',
   'tinyurl.com' => 'short',
   'cli.gs' => 'short',

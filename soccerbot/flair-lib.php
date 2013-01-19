@@ -24,7 +24,7 @@ function flair_bot($subreddit) {
             if ($sprite != 1) {
               $css_class .= ' s'.$sprite;
             }
-            array_push($data, "$author,'$team','$css_class'");
+            array_push($data, "$author,$team,$css_class");
           }
         }
       }
@@ -74,7 +74,9 @@ function flair_batch($subreddit, $data) {
     reddit_flaircsv($subreddit, $csv);
     echo($csv);
   }
-  print("\n");
+  if (!empty($data)) {
+    print("\n");
+  }
 }
 
 ?>

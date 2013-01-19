@@ -33,7 +33,8 @@ function alert_bot($subreddit) { // watches reported links
           }
           $message = "The following $type has been reported $num_reports times:\n\n> [$text]($permalink)";
           reddit_sendMessage('/r/'.$subreddit, $title, $message);
-          $db->query("INSERT INTO alerted (thing) VALUES ('$link')");
+          $timestamp = time();
+          $db->query("INSERT INTO alerted (thing,timestamp) VALUES ('$link',$timestamp)");
           print("Alerting: $link\n");
         }
       }
@@ -123,7 +124,7 @@ function link_remove($subreddit, $link, $explanation) {
   #$message = "Sorry. Your post was removed by a bot:\n\n> [$title](/$id)\n\n".$explanation.$suffix;
   #reddit_sendMessage($link->author, 'Link Removal', $message);
   reddit_remove($link->name);
-  print("Removed: '$title'\n");
+  print("Removed ($link): '$title'\n");
 }
 
 ?>
