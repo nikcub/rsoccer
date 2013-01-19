@@ -1,65 +1,38 @@
 <?php
+  require('config.php');
 
-  $r = null;
+  $request = null;
   $modhash = '';
 
   // --------------------------------------
   // Listings
   // --------------------------------------
 
-  function reddit_new($subreddit, $before = '') {
-    global $r, $modhash;
-
-    $url = 'http://www.reddit.com/r/'.$subreddit.'/new.json?limit=100&sort=new&before='.$before;
-
-    $r->setMethod(HttpRequest::METH_GET);
-    $r->setUrl($url);
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_new failed, status='.$status);
-    }
-
-    $json = json_decode($response->getBody());
-
-    return $json->data->children;
+  function reddit_new() {
+    return reddit_listing('new');
   }
 
-  function reddit_reported($subreddit) {
-    global $r, $modhash;
-
-    $url = 'http://www.reddit.com/r/'.$subreddit.'/about/reports/.json?limit=25&sort=new';
-
-    $r->setMethod(HttpRequest::METH_GET);
-    $r->setUrl($url);
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_reported failed, status='.$status);
-    }
-
-    $json = json_decode($response->getBody());
-
-    return $json->data->children;
+  function reddit_reported() {
+    return reddit_listing('about/reports');
   }
 
-  function reddit_spam($subreddit) {
-    global $r, $modhash;
+  function reddit_spam() {
+    return reddit_listing('about/spam');
+  }
 
-    $url = 'http://www.reddit.com/r/'.$subreddit.'/about/spam/.json?limit=25&sort=new';
+  function reddit_listing($list, $limit = 25, $sort = 'new', $after = '', $before = '') {
+    global $REDDIT, $subreddit, $request, $modhash;
 
-    $r->setMethod(HttpRequest::METH_GET);
-    $r->setUrl($url);
+    $url = "$REDDIT/r/$subreddit/$list.json?limit=$limit&sort=$sort&after=$after&before=$before";
 
-    $response = $r->send();
+    $request->setMethod(HttpRequest::METH_GET);
+    $request->setUrl($url);
+
+    $response = $request->send();
 
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die('reddit_spam failed, status='.$status);
+      die("/r/$subreddit/$list failed, status=$status");
     }
 
     $json = json_decode($response->getBody());
@@ -72,59 +45,23 @@
   // --------------------------------------
 
   function reddit_remove($id, $spam = false) {
-    global $r, $modhash;
-
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/remove');
-    $r->setPostFields(array(
+    reddit_POST('api/remove', array(
       'id' => $id,
-      'spam' => $spam ? 'on' : 'off',
-      'uh' => $modhash
+      'spam' => $spam ? 'on' : 'off'
     ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_remove failed, status='.$status);
-    }
   }
 
   function reddit_approve($id) {
-    global $r, $modhash;
-
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/approve');
-    $r->setPostFields(array(
-      'id' => $id,
-      'uh' => $modhash
+    reddit_POST('api/approve', array(
+      'id' => $id
     ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_approve failed, status='.$status);
-    }
   }
 
   function reddit_distinguish($id) {
-    global $r, $modhash;
-
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/distinguish');
-    $r->setPostFields(array(
+    reddit_POST('api/distinguish', array(
       'how' => 'yes',
-      'id' => $id,
-      'uh' => $modhash
+      'id' => $id
     ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_distinguish failed, status='.$status);
-    }
   }
 
   // --------------------------------------
@@ -132,23 +69,10 @@
   // --------------------------------------
 
   function reddit_comment($thing_id, $text) {
-    global $r, $modhash;
-
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/comment');
-    $r->setPostFields(array(
+    $response = reddit_POST('api/comment', array(
       'thing_id' => $thing_id,
-      'text' => $text,
-      'uh' => $modhash,
-      "api_type" => "json"
+      'text' => $text
     ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_comment failed, status='.$status);
-    }
 
     $json = json_decode($response->getBody());
 
@@ -159,68 +83,38 @@
   // Flair
   // --------------------------------------
 
-  function reddit_linkflair($subreddit, $link, $text, $css_class) {
-    global $r, $modhash;
+  function reddit_linkflair($link, $text, $css_class) {
+    global $subreddit;
 
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/flair');
-    $r->setPostFields(array(
+    reddit_POST('api/flair', array(
       'r' => $subreddit,
       'link' => $link,
       'text' => $text,
-      'css_class' => $css_class,
-      'uh' => $modhash
+      'css_class' => $css_class
     ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_linkflair failed, status='.$status);
-    }
   }
 
-  function reddit_flair($subreddit, $user, $text, $css_class, $notifyUser = false) {
-    global $r, $modhash;
+  function reddit_flair($user, $text, $css_class, $notifyUser = false) {
+    global $subreddit;
 
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/flair');
-    $r->setPostFields(array(
+    reddit_POST('api/flair', array(
       'r' => $subreddit,
       'name' => $user,
       'text' => $text,
-      'css_class' => $css_class,
-      'uh' => $modhash
+      'css_class' => $css_class
     ));
 
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_flair failed, status='.$status);
-    }
-
     #if ($notifyUser) {
-    #  reddit_sendMessage($user, 'Message from soccerbot', 'You have been assigned the crest for '.$text);
+    #  reddit_sendMessage($user, 'Message from soccerbot', "You have been assigned the crest for $text");
     #}
   }
 
-  function reddit_flaircsv($subreddit, $csv, $notifyUser = false) {
-    global $r, $modhash;
+  function reddit_flaircsv($csv, $notifyUser = false) {
+    global $subreddit;
 
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/r/'.$subreddit.'/api/flaircsv.json');
-    $r->setPostFields(array(
-      'flair_csv' => $csv,
-      'uh' => $modhash
+    $response = reddit_POST("r/$subreddit/api/flaircsv", array(
+      'flair_csv' => $csv
     ));
-
-    $response = $r->send();
-    
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_flaircsv failed, status='.$status);
-    }
 
     #if ($notifyUser) {
     #  $csv = str_getcsv($csv);
@@ -228,20 +122,20 @@
     #  if ($requests) {
     #    foreach ($requests as $request) {
     #      if ($request->ok) {
-    #        reddit_sendMessage($user, 'Message from soccerbot', 'You have been assigned the crest for '.$text);
+    #        reddit_sendMessage($user, 'Message from soccerbot', "You have been assigned the crest for $text");
     #      }
     #    }
     #  }
     #}
   }
 
-  function reddit_flairlist($subreddit) {
-    global $r, $modhash;
+  function reddit_flairlist() {
+    global $REDDIT, $subreddit, $request, $modhash;
     
-    $url = 'http://www.reddit.com/r/'.$subreddit.'/api/flairlist.json?limit=1000';
+    $url = "$REDDIT/r/$subreddit/api/flairlist.json?limit=1000";
 
-    $r->setMethod(HttpRequest::METH_GET);
-    $r->setUrl($url);
+    $request->setMethod(HttpRequest::METH_GET);
+    $request->setUrl($url);
     
     $result = array();
     $next = true;
@@ -250,12 +144,12 @@
       $count = 0;
       $status = 0;
       while ($status != 200 && $count < 3) {
-        $response = $r->send();
+        $response = $request->send();
         $status = $response->getResponseCode();
         $count++;
       }
       if ($status != 200) {
-        die('reddit_flairlist failed, status='.$status);
+        die("reddit_flairlist failed, status=$status");
       }
 
       $json = json_decode($response->getBody());
@@ -266,7 +160,7 @@
       
       $next = $json->next;
       if ($next) {
-        $r->setUrl($url.'&after='.$next);
+        $request->setUrl("$url&after=$next");
       }
     }
     
@@ -278,12 +172,12 @@
   // --------------------------------------
 
   function reddit_getUnreadMail() {
-    global $r, $modhash;
+    global $REDDIT, $request;
 
-    $r->setMethod(HttpRequest::METH_GET);
-    $r->setUrl('http://www.reddit.com/message/unread/.json');
+    $request->setMethod(HttpRequest::METH_GET);
+    $request->setUrl("$REDDIT/message/unread/.json");
 
-    $response = $r->send();
+    $response = $request->send();
 
     $status = $response->getResponseCode();
     if ($status != 200) {
@@ -296,59 +190,72 @@
   }
 
   function reddit_clearUnreadMail() {
-    global $r;
+    global $REDDIT, $request;
 
-    $r->setMethod(HttpRequest::METH_GET);
-    $r->setUrl('http://www.reddit.com/message/inbox');
-    $r->send();
+    $request->setMethod(HttpRequest::METH_GET);
+    $request->setUrl("$REDDIT/message/inbox");
+    $request->send();
   }
 
   function reddit_sendMessage($to, $subject, $message) {
-    global $r, $modhash;
-
-    $r->setMethod(HttpRequest::METH_POST);
-    $r->setUrl('http://www.reddit.com/api/compose');
-    $r->addPostFields(array(
+    reddit_POST('api/compose', array(
       'to' => $to,
       'subject' => $subject,
-      'text' => $message,
-      'uh' => $modhash
+      'text' => $message
     ));
-
-    $response = $r->send();
-
-    $status = $response->getResponseCode();
-    if ($status != 200) {
-      die('reddit_sendMessage failed, status='.$status);
-    }
   }
 
   // --------------------------------------
   // Login
   // --------------------------------------
 
-  function reddit_login($mod_user, $mod_password) {
-    global $r, $modhash;
+  function reddit_login() {
+    global $REDDIT, $username, $password, $request, $modhash;
 
-    $r = new HttpRequest('http://www.reddit.com/api/login/'.$mod_user, HttpRequest::METH_POST);
+    $request = new HttpRequest("$REDDIT/api/login/$username", HttpRequest::METH_POST);
 
-    $r->addPostFields(array(
+    $request->addPostFields(array(
       'api_type' => 'json',
-      'user' => $mod_user,
-      'passwd' => $mod_password
+      'user' => $username,
+      'passwd' => $password
     ));
 
-    $response = $r->send();
+    $response = $request->send();
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die('Failed to login, status='.$status);
+      die("Failed to login, status=$status");
     }
 
     $userInfo = json_decode($response->getBody());
-    $r->addCookies(array(
+    $request->addCookies(array(
       'reddit_session' => $userInfo->json->data->cookie
     ));
+
     $modhash = $userInfo->json->data->modhash;
+  }
+
+  // --------------------------------------
+  // POST
+  // --------------------------------------
+
+  function reddit_POST($to, $data) {
+    global $REDDIT, $request, $modhash;
+
+    $data['uh'] = $modhash;
+    $data['api_type'] = 'json';
+
+    $request->setMethod(HttpRequest::METH_POST);
+    $request->setUrl("$REDDIT/$to.json");
+    $request->addPostFields($data);
+
+    $response = $request->send();
+
+    $status = $response->getResponseCode();
+    if ($status != 200) {
+      die("/$to failed, status=$status");
+    }
+
+    return $response;
   }
 
 ?>

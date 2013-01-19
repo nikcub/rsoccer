@@ -1,10 +1,11 @@
 <?php
+require('flair-lib.php');
+require('config.php');
+
 header('Content-Type: text/plain');
+header("User-Agent: soccerbot by /u/9jack9");
 
-include('flair-lib.php');
-include('config.php');
+reddit_login();
 
-reddit_login($username, $password);
-
-flair_upload('soccer', 'upload.csv');
+flair_upload('upload.csv');
 ?>

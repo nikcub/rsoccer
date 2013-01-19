@@ -1,16 +1,16 @@
 <?php
+require('flair-lib.php');
+require('link-lib.php');
+
 header('Content-Type: text/plain');
+header("User-Agent: soccerbot by /u/9jack9");
 
 print(gmdate('c')."\n");
 
-require('flair-lib.php');
-require('link-lib.php');
-require('config.php');
+reddit_login();
 
-reddit_login($username, $password);
-
-link_bot($subreddit);
-alert_bot($subreddit);
-flair_bot($subreddit);
-spam_bot($subreddit);
+link_bot();
+alert_bot();
+flair_bot();
+spam_bot();
 ?>
