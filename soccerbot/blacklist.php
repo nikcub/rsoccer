@@ -17,9 +17,10 @@ $blacklist = array(
   'nutjob.eu' =>          'stream',
 
   /* Spam */
-  'footiegaffer.wordpress.com' => 'spam',
-  'twogoalsoneball.wordpress.com' => 'spam',
-  '90minutesup.blogspot.be' => 'spam'
+  'footiegaffer.wordpress.com'     => 'spam',
+  'twogoalsoneball.wordpress.com'  => 'spam',
+  '90minutesup.blogspot.be'        => 'spam',
+  'footynotes.wordpress.com'       => 'spam'
 );
 
 $url_shorteners = array(
