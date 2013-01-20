@@ -134,7 +134,7 @@ function link_remove($link, $reason) {
 
   $comment = reddit_comment($link->name, $prefix.$explanation.$suffix);
 
-  reddit_distinguish('t1_'.$comment->id);
+  reddit_distinguish($comment->name);
 
   #$message = "Sorry. Your post was removed by a bot:\n\n> [$title](/$id)\n\n".$explanation.$suffix;
   #reddit_sendMessage($link->author, 'Link Removal', $message);
