@@ -54,7 +54,7 @@ function flair_upload($fileName) {
     fclose($handle);
     flair_batch($data);
   } else {
-    die('Could not open file '.$fileName);
+    die("Could not open file $fileName\n");
   }
 }
 

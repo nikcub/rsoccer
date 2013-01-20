@@ -32,7 +32,7 @@
 
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die("/r/$subreddit/$list failed, status=$status");
+      die("/r/$subreddit/$list failed, status=$status\n");
     }
 
     $json = json_decode($response->getBody());
@@ -149,7 +149,7 @@
         $count++;
       }
       if ($status != 200) {
-        die("reddit_flairlist failed, status=$status");
+        die("reddit_flairlist failed, status=$status\n");
       }
 
       $json = json_decode($response->getBody());
@@ -168,7 +168,7 @@
   }
 
   // --------------------------------------
-  // Mail API
+  // Mail
   // --------------------------------------
 
   function reddit_getUnreadMail() {
@@ -181,7 +181,7 @@
 
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die('Failed to fetch mail, status='.$status);
+      die("Failed to fetch mail, status=$status\n");
     }
     
     $json = json_decode($response->getBody());
@@ -223,7 +223,7 @@
     $response = $request->send();
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die("Failed to login, status=$status");
+      die("Failed to login, status=$status\n");
     }
 
     $userInfo = json_decode($response->getBody());
@@ -252,7 +252,7 @@
 
     $status = $response->getResponseCode();
     if ($status != 200) {
-      die("/$to failed, status=$status");
+      die("/$to failed, status=$status\n");
     }
 
     return $response;

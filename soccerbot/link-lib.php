@@ -119,6 +119,9 @@ function link_remove($link, $reason) {
 
   $explanation = $blacklist_reasons[$reason].' '.$guidelines;
 
+  reddit_remove($link->name, $reason == 'spam');
+  print("Removed ($reason): '$title'\n");
+
   $id = $link->id;
   $title = $link->title;
   $prefix = "Beep.\n\nSorry, this post has been removed by a bot.\n\n";
@@ -128,13 +131,13 @@ function link_remove($link, $reason) {
       ."&subject=".rawurlencode("Why was this post removed?")
       ."&message=".rawurlencode("[LINK](/$id)")
     .").";
-  $comment = $prefix.$explanation.$suffix;
-  $comment = reddit_comment($link->name, $comment);
-  reddit_distinguish($comment->id);
+
+  $comment = reddit_comment($link->name, $prefix.$explanation.$suffix);
+
+  reddit_distinguish('t1_'.$comment->id);
+
   #$message = "Sorry. Your post was removed by a bot:\n\n> [$title](/$id)\n\n".$explanation.$suffix;
   #reddit_sendMessage($link->author, 'Link Removal', $message);
-  reddit_remove($link->name, $reason == 'spam');
-  print("Removed ($reason): '$title'\n");
 }
 
 ?>
