@@ -1,0 +1,46 @@
+
+body {
+  font-family: Arial,helvetica,sans-serif;
+  width: 100%;
+  max-width: 60em;
+  margin: 0 auto;
+  padding-bottom: 6em;
+}
+
+h1 {
+  border-bottom: 1px solid black;
+}
+
+form {
+  border: 1px solid silver;
+  background-color: #eee;
+  padding: 0 1em;
+  margin: 1em 0;
+  border-radius: 1ex;
+}
+
+label {
+  font-weight: bold;
+  padding-right: 1em;
+  color: purple;
+}
+
+fieldset {
+  display: table;
+  border: none;
+}
+
+fieldset p {
+  display: table-row;
+}
+
+fieldset label,
+fieldset input,
+fieldset select {
+  display: table-cell;
+}
+
+input + label,
+label + label {
+  padding-right: 0;
+}
