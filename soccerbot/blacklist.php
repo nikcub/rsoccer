@@ -20,7 +20,9 @@ $blacklist = array(
   'footiegaffer.wordpress.com'     => 'spam',
   'twogoalsoneball.wordpress.com'  => 'spam',
   '90minutesup.blogspot.be'        => 'spam',
-  'footynotes.wordpress.com'       => 'spam'
+  'footynotes.wordpress.com'       => 'spam',
+  'backpagebanter.wordpress.com'   => 'spam',
+  'soccerwithoutlimits.com'        => 'spam'
 );
 
 $url_shorteners = array(

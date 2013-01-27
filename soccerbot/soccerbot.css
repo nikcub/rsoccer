@@ -1,4 +1,5 @@
 /* Hide a lot of stuff */
+.listing-page .id-t3_17de4z, /* stats page */
 body:not(.moderator) .submit,
 .create,
 .tagline,
@@ -6,8 +7,10 @@ body:not(.moderator) .submit,
 .rank,
 .domain,
 .linkinfo,
+.menuarea,
 .subscribers,
 .users-online,
+.link .flat-list,
 #search,
 #subButtons-soccerbot,
 .expando-button,
@@ -80,12 +83,12 @@ textarea {
  border-top: 1px solid silver;
 }
 .sitetable .entry .title {
- font-weight: bold;
- font-size: 1.67em;
  margin: 0;
 }
 .sitetable .entry .title a {
  display: block;
+ font-weight: bold;
+ font-size: 28px;
  padding: 8px 0;
  border-bottom: 1px solid silver;
 }

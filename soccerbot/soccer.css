@@ -78,7 +78,7 @@ a[href^="//#"][href$="-big"] {
  line-height: 24px;
  background-image: url(%%icons-large%%);
 }
-.commentarea a[href^="//#"] {
+.comment a[href^="//#"] {
  display: none!important;
 }
 
@@ -273,7 +273,7 @@ html, body {
 }
 
 /* TweetPoster */
-.commentarea .author[href$="/user/TweetPoster"]:before {
+.comment .author[href$="/user/TweetPoster"]:before {
  display: inline-block !important;
  content: "";
  width: 20px;
@@ -400,7 +400,8 @@ a:link:hover, a:visited:hover,
 .res-nightmode .fancy-toggle-button a {
  color: white!important;
 }
-.res-nightmode .commentarea .flair {
+.res-nightmode .comment .flair,
+.res-nightmode .linkflairlabel {
  border: 2px solid white!important;
  background-color: white!important;
  outline: 1px solid black;
@@ -455,8 +456,11 @@ a:link:hover, a:visited:hover,
 .flairtoggle, .flairtoggle + .tagline {
  display: none;
 }
-.commentarea .flair, .linkflairlabel {
+.comment .flair, .linkflairlabel {
  display: inline-block;
+}
+.parent .flair {
+ display: none;
 }
 .flair {
  cursor: help;
@@ -464,7 +468,7 @@ a:link:hover, a:visited:hover,
 .collapsed .flair {
  opacity: 0.4
 }
-.commentarea .flair-unknown {
+.comment .flair-unknown {
  display: none;
  background-position: 0 0;
 }

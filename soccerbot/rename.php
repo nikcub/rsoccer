@@ -14,10 +14,10 @@ $NEW_NAME  = "Puerto Rico Islanders";
 
 $data = array();
 
-$query = $db->query("SELECT * FROM users WHERE team='".$FLAIR."'");
+$query = $db->query("SELECT * FROM users WHERE flair='".$FLAIR."'");
 
 while (($row = $query->fetch())) {
-  array_push($data, $row['name'].',"'.$NEW_NAME.'",'.$NEW_FLAIR);
+  array_push($data, $row['user'].',"'.$NEW_NAME.'",'.$NEW_FLAIR);
 }
 
 reddit_login();

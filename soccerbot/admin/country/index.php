@@ -1,34 +1,34 @@
 <?php
-  require('../../config.php');
+require('../../config.php');
 
-  header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-  header('Cache-Control: no-cache, must-revalidate, max-age=0');
-  header('Pragma: no-cache');
+header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+header('Cache-Control: no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
 
-  $action = $_POST['action'];
-  $code = $_POST['code'];
+$action = $_POST['action'];
+$code = $_POST['code'];
 
-  if (isset($action)) {
-    $name = $_POST['name'];
-    $region = $_POST['region'];
-    if ($action == 'add') {
-      $db->query("INSERT INTO countries (code,name,region) VALUES ('$code','$name','$region')");
-    } else if ($action == 'modify') {
-      $db->query("UPDATE countries SET name='$name', region='$region' WHERE code='$code'");
-    } else if ($action == 'delete') {
-      $db->query("DELETE FROM countries WHERE code='$code'");
-      $code = '';
-      $name = '';
-      $region = '';
-    }
-  } else if (isset($code)) {
-    $query = $db->query("SELECT * FROM countries WHERE code='$code'");
-    if (is_object($query)) {
-      $row = $query->fetch();
-      $name = $row['name'];
-      $region = $row['region'];
-    }
+if (isset($action)) {
+  $name = $_POST['name'];
+  $region = $_POST['region'];
+  if ($action == 'add') {
+    $db->query("INSERT INTO countries (code,name,region) VALUES ('$code','$name','$region')");
+  } else if ($action == 'modify') {
+    $db->query("UPDATE countries SET name='$name', region='$region' WHERE code='$code'");
+  } else if ($action == 'delete') {
+    $db->query("DELETE FROM countries WHERE code='$code'");
+    $code = '';
+    $name = '';
+    $region = '';
   }
+} else if (isset($code)) {
+  $query = $db->query("SELECT * FROM countries WHERE code='$code'");
+  if (is_object($query)) {
+    $row = $query->fetch();
+    $name = $row['name'];
+    $region = $row['region'];
+  }
+}
 ?>
 <!doctype html>
 <title>soccerbot</title>
@@ -38,7 +38,7 @@
 
 <h1>Soccerbot</h1>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 
  <h2>Country: <?php echo($name); ?></h2>
 

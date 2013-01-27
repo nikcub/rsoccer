@@ -1,6 +1,6 @@
 News, results and discussion about the beautiful game.
 
-[](//#redditch) Get your **team crest** from [soccerbot](/r/soccerbot).
+[](//#redditch) Get your **team crest** from [soccerbot](/r/soccerbot/new/?sort=new).
 
 **Please don't downvote people based on the team/league they support.**
 

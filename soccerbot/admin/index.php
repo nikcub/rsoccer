@@ -1,5 +1,5 @@
 <?php
-  require('../config.php');
+require('../config.php');
 ?>
 <!doctype html>
 <title>soccerbot</title>
@@ -9,39 +9,13 @@
 
 <h1>Soccerbot</h1>
 
-<form action="./country/" method="post">
- <h2>Add a new country</h2>
-
- <fieldset>
-  <p>
-   <label for="country-code">Code:</label>
-   <input id="country-code" name="code" size="3">
-  </p>
-
-  <p>
-   <label for="country-name">Name:</label>
-   <input id="country-name" name="name">
-  </p>
-
-  <p>
-   <label for="country-region">Region:</label>
-   <select id="country-region" name="region">
-<?php
-  $query = $db->query('SELECT * FROM regions ORDER BY name');
-
-  while ($row = $query->fetch()) {
-    print('    <option value="'.$row['code'].'">'.htmlspecialchars($row['name'])."</option>\n");
-  }
-?>
-   </select>
-  </p>
- </fieldset>
-
- <p><button type="submit" name="action" value="add">Add</button></p>
-</form>
-
-<form action="./team/" method="post">
+<form action="./team/" method="post" enctype="multipart/form-data">
  <h2>Add a new team</h2>
+
+ <p>
+  <input type="file" name="file" onchange="this.nextElementSibling.disabled=false">
+  <button type="submit" name="action" value="add-from-file" disabled>Add from file</button>
+ </p>
 
  <fieldset>
   <p>
@@ -72,7 +46,38 @@
  <p><button type="submit" name="action" value="add">Add</button></p>
 </form>
 
-<form action="./special/" method="post">
+<form action="./country/" method="post" enctype="multipart/form-data">
+ <h2>Add a new country</h2>
+
+ <fieldset>
+  <p>
+   <label for="country-code">Code:</label>
+   <input id="country-code" name="code" size="3">
+  </p>
+
+  <p>
+   <label for="country-name">Name:</label>
+   <input id="country-name" name="name">
+  </p>
+
+  <p>
+   <label for="country-region">Region:</label>
+   <select id="country-region" name="region">
+<?php
+  $query = $db->query('SELECT * FROM regions ORDER BY name');
+
+  while ($row = $query->fetch()) {
+    print('    <option value="'.$row['code'].'">'.htmlspecialchars($row['name'])."</option>\n");
+  }
+?>
+   </select>
+  </p>
+ </fieldset>
+
+ <p><button type="submit" name="action" value="add">Add</button></p>
+</form>
+
+<form action="./special/" method="post" enctype="multipart/form-data">
  <h2>Special tasks</h2>
 
  <p>
