@@ -4,12 +4,12 @@ News, results and discussion about the beautiful game.
 
 **Please don't downvote people based on the team/league they support.**
 
-* Read our [FAQ](/r/soccer/faq)
-* Follow the [rules of our community](/r/soccer/faq#rsoccerrules)
-* Respect our [submission guidelines](/r/soccer/faq#SubmissionTipsandGuidelines)
-* Please abide by our [no spam](/r/soccer/faq#Nospam) policy
+* Read our [FAQ](/r/soccer/wiki/index)
+* Follow the [rules of our community](/r/soccer/wiki/communityrules)
+* Respect our [submission guidelines](/r/soccer/wiki/submissionguidelines)
 * Hide results with the [unspoiler script](http://userscripts.org/scripts/show/75108)
-* Find [your team's subreddit](/r/soccer/faq#RelatedSubreddits)
-* Create a [match thread](/r/soccer/faq#MatchThreadCreationGuide) ([icons](/rerge))
-* Other [important links](/r/soccer/faq#ImportantLinks)
+* Find [your team's subreddit](/r/soccer/wiki/relatedsubreddits)
+* Check out the [subreddit of the week](/r/jleague)
+* Create a [match thread](/r/soccer/wiki/matchthreads) ([icons](/rerge))
+* Other [important links](/r/soccer/wiki/index#wiki_important_links)
 * Follow us on [Twitter](http://twitter.com/redditsoccer)

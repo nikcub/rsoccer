@@ -146,10 +146,12 @@ function download_users($subreddit) {
 
   print("Populating users table...\n");
 
+  $query = $db->prepare("INSERT INTO users (user, flair) VALUES (?,?)");
+
   foreach ($list as $entry) {
     $user = $entry->user;
     $flair = preg_replace('/\s+s\d+$/', '', $entry->flair_css_class);
-    $db->query("INSERT INTO users VALUES ('$user', '$flair')");
+    $query->execute(array($user, $flair));
   }
 
   print("Generating team counts...\n");

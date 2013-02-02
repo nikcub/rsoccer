@@ -4,9 +4,9 @@ header('Cache-Control: no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 
 $ROOT = '../..';
-$SPRITES_DIR = "$ROOT/sprites";
 
 require("$ROOT/config.php");
+require("$ROOT/sprites.php");
 
 $action = $_POST['action'];
 
@@ -55,69 +55,31 @@ if (isset($action)) {
     } else {
       if ($action == 'add') {
         $db->query("INSERT INTO teams (flair,name,country,site,twitter,wikipedia,fileName) VALUES ('$flair', '$name', '$country', '$site', '$twitter', '$wikipedia', '$fileName')");
+        build_sprite($sprite);
         $action = 'modify';
       } else if ($action == 'modify') {
         $db->query("UPDATE teams SET name='$name', country='$country', site='$site', twitter='$twitter', wikipedia='$wikipedia', fileName='$fileName' WHERE flair='$flair'");
       } else if ($action == 'delete') {
         $db->query("DELETE FROM teams WHERE flair='$flair'");
+        build_sprite($sprite);
       }
-      build_sprite($sprite);
     }
   }
-} else if (isset($flair)) {
-  $query = $db->query("SELECT * FROM teams WHERE flair='$flair'");
-  if (is_object($query)) {
-    $row = $query->fetch();
-    $name = $row['name'];
-    $country = $row['country'];
-    $site = $row['site'];
-    $twitter = $row['twitter'];
-    $wikipedia = $row['wikipedia'];
-    $fileName = $row['fileName'];
-    $sprite = $row['sprite'];
+} else {
+  $flair = $_GET['flair'];
+  if (isset($flair)) {
+    $query = $db->query("SELECT * FROM teams WHERE flair='$flair'");
+    if (is_object($query)) {
+      $row = $query->fetch();
+      $name = $row['name'];
+      $country = $row['country'];
+      $site = $row['site'];
+      $twitter = $row['twitter'];
+      $wikipedia = $row['wikipedia'];
+      $fileName = $row['fileName'];
+      $sprite = $row['sprite'];
+    }
   }
-}
-
-function build_sprite($sprite) {
-  global $db, $SPRITES_DIR;
-
-  $BGCOLOR = '#FDFEFD';
-  $WIDTH  = $sprite == 3 ? 40 : 20;
-  $HEIGHT = 20;
-
-  $query = $db->query("SELECT COUNT(*) as count FROM teams WHERE sprite=$sprite");
-  $row = $query->fetch();
-  $count = $row['count'] + 1;
-
-  $spriteWidth  = $WIDTH;
-  $spriteHeight = ($count * ($HEIGHT + 1)) - 1;
-
-  $DIR = "$SPRITES_DIR/sprite$sprite/";
-
-  $s = new Imagick();
-  $s->newImage($spriteWidth, $spriteHeight, new ImagickPixel($BGCOLOR), 'gif');
-  $s->paintTransparentImage(new ImagickPixel($BGCOLOR), 0.0, 0);
-
-  // Create the default (empty) crest.
-  createImage($s, $DIR.'_unknown.gif', 0);
-
-  $offset = $HEIGHT + 1;
-  $query = $db->query("SELECT * FROM teams WHERE sprite=$sprite");
-
-  while ($row = $query->fetch()) {
-    createImage($s, $DIR.$row['fileName'], $offset);
-    $offset += $HEIGHT + 1;
-  }
-
-  $s->writeImage("$SPRITES_DIR/s$sprite.gif");
-  $s->destroy();
-}
-
-function createImage($s, $fileName, $offset) {
-  $slot = new Imagick();
-  $slot->readImage($fileName);
-  $s->compositeImage($slot, $slot->getImageCompose(), 0, $offset);
-  $slot->destroy();
 }
 ?>
 <!doctype html>

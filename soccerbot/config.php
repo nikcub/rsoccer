@@ -1,15 +1,17 @@
 <?php
 $REDDIT = 'http://www.reddit.com';
+$ROOT = dirname(__FILE__);
 
 $SPRITES = 4; // Number of sprites
+$SPRITES_DIR = "$ROOT\\sprites";
 
 $username      = 'soccerbot';
 $password      = '';
 
 $subreddit     = 'soccer';
-$dbname        = 'crests.db';
-
 $bot_subreddit = 'soccerbot';
+
+$dbname        = 'crests.db';
 
 $bot_index = array(
   't3_170gqp' => "region='afr'",
@@ -28,5 +30,5 @@ $bot_index = array(
 
 $stats_id = 't3_17de4z'; // thing_id of stats post (optional)
 
-$db = new PDO('sqlite:'.dirname(__FILE__).'\\'.$dbname);
+$db = new PDO("sqlite:$ROOT\\$dbname");
 ?>

@@ -9,13 +9,26 @@ require('../config.php');
 
 <h1>Soccerbot</h1>
 
+<form action="" method="post" enctype="multipart/form-data">
+ <p>
+  <input type="search" name="q" id="q">
+  <button type="submit" name="action" value="search">Search</button>
+ </p>
+</form>
+
+<?php
+  $action = $_POST['action'];
+  $q = $_POST['q'];
+
+  if ($action == 'search') {
+    $query = $db->query("SELECT * FROM teams WHERE (name LIKE '%$q%' OR country='$q')");
+    while ($row = $query->fetch()) {
+      print('<div><a href="./team?flair='.$row['flair'].'">'.htmlspecialchars($row['name'])."</a></div>\n");
+    }
+  } else {
+?>
 <form action="./team/" method="post" enctype="multipart/form-data">
  <h2>Add a new team</h2>
-
- <p>
-  <input type="file" name="file" onchange="this.nextElementSibling.disabled=false">
-  <button type="submit" name="action" value="add-from-file" disabled>Add from file</button>
- </p>
 
  <fieldset>
   <p>
@@ -44,6 +57,11 @@ require('../config.php');
  </fieldset>
 
  <p><button type="submit" name="action" value="add">Add</button></p>
+
+ <p>
+  <input type="file" name="file" onchange="this.nextElementSibling.disabled=false">
+  <button type="submit" name="action" value="add-from-file" disabled>Add</button>
+ </p>
 </form>
 
 <form action="./country/" method="post" enctype="multipart/form-data">
@@ -100,3 +118,4 @@ require('../config.php');
 
  <p><button type="submit">Submit</button></p>
 </form>
+<?php } ?>

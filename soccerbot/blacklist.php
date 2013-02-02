@@ -1,6 +1,6 @@
 <?php
 
-$guidelines = "Read our [submission guidelines](/r/soccer/faq#SubmissionTipsandGuidelines) for further information.";
+$guidelines = "Read our [submission guidelines](/r/soccer/wiki/submissionguidelines) for further information.";
 
 $blacklist = array(
   /* Memes */
@@ -37,7 +37,8 @@ $url_shorteners = array(
   'ff.im' =>        'short',
   'wp.me' =>        'short',
   'ff.im' =>        'short',
-  'tiny.cc' =>      'short'
+  'tiny.cc' =>      'short',
+  'sy.pe' =>        'short'
 );
 
 $blacklist_reasons = array(
@@ -45,7 +46,7 @@ $blacklist_reasons = array(
                 "You are free to post memes in the comment threads however.",
 
   'stream' =>   "We do not allow links to streaming sites on the front page of /r/soccer. Instead create ".
-                "a [match thread](/r/soccer/faq#MatchThreadCreationGuide) and link to streams in the comments.",
+                "a [match thread](/r/soccer/wiki/matchthreads) and link to streams in the comments.",
 
   'spam'   =>   "This domain has been banned from /r/soccer for persistent spamming.",
 
