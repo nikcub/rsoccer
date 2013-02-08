@@ -285,13 +285,13 @@ html, body {
  background-image: url(%%tweet%%);
 }
 
-/* r/Soccer */
+/* /r/Soccer */
 .redditname {
  text-transform: capitalize;
  font-variant: normal;
 }
 .redditname a:before {
- content: "r/";
+ content: "/r/";
  text-transform: lowercase;
 }
 
@@ -350,6 +350,9 @@ form + .sitetable .rank {
  background-image: url(%%alien-team%%);
  background-repeat: no-repeat;
  background-position: center bottom;
+}
+.debuginfo {
+ display: none;
 }
 
 /* Links */
