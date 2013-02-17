@@ -7,7 +7,7 @@ Select your team crest for /r/soccer.
 
 **NOTE:** Do not alter anything in the request form. Just hit the **send** button.
 
-There will be a delay of up to **two hours** before you receive your crest. If it takes any longer then **try again**.
+There will be a few minutes delay before you receive your crest. If it takes any longer then **try again**.
 If your crest is not registered within 24 hours then [send a message](/message/compose/?to=%23soccer&subject=Team%20crest%20problem) to the mods of /r/soccer.
 Requests for unlisted teams may take a week or two.
 

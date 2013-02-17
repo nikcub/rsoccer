@@ -119,12 +119,13 @@ function link_remove($subreddit, $link, $reason) {
 
   $explanation = $blacklist_reasons[$reason].' '.$guidelines;
 
+  $id = $link->id;
+  $title = $link->title;
+
   reddit_remove($subreddit, $link->name, $reason == 'spam');
   print("Removed ($reason): '$title'\n");
 
-  $id = $link->id;
-  $title = $link->title;
-  $prefix = "Beep.\n\nSorry, this post has been removed by a bot.\n\n";
+  $prefix = "*Beep*.\n\nSorry, this post has been removed by a bot.\n\n";
   $suffix = "\n\nIf you feel that this post was removed by mistake then please [message the moderators]"
     ."(/message/compose/"
       ."?to=".rawurlencode("/r/$subreddit")

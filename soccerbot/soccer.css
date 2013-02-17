@@ -1,3 +1,17 @@
+/* Sticky (temp) */
+.side .md h5 {
+ position: absolute;
+ top: 191px;
+ left: 54px;
+ padding: 5px 10px;
+ background-color: #effff7;
+ border: 1px solid #5fcf99;
+ border-radius: 3px;
+}
+.content {
+ margin-top: 50px;
+}
+
 /* Match threads */
 #siteTable a.title {
  line-height: 22px;
@@ -142,7 +156,7 @@ html, body {
  max-height: 160px;
  width: auto;
  height: auto;
- border: 1px solid black;
+/* border: 1px solid black; */
  margin-left: 1px;
 }
 
@@ -167,15 +181,15 @@ html, body {
 }
 .md td[align=left],
 .md th[align=left] {
-  text-align: left;
+ text-align: left;
 }
 .md td[align=center],
 .md th[align=center] {
-  text-align: center;
+ text-align: center;
 }
 .md td[align=right],
 .md th[align=right] {
-  text-align: right;
+ text-align: right;
 }
 .md th a {
  color: black;
@@ -185,6 +199,11 @@ html, body {
 .md h1, .md h2, .md h3, .md h4 {
  margin: 1em 0;
  font-weight: bold;
+}
+
+/* Hide 'Submit a new text post' button */
+.side .submit-text {
+ display: none;
 }
 
 /* About box */
