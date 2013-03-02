@@ -206,6 +206,20 @@ html, body {
  display: none;
 }
 
+/* Self text */
+.link .usertext .md {
+ border-color: green;
+}
+
+/* Link info box */
+.linkinfo {
+ border-color: #0fe72c;
+ background-color: #e7ffe9;
+}
+.linkinfo .downvotes {
+ color: green;
+}
+
 /* About box */
 .titlebox {
  border: 1px solid #5fcf99;
