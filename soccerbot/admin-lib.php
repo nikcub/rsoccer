@@ -123,7 +123,11 @@ function upload_bot_index($subreddit) {
           $text .= "\n\n#$country\n";
         }
       }
-      $text .= "\n".'* ['.$row['name'].'](/message/compose/?to=soccerbot&subject=crest&message='.$row['flair'].') *\\('.$row['count']."\\)*";
+      $name = $row['name'];
+      $flair = $row['flair'];
+      $count = $row['count'];
+
+      $text .= "\n* [$name *\\($count\\)*](/message/compose/?to=soccerbot&subject=crest&message=$flair)";
     }
 
     reddit_editusertext($subreddit, $id, $text);

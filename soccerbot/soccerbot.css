@@ -98,12 +98,13 @@ textarea {
 #siteTable em {
  font-size: smaller;
  font-style: normal;
+ color: black;
+}
+#siteTable a:hover em {
+ color: darkred;
 }
 form + #siteTable .entry .title a {
  color: #369;
-}
-.sitetable .entry .title a:hover {
- text-decoration: underline;
 }
 .compressed, .link {
  margin-bottom: 0;
@@ -189,13 +190,10 @@ a:link:hover, a:visited:hover {
 
 /* Default CSS for a crest */
 a[href^="/message/compose/?to=soccerbot"] {
- display: inline-block;
+ display: block;
  padding: 8px 0;
  font-weight: bold;
  color: #369!important;
-}
-a[href^="/message/compose/?to=soccerbot"]:hover {
- text-decoration: underline;
 }
 a[href^="/message/compose/?to=soccerbot"]:before {
  margin-right: 3px;
