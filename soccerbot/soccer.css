@@ -1,17 +1,3 @@
-/* Sticky (temp) */
-.side .md h5 {
- position: absolute;
- top: 191px;
- left: 54px;
- padding: 5px 10px;
- background-color: #effff7;
- border: 1px solid #5fcf99;
- border-radius: 3px;
-}
-.content {
- margin-top: 50px;
-}
-
 /* Match threads */
 #siteTable a.title {
  line-height: 22px;
@@ -156,8 +142,8 @@ html, body {
  max-height: 160px;
  width: auto;
  height: auto;
-/* border: 1px solid black; */
- margin-left: 1px;
+ border: 1px solid black;
+ margin-left: 2px;
 }
 
 /* Make it harder to knee-jerk upvote image posts */
