@@ -27,6 +27,8 @@ $blacklist = array(
 );
 
 $url_shorteners = array(
+  'feedproxy.google.com' => 'short',
+
   'bit.ly' =>       'short',
   'goo.gl' =>       'short',
   'su.pr' =>        'short',
