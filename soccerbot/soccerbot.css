@@ -7,8 +7,11 @@ body:not(.moderator) .submit,
 .rank,
 .domain,
 .linkinfo,
+.debuginfo,
+#header .pagename,
 .menuarea,
 .subscribers,
+.midcol,
 .users-online,
 .link .flat-list,
 #search,
@@ -37,6 +40,16 @@ body:not(.moderator) .submit,
 .styleToggle {
  max-height: 0!important;
  overflow: hidden;
+}
+#header-bottom-right {
+ border-top: 1px solid #999;
+ border-left: 1px solid #999;
+ background-color: #EEF3EE;
+}
+#header {
+ border-color: #999;
+ background-color: #EEF3EE;
+ min-height: 5em;
 }
 
 /* headings */
@@ -89,7 +102,7 @@ textarea {
  display: block;
  font-weight: bold;
  font-size: 28px;
- padding: 8px 0;
+ padding: 8px 1ex;
  border-bottom: 1px solid silver;
 }
 #siteTable .entry .title a {
