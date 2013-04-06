@@ -4,12 +4,13 @@ News, results and discussion about the beautiful game.
 
 **Please don't downvote people based on the team/league they support.**
 
-* Read our [FAQ](/r/soccer/wiki/index)
-* Follow the [rules of our community](/r/soccer/wiki/communityrules)
-* Respect our [submission guidelines](/r/soccer/wiki/submissionguidelines)
+* Visit our [wiki](/r/soccer/wiki/index)
+* Read our [FAQ](/r/soccer/wiki/faq)
+* Follow the [rules of our community](/r/soccer/wiki/rules#wiki_community_rules)
+* Respect our [submission guidelines](/r/soccer/wiki/rules#wiki_submission_guidelines)
 * Hide results with the [unspoiler script](http://userscripts.org/scripts/show/75108)
-* Find [your team's subreddit](/r/soccer/wiki/relatedsubreddits)
+* List of [related subreddits](/r/soccer/wiki/relatedsubreddits)
 * Create a [match thread](/r/soccer/wiki/matchthreads) ([icons](/rerge))
-* Other [important links](/r/soccer/wiki/index#wiki_important_links)
+* Suggest a [banner image](/message/compose?to=%23soccer&subject=Banner%20pic)
 * Meet up and [play the game](/r/pickupsoccer)
 * Follow us on [Twitter](http://twitter.com/redditsoccer)
