@@ -17,13 +17,14 @@ $blacklist = array(
   'nutjob.eu' =>          'stream',
 
   /* Spam */
-  'footiegaffer.wordpress.com'     => 'spam',
-  'twogoalsoneball.wordpress.com'  => 'spam',
-  '90minutesup.blogspot.be'        => 'spam',
-  'footynotes.wordpress.com'       => 'spam',
-  'backpagebanter.wordpress.com'   => 'spam',
-  'soccerwithoutlimits.com'        => 'spam',
-  'futbolpulse.com'                => 'spam'
+  'footiegaffer.wordpress.com' =>     'spam',
+  'twogoalsoneball.wordpress.com' =>  'spam',
+  '90minutesup.blogspot.be' =>        'spam',
+  'footynotes.wordpress.com' =>       'spam',
+  'backpagebanter.wordpress.com' =>   'spam',
+  'soccerwithoutlimits.com' =>        'spam',
+  'futbolpulse.com' =>                'spam',
+  'blog.bantr.tv' =>                  'spam'
 );
 
 $url_shorteners = array(
@@ -45,16 +46,16 @@ $url_shorteners = array(
 );
 
 $blacklist_reasons = array(
-  'meme'   =>   "We do not allow memes on the front page of /r/soccer. ".
-                "You are free to post memes in the comment threads however.",
+  'meme' =>   "We do not allow memes on the front page of /r/soccer. ".
+              "You are free to post memes in the comment threads however.",
 
-  'stream' =>   "We do not allow links to streaming sites on the front page of /r/soccer. Instead create ".
-                "a [match thread](/r/soccer/wiki/matchthreads) and link to streams in the comments.",
+  'stream' => "We do not allow links to streaming sites on the front page of /r/soccer. Instead create ".
+              "a [match thread](/r/soccer/wiki/matchthreads) and link to streams in the comments.",
 
-  'spam'   =>   "This domain has been banned from /r/soccer for persistent spamming.",
+  'spam' =>   "This domain has been banned from /r/soccer for persistent spamming.",
 
-  'short'  =>   "Please don't use [URL shorteners](http://en.wikipedia.org/wiki/URL_shortening) in /r/soccer ".
-                "as our users like to know what they are clicking on. Use the full URL instead."
+  'short' =>  "Please don't use [URL shorteners](http://en.wikipedia.org/wiki/URL_shortening) in /r/soccer ".
+              "as our users like to know what they are clicking on. Use the full URL instead."
 );
 
 function getBlacklistReason($subdomain) {
