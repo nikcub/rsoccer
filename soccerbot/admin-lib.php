@@ -171,7 +171,7 @@ function download_users($subreddit) {
     }
   }
 
-  print("Users downloaded.");
+  print("Users downloaded.\n");
 }
 
 function upload_users($subreddit) {

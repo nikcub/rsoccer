@@ -4,7 +4,15 @@ header("User-Agent: soccerbot by /u/9jack9");
 
 require('admin-lib.php');
 
-set_time_limit(6000);
+@ini_set('zlib.output_compression', 0);
+
+@ini_set('implicit_flush', 1);
+
+@ob_end_clean();
+
+set_time_limit(0);
+
+ob_implicit_flush(1);
 
 reddit_login();
 
