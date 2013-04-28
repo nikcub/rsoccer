@@ -28,10 +28,12 @@ if (isset($action)) {
   } else {
     $flair = $_POST['flair'];
     $name = $_POST['name'];
+    $text = preg_replace('/\'/', "''", $name);
     $country = $_POST['country'];
     $site = $_POST['site'];
     $twitter = $_POST['twitter'];
     $wikipedia = $_POST['wikipedia'];
+    $wikipedia_text = preg_replace('/\'/', "''", $wikipedia);
     $fileName = $_POST['fileName'];
     if (!isset($fileName)) {
       $fileName = preg_replace('/\-/', '_', preg_replace('/\-s\d$/', '', $flair));
@@ -45,7 +47,6 @@ if (isset($action)) {
     }
     if ($action == 'add-user') {
       $user = $_POST['user'];
-      $text = $name;
       $css_class = $flair;
       if ($sprite != 1) {
         $css_class .= " s$sprite";
@@ -54,11 +55,11 @@ if (isset($action)) {
       $action = 'modify';
     } else {
       if ($action == 'add') {
-        $db->query("INSERT INTO teams (flair,name,country,site,twitter,wikipedia,fileName) VALUES ('$flair', '$name', '$country', '$site', '$twitter', '$wikipedia', '$fileName')");
+        $db->query("INSERT INTO teams (flair,name,country,site,twitter,wikipedia,fileName) VALUES ('$flair', '$text', '$country', '$site', '$twitter', '$wikipedia_text', '$fileName')");
         build_sprite($sprite);
         $action = 'modify';
       } else if ($action == 'modify') {
-        $db->query("UPDATE teams SET name='$name', country='$country', site='$site', twitter='$twitter', wikipedia='$wikipedia', fileName='$fileName' WHERE flair='$flair'");
+        $db->query("UPDATE teams SET name='$text', country='$country', site='$site', twitter='$twitter', wikipedia='$wikipedia_text', fileName='$fileName' WHERE flair='$flair'");
       } else if ($action == 'delete') {
         $db->query("DELETE FROM teams WHERE flair='$flair'");
         build_sprite($sprite);
