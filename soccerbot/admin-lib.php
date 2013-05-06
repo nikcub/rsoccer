@@ -195,7 +195,7 @@ function upload_users($subreddit) {
   $db->query("DROP TABLE uploads");
   $db->query("CREATE TABLE uploads (user TEXT PRIMARY KEY NOT NULL, text TEXT NOT NULL, css_class TEXT NOT NULL)");
 
-  print("Users uploaded.");
+  print("Users uploaded.\n");
 }
 
 function upload_stats($subreddit, $thing_id) {
