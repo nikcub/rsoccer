@@ -3,6 +3,10 @@
 function build_sprite($sprite) {
   global $db, $SPRITES_DIR;
 
+  if (!class_exists("Imagick"))  {
+    return;
+  }
+
   $BGCOLOR = '#FDFEFD';
   $WIDTH  = $sprite == 3 ? 40 : 20;
   $HEIGHT = 20;

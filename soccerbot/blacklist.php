@@ -11,6 +11,7 @@ $blacklist = array(
 
   /* Streams */
   'thefirstrow.eu' =>     'stream',
+  'firstrow.eu' =>        'stream',
   'wiziwig.tv' =>         'stream',
   'livefootballol.tv' =>  'stream',
   'livetv.ru' =>          'stream',
