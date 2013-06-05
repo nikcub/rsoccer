@@ -6,8 +6,7 @@
 #siteTable .compressed .title {
  margin-top: 0;
 }
-#siteTable a.title[href*="/rsoccer_subreddit_of_the_week"],
-#siteTable a.title[href*="/rsoccer_team_of_the_year"],
+#siteTable .linkflair-contest a.title,
 #siteTable a.title[href*="/pre_match_thread"],
 #siteTable a.title[href*="/prematch_thread"],
 #siteTable a.title[href*="/match_thread"],
@@ -15,12 +14,11 @@
 #siteTable a.title[href*="/post_match_thread"],
 #siteTable a.title[href*="/postmatch_thread"],
 #siteTable a.title[href*="/match_report"],
-#siteTable a.title[href*="/league_roundup"] {
+#siteTable a.title[href*="/league_roundup"],
+#siteTable a.title[href*="/league_round_up"] {
  line-height: 26px;
  color: green;
 }
-#siteTable a.title[href*="/rsoccer_subreddit_of_the_week"]:before,
-#siteTable a.title[href*="/rsoccer_team_of_the_year"]:before,
 #siteTable a.title[href*="/pre_match_thread"]:before,
 #siteTable a.title[href*="/prematch_thread"]:before,
 #siteTable a.title[href*="/match_thread"]:before,
@@ -28,7 +26,8 @@
 #siteTable a.title[href*="/post_match_thread"]:before,
 #siteTable a.title[href*="/postmatch_thread"]:before,
 #siteTable a.title[href*="/match_report"]:before,
-#siteTable a.title[href*="/league_roundup"]:before {
+#siteTable a.title[href*="/league_roundup"]:before,
+#siteTable a.title[href*="/league_round_up"]:before {
  content: "";
  display: inline-block;
  width: 24px;
@@ -51,10 +50,12 @@
 #siteTable a.title[href*="/postmatch_thread"]:before {
  background-position: 0 -408px;
 }
-#siteTable a.title[href*="/rsoccer_subreddit_of_the_week"]:before,
-#siteTable a.title[href*="/rsoccer_team_of_the_year"]:before {
+#siteTable .linkflair-contest .linkflairlabel {
+ width: 24px;
+ height: 24px;
  background-image: url(%%trophy%%);
  background-position: 0 0;
+ margin-right: 0;
 }
 
 /* Icons */
@@ -96,7 +97,6 @@ a[href^="//#sub"]{background-position:0 -340px}
 a[href^="//#up"]{background-position:0 -374px}
 a[href^="//#whistle"]{background-position:0 -408px}
 a[href^="//#yellow"]{background-position:0 -442px}
-
 .titlebox a[href="//#redditch"] {
  width: 20px;
  height: 20px;
@@ -393,15 +393,16 @@ a:link:hover, a:visited:hover,
 }
 
 /* RES night mode */
-
 .res-nightmode #siteTable a.title[href*="/daily_fan_thread"],
 .res-nightmode #siteTable a.title[href*="/match_thread"],
-.res-nightmode #siteTable a.title[href*="/matchthread_"],
+.res-nightmode #siteTable a.title[href*="/matchthread"],
 .res-nightmode #siteTable a.title[href*="/pre_match_thread"],
 .res-nightmode #siteTable a.title[href*="/prematch_thread"],
 .res-nightmode #siteTable a.title[href*="/post_match_thread"],
+.res-nightmode #siteTable a.title[href*="/postmatch_thread"],
 .res-nightmode #siteTable a.title[href*="/match_report"],
-.res-nightmode #siteTable a.title[href*="/league_roundup"] {
+.res-nightmode #siteTable a.title[href*="/league_roundup"],
+.res-nightmode #siteTable a.title[href*="/league_round_up"] {
  color: #6c0!important;
 }
 .res-nightmode .titlebox {
@@ -474,8 +475,11 @@ a:link:hover, a:visited:hover,
  padding: 0;
  margin-right: 4px;
  border-width: 0;
+ border-radius: 0;
 }
-.flairtoggle, .flairtoggle + .tagline {
+.flairtoggle,
+.flairtoggle + .tagline,
+.flairselector .customizer {
  display: none;
 }
 .comment .flair, .linkflairlabel {
