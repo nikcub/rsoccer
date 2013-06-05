@@ -26,10 +26,8 @@ function alert_bot($subreddit) { // watches reported links
             $permalink = '/r/'.$subreddit.'/comments/'.substr($entry->link_id, 3).'/a/'.$entry->id.'?context=2';
             $text = strip_tags(html_entity_decode($entry->body_html), '<p>');
             $text = explode('</p>', $text);
-            $text = $text[0];
-            if (substr($text, 0, 3) == '<p>') {
-              $text = substr($text, 3);
-            }
+            $text = preg_replace('/<p>/', '', $text[0]);
+            $text = preg_replace('/\n/', ' ', $text);
           }
           $message = "The following $type has been reported $num_reports times:\n\n> [$text]($permalink)";
           reddit_sendMessage('/r/'.$subreddit, $title, $message);
