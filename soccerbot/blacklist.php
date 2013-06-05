@@ -12,6 +12,7 @@ $blacklist = array(
   /* Streams */
   'thefirstrow.eu' =>     'stream',
   'firstrow.eu' =>        'stream',
+  'firstrow1.eu' =>       'stream',
   'wiziwig.tv' =>         'stream',
   'livefootballol.tv' =>  'stream',
   'livetv.ru' =>          'stream',
@@ -25,7 +26,8 @@ $blacklist = array(
   'backpagebanter.wordpress.com' =>   'spam',
   'soccerwithoutlimits.com' =>        'spam',
   'futbolpulse.com' =>                'spam',
-  'blog.bantr.tv' =>                  'spam'
+  'blog.bantr.tv' =>                  'spam',
+  'getrealpremier.com' =>             'spam'
 );
 
 $url_shorteners = array(
