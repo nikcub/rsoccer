@@ -152,26 +152,37 @@ function download_users($subreddit) {
 
   $query = $db->prepare("INSERT INTO users (user, flair) VALUES (?,?)");
 
+  $db->beginTransaction();
+
   foreach ($list as $entry) {
     $user = $entry->user;
     $flair = preg_replace('/\s+s\d+$/', '', $entry->flair_css_class);
     $query->execute(array($user, $flair));
   }
 
+  $db->commit();
+
   print("Generating team counts...\n");
 
   $query = $db->query("SELECT flair FROM teams");
+  $users = $db->prepare("SELECT COUNT(*) AS count FROM users WHERE flair=?");
+  $setCount = $db->prepare("UPDATE teams SET count=? WHERE flair=?");
+
+  $db->beginTransaction();
 
   while ($row = $query->fetch()) {
     $flair = $row['flair'];
-    $users = $db->query("SELECT COUNT(*) AS count FROM users WHERE flair='$flair'");
-    if ($team = $users->fetch()) {
+    $users->execute(array($flair));
+    $team = $users->fetch();
+    if ($team) {
       $count = $team['count'];
-      $db->query("UPDATE teams SET count=$count WHERE flair='$flair'");
+      $setCount->execute(array($count, $flair));
     }
   }
 
-  print("Users downloaded.\n");
+  $db->commit();
+
+  print("User table created.\n");
 }
 
 function upload_users($subreddit) {
