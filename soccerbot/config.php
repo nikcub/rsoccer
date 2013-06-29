@@ -5,13 +5,14 @@ $ROOT = dirname(__FILE__);
 $SPRITES = 4; // Number of sprites
 $SPRITES_DIR = "$ROOT\\sprites";
 
-$username      = 'soccerbot';
-$password      = '';
+$username = 'soccerbot';
+$password = '';
 
-$subreddit     = 'soccer';
-$bot_subreddit = 'soccerbot';
+$subreddit         = 'soccer';
+$bot_subreddit     = 'soccerbot';
+$banners_subreddit = 'soccerbanners';
 
-$dbname        = 'crests.db';
+$dbname = 'crests.db';
 
 $bot_index = array(
   't3_170gqp' => "region='afr'",

@@ -5,6 +5,19 @@ $modhash = '';
 $cookies = '';
 
 // --------------------------------------
+// Submit
+// --------------------------------------
+
+function reddit_submit_link($subreddit, $title, $url) {
+  return reddit_POST($subreddit, 'api/submit', array(
+    'kind' => 'link',
+    'sr' => $subreddit,
+    'title' => $title,
+    'url' => $url
+  ));
+}
+
+// --------------------------------------
 // Listings
 // --------------------------------------
 
@@ -20,23 +33,11 @@ function reddit_spam($subreddit) {
   return reddit_listing($subreddit, 'about/spam');
 }
 
-function reddit_listing($subreddit, $list, $limit = 25, $sort = 'new', $after = '', $before = '') {
-  global $REDDIT, $modhash, $cookies;
+function reddit_listing($subreddit, $list, $limit=25, $sort='new', $after='', $before='') {
+  $url = "r/$subreddit/$list.json?limit=$limit&sort=$sort&after=$after&before=$before";
+  $data = reddit_GET($url);
 
-  $url = "$REDDIT/r/$subreddit/$list.json?limit=$limit&sort=$sort&after=$after&before=$before";
-
-  $request  = new HttpRequest($url, HttpRequest::METH_GET);
-  $request->addCookies($cookies);
-  $response = $request->send();
-
-  $status = $response->getResponseCode();
-  if ($status != 200) {
-    die("/r/$subreddit/$list failed, status=$status\n");
-  }
-
-  $json = json_decode($response->getBody());
-
-  return $json->data->children;
+  return $data->children;
 }
 
 function reddit_editusertext($subreddit, $id, $text) {
@@ -79,6 +80,10 @@ function reddit_subreddit_stylesheet($subreddit, $css) {
     'op' => 'save',
     'stylesheet_contents' => $css
   ));
+}
+
+function reddit_subreddit_about($subreddit) {
+  return reddit_GET("r/$subreddit/about.json");
 }
 
 function reddit_upload_sr_img($subreddit, $fileName, $name = '') {
@@ -232,32 +237,13 @@ function reddit_flairlist($subreddit) {
 // --------------------------------------
 
 function reddit_getUnreadMail() {
-  global $REDDIT, $modhash, $cookies;
+  $data = reddit_GET('message/unread/.json');
 
-  $url = "$REDDIT/message/unread/.json";
-
-  $request = new HttpRequest($url, HttpRequest::METH_GET);
-  $request->addCookies($cookies);
-  $response = $request->send();
-
-  $status = $response->getResponseCode();
-  if ($status != 200) {
-    die("Failed to fetch mail, status=$status\n");
-  }
-  
-  $json = json_decode($response->getBody());
-
-  return $json->data->children;
+  return $data->children;
 }
 
 function reddit_clearUnreadMail() {
-  global $REDDIT, $cookies;
-
-  $url = "$REDDIT/message/inbox";
-
-  $request = new HttpRequest($url, HttpRequest::METH_GET);
-  $request->addCookies($cookies);
-  $request->send();
+  reddit_GET('message/inbox');
 }
 
 function reddit_sendMessage($to, $subject, $message) {
@@ -300,6 +286,25 @@ function reddit_login() {
 // --------------------------------------
 // HTTP
 // --------------------------------------
+
+function reddit_GET($path) {
+  global $REDDIT, $cookies;
+
+  $url = "$REDDIT/$path";
+
+  $request  = new HttpRequest($url, HttpRequest::METH_GET);
+  $request->addCookies($cookies);
+  $response = $request->send();
+
+  $status = $response->getResponseCode();
+  if ($status != 200) {
+    die("$path failed, status=$status\n");
+  }
+
+  $json = json_decode($response->getBody());
+
+  return $json->data;
+}
 
 function reddit_POST($subreddit, $to, $data) {
   global $REDDIT, $modhash, $cookies;

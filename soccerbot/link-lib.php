@@ -13,8 +13,8 @@ function alert_bot($subreddit) { // watches reported links
     $entry = $entry->data;
     $num_reports = $entry->num_reports;
     if ($num_reports > 1) {
-      $link = $entry->name;
-      $query = $db->query("SELECT * FROM alerted WHERE thing='".$link."'");
+      $thing = $entry->name;
+      $query = $db->query("SELECT * FROM alerted WHERE thing='$thing'");
       if (is_object($query)) {
         $row = $query->fetch();
         if (!$row['thing']) {
@@ -32,8 +32,8 @@ function alert_bot($subreddit) { // watches reported links
           $message = "The following $type has been reported $num_reports times:\n\n> [$text]($permalink)";
           reddit_sendMessage('/r/'.$subreddit, $title, $message);
           $timestamp = time();
-          $db->query("INSERT INTO alerted (thing,timestamp) VALUES ('$link',$timestamp)");
-          print("Alerting: $link\n");
+          $db->query("INSERT INTO alerted (thing,timestamp) VALUES ('$thing',$timestamp)");
+          print("Alerting: $thing\n");
         }
       }
     }
