@@ -6,7 +6,6 @@
 #siteTable .compressed .title {
  margin-top: 0;
 }
-#siteTable .linkflair-contest a.title,
 #siteTable a.title[href*="/pre_match_thread"],
 #siteTable a.title[href*="/prematch_thread"],
 #siteTable a.title[href*="/match_thread"],
@@ -50,12 +49,48 @@
 #siteTable a.title[href*="/postmatch_thread"]:before {
  background-position: 0 -408px;
 }
-#siteTable .linkflair-contest .linkflairlabel {
+
+/* Link flair */
+#siteTable .linkflair-modded a.title {
+ line-height: 26px;
+}
+#siteTable .linkflair-modded .linkflairlabel {
  width: 24px;
  height: 24px;
  background-image: url(%%trophy%%);
  background-position: 0 0;
- margin-right: 0;
+ margin-right: 3px;
+}
+#siteTable .linkflair-contest a.title {
+ color: green;
+}
+#siteTable .linkflair-contest .linkflairlabel {
+ background-image: url(%%trophy%%);
+}
+#siteTable .linkflair-star .linkflairlabel {
+ background-image: url(%%star%%);
+}
+
+/* Submit Page*/
+#newlink .infobar {
+ background-color: transparent;
+ padding: 0;
+ font-size: 0;
+ border: 0;
+}
+#newlink .infobar:after {
+ background-color: rgb(40, 128, 40);
+ color: white!important;
+ padding: 10px;
+ font-size: 12pt;
+ font-weight: bold;
+ display: block;
+ text-align: center;
+ border-radius: 4px;
+}
+
+#link-desc:after {
+ content: "Please read and understand the submission guidelines before submitting a post";
 }
 
 /* Icons */
