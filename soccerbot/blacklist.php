@@ -45,7 +45,8 @@ $url_shorteners = array(
   'wp.me' =>        'short',
   'ff.im' =>        'short',
   'tiny.cc' =>      'short',
-  'sy.pe' =>        'short'
+  'sy.pe' =>        'short',
+  'bdb.im' =>       'short'
 );
 
 $blacklist_reasons = array(
