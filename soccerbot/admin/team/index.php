@@ -55,11 +55,11 @@ if (isset($action)) {
       $action = 'modify';
     } else {
       if ($action == 'add') {
-        $db->query("INSERT INTO teams (flair,name,country,site,twitter,wikipedia,fileName) VALUES ('$flair', '$text', '$country', '$site', '$twitter', '$wikipedia_text', '$fileName')");
+        $db->query("INSERT INTO teams (flair,name,country,site,twitter,wikipedia,fileName,sprite) VALUES ('$flair', '$text', '$country', '$site', '$twitter', '$wikipedia_text', '$fileName', $sprite)");
         build_sprite($sprite);
         $action = 'modify';
       } else if ($action == 'modify') {
-        $db->query("UPDATE teams SET name='$text', country='$country', site='$site', twitter='$twitter', wikipedia='$wikipedia_text', fileName='$fileName' WHERE flair='$flair'");
+        $db->query("UPDATE teams SET name='$text', country='$country', site='$site', twitter='$twitter', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite WHERE flair='$flair'");
       } else if ($action == 'delete') {
         $db->query("DELETE FROM teams WHERE flair='$flair'");
         build_sprite($sprite);
