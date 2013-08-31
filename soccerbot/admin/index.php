@@ -21,7 +21,7 @@ require('../config.php');
   $q = $_POST['q'];
 
   if ($action == 'search') {
-    $query = $db->query("SELECT * FROM teams WHERE (name LIKE '%$q%' OR country='$q') ORDER BY name");
+    $query = $db->query("SELECT * FROM teams WHERE (name LIKE '%$q%' OR country='$q' or flair LIKE '%$q%') ORDER BY name");
     while ($row = $query->fetch()) {
       print('<div><a href="./team?flair='.$row['flair'].'">'.htmlspecialchars($row['name'])."</a></div>\n");
     }

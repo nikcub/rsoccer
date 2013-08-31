@@ -30,7 +30,8 @@ fieldset {
   border: none;
 }
 
-fieldset p {
+fieldset p,
+fieldset li {
   display: table-row;
 }
 
@@ -43,4 +44,15 @@ fieldset select {
 input + label,
 label + label {
   padding-right: 0;
+}
+
+.sources {
+  padding: 0;
+  margin: 0;
+}
+
+.sources label {
+  color: black;
+  font-weight: normal;
+  padding-left: 1ex;
 }

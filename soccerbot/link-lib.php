@@ -87,19 +87,15 @@ function link_bot($subreddit) { // watches the new queue
           if ($domain == 'twitter.com') {
             $twitter = explode('/', substr($entry->url, 20));
             $twitter = $twitter[0];
-            $query = $db->query("SELECT * FROM teams WHERE twitter='".$twitter."'");
+            $query = $db->query("SELECT * FROM sources WHERE (type='Twitter' AND source LIKE '$twitter')");
           } else {
-            $query = $db->query("SELECT * FROM teams WHERE site='".$domain."'");
+            $query = $db->query("SELECT * FROM sources WHERE (type='Web' AND source='$domain')");
           }
           if (is_object($query)) {
             $row = $query->fetch();
-            $team = $row['name'];
+            $team = $row['team'];
             if ($team) {
-              $css_class = $row['flair'];
-              $sprite = $row['sprite'];
-              if ($sprite != 1) {
-                $css_class .= ' s'.$sprite;
-              }
+              $css_class = preg_replace('/\-(s\d)$/', '-$1 $1', $team);
               reddit_linkflair($subreddit, $link, 'Official', $css_class);
               print("Link flair ($css_class): '".$entry->title."'\n");
             }
