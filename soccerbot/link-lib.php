@@ -95,7 +95,10 @@ function link_bot($subreddit) { // watches the new queue
             $row = $query->fetch();
             $team = $row['team'];
             if ($team) {
-              $css_class = preg_replace('/\-(s\d)$/', '-$1 $1', $team);
+              $css_class = $team;
+              if (preg_match('/\-s\d$/', $team)) {
+                $css_class = preg_replace('/^(.+)\-(s\d)$/', '$1-$2 $2', $css_class);
+              }
               reddit_linkflair($subreddit, $link, 'Official', $css_class);
               print("Link flair ($css_class): '".$entry->title."'\n");
             }
