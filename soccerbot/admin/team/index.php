@@ -30,8 +30,6 @@ if (isset($action)) {
     $name = $_POST['name'];
     $text = preg_replace('/\'/', "''", $name);
     $country = $_POST['country'];
-    $site = $_POST['site'];
-    $twitter = $_POST['twitter'];
     $wikipedia = $_POST['wikipedia'];
     $wikipedia_text = preg_replace('/\'/', "''", $wikipedia);
     $fileName = $_POST['fileName'];
@@ -45,7 +43,20 @@ if (isset($action)) {
         $action = 'modify';
       }
     }
-    if ($action == 'add-user') {
+    if ($action == 'delete-source') {
+      foreach ($_POST as $key=>$value) {
+        if (preg_match('/^source\-/', $key)) {
+          list($dummy, $id) = explode('-', $key);
+          $db->query("DELETE FROM sources WHERE team='$flair' AND id=$id");
+        }
+      }
+      $action = 'modify';
+    } else if ($action == 'add-source') {
+      $source = $_POST['source'];
+      $sourceType = $_POST['source-type'];
+      $db->query("INSERT INTO sources (team,type,source) VALUES ('$flair', '$sourceType', '$source')");
+      $action = 'modify';
+    } else if ($action == 'add-user') {
       $user = $_POST['user'];
       $css_class = $flair;
       if ($sprite != 1) {
@@ -55,11 +66,11 @@ if (isset($action)) {
       $action = 'modify';
     } else {
       if ($action == 'add') {
-        $db->query("INSERT INTO teams (flair,name,country,site,twitter,wikipedia,fileName,sprite) VALUES ('$flair', '$text', '$country', '$site', '$twitter', '$wikipedia_text', '$fileName', $sprite)");
+        $db->query("INSERT INTO teams (flair,name,country,wikipedia,fileName,sprite) VALUES ('$flair', '$text', '$country', '$wikipedia_text', '$fileName', $sprite)");
         build_sprite($sprite);
         $action = 'modify';
       } else if ($action == 'modify') {
-        $db->query("UPDATE teams SET name='$text', country='$country', site='$site', twitter='$twitter', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite WHERE flair='$flair'");
+        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite WHERE flair='$flair'");
       } else if ($action == 'delete') {
         $db->query("DELETE FROM teams WHERE flair='$flair'");
         build_sprite($sprite);
@@ -74,8 +85,6 @@ if (isset($action)) {
       $row = $query->fetch();
       $name = $row['name'];
       $country = $row['country'];
-      $site = $row['site'];
-      $twitter = $row['twitter'];
       $wikipedia = $row['wikipedia'];
       $fileName = $row['fileName'];
       $sprite = $row['sprite'];
@@ -122,16 +131,6 @@ if (isset($action)) {
   </p>
 
   <p>
-   <label for="team-site">Website:</label>
-   <input id="team-site" name="site" value="<?php echo($site); ?>">
-  </p>
-
-  <p>
-   <label for="team-twitter">Twitter:</label>
-   <input id="team-twitter" name="twitter" value="<?php echo($twitter); ?>">
-  </p>
-
-  <p>
    <label for="team-wikipedia">Wikipedia:</label>
    <input id="team-wikipedia" name="wikipedia" value="<?php echo($wikipedia); ?>">
   </p>
@@ -163,7 +162,7 @@ if (isset($flair) && $action != 'delete' && $action != 'add-from-file') {
 ?>
  </p>
 <?php
-if ($action == 'modify') {
+if (isset($flair) && $action != 'add' && $action != 'add-from-file') {
 ?>
  <h3>Add user</h3>
 
@@ -175,6 +174,48 @@ if ($action == 'modify') {
  </fieldset>
 
  <p><button type="submit" name="action" value="add-user">Add</button></p>
+
+ <h3>Sources</h3>
+
+ <fieldset>
+ <ul class="sources">
+<?php
+  $query = $db->query("SELECT * FROM sources WHERE team='$flair' ORDER BY type");
+
+  while ($row = $query->fetch()) {
+    $sourceType = $row['type'];
+    $source = $row['source'];
+    $id = $row['id'];
+    $sourceId = "source-$id";
+?>
+   <li><input type="checkbox" name="<?php print($sourceId); ?>" id="<?php print($sourceId); ?>">
+       <label for="<?php print($sourceId); ?>"><?php print("$sourceType: $source"); ?></label></li>
+<?php
+  }
+?>
+ </ul>
+ </fieldset>
+
+ <p><button type="submit" name="action" value="delete-source">Delete</button></p>
+
+ <h4>Add source</h4>
+
+ <fieldset>
+  <p>
+   <label for="source">Source:</label>
+   <input id="source" name="source">
+  </p>
+  <p>
+   <label for="source-type">Type:</label>
+   <select id="source-type" name="source-type">
+    <option>Facebook
+    <option>Twitter
+    <option selected>Web
+   </select>
+  </p>
+ </fieldset>
+
+ <p><button type="submit" name="action" value="add-source">Add</button></p>
 <?php
 }
 ?>

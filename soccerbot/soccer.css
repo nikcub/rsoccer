@@ -1,7 +1,7 @@
 /* Match threads */
 #siteTable a.title {
- line-height: 22px;
  vertical-align: middle;
+ line-height: 22px;
 }
 #siteTable .compressed .title {
  margin-top: 0;
@@ -181,11 +181,6 @@ html, body {
  margin-left: 2px;
 }
 
-/* Make it harder to knee-jerk upvote image posts */
-.listing-page .toggleImage {
- display: none!important;
-}
-
 /* Tables */
 .md table {
  border: 2px solid white;
@@ -349,11 +344,6 @@ html, body {
  text-transform: lowercase;
 }
 
-/* stop RES from breaking layout */
-.redditname a {
- float: none !important;
-}
-
 /* Spam */
 .thing.spam {
  background-color: #fcc;
@@ -425,6 +415,14 @@ a:link:hover, a:visited:hover,
 #siteTable a[href^="//#"]:hover {
  color: white!important;
  background-color: transparent!important;
+}
+
+/* RES tweaks */
+.redditname a {
+ float: none !important;
+}
+.expando-button {
+ cursor: pointer;
 }
 
 /* RES night mode */

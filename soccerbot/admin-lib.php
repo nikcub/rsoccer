@@ -41,7 +41,9 @@ function upload_css($subreddit) {
       $pos -= 21;
       $flair = $row['flair'];
       $css .= ".flair-$flair";
-      if ($row['site'] != '' || $row['twitter'] != '') {
+      $sources = $db->query("SELECT COUNT(*) as count FROM sources WHERE team='$flair'");
+      $counter = $sources->fetch();
+      if ($counter['count'] > 0) {
         $css .= ",.linkflair-$flair .linkflairlabel";
       }
       $css .= "{background-position:0 $pos"."px}\n";

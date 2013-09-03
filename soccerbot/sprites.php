@@ -40,6 +40,7 @@ function build_sprite($sprite) {
 }
 
 function addCrest($s, $fileName, $offset) {
+  print("$fileName\n");
   $slot = new Imagick();
   $slot->readImage($fileName);
   $s->compositeImage($slot, $slot->getImageCompose(), 0, $offset);

@@ -25,9 +25,18 @@ $blacklist = array(
   'footynotes.wordpress.com' =>       'spam',
   'backpagebanter.wordpress.com' =>   'spam',
   'soccerwithoutlimits.com' =>        'spam',
-  'futbolpulse.com' =>                'spam',
   'blog.bantr.tv' =>                  'spam',
-  'getrealpremier.com' =>             'spam'
+  'getrealpremier.com' =>             'spam',
+  'fancysoccerworld.blogspot.com' =>  'spam',
+  'fancysoccerworld.blogspot.hk' =>   'spam',
+  'fancysoccerworld.blogspot.jp' =>   'spam',
+  'fancysoccerworld.blogspot.tw' =>   'spam',
+  'fancysoccerdeal.blogspot.com' =>   'spam',
+  'fancysoccerdeal.blogspot.hk' =>    'spam',
+  'fancysoccerdeal.blogspot.jp' =>    'spam',
+  'fancysoccerdeal.blogspot.tw' =>    'spam',
+  'fancysoccer.wordpress.com' =>      'spam',
+  'fancysoccerdeal.com' =>            'spam'
 );
 
 $url_shorteners = array(
