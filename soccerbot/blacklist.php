@@ -36,7 +36,17 @@ $blacklist = array(
   'fancysoccerdeal.blogspot.jp' =>    'spam',
   'fancysoccerdeal.blogspot.tw' =>    'spam',
   'fancysoccer.wordpress.com' =>      'spam',
-  'fancysoccerdeal.com' =>            'spam'
+  'fancysoccerdeal.com' =>            'spam',
+  'thefootballnetwork.net' =>         'spam',
+  'burningsoccer.com' =>              'spam',
+  'viewgoals.com' =>                  'spam',
+  'voomfootball.wordpress.com' =>     'spam',
+  'watchepllive.wordpress.com' =>     'spam',
+  'serieaddicted.com' =>              'spam',
+  'thehardtackle.com' =>              'spam',
+  'blog.gogoalshop.com' =>            'spam',
+  'martina22acm.wordpress.com' =>     'spam',
+  'ramrock.wordpress.com' =>          'spam'
 );
 
 $url_shorteners = array(

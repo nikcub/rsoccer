@@ -12,7 +12,7 @@ function alert_bot($subreddit) { // watches reported links
     $type = $entry->kind == 't1' ? 'comment' : 'post';
     $entry = $entry->data;
     $num_reports = $entry->num_reports;
-    if ($num_reports > 1) {
+    if (!$entry->approved_by && $num_reports > 1) {
       $thing = $entry->name;
       $query = $db->query("SELECT * FROM alerted WHERE thing='$thing'");
       if (is_object($query)) {

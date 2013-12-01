@@ -28,6 +28,7 @@ body:not(.moderator) .submit,
 .tabmenu,
 .titlebox .bottom,
 .sidecontentbox,
+#siteTable .expando-button,
 .arrow {
  display: none!important;
 }

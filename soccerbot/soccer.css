@@ -70,6 +70,16 @@
 #siteTable .linkflair-star .linkflairlabel {
  background-image: url(%%star%%);
 }
+#siteTable .linkflair-false .linkflairlabel {
+ display: none;
+ background-image: none;
+}
+#siteTable .flairselector .linkflairlabel {
+ display: inline-block;
+}
+#siteTable .linkflair-false a.title {
+ text-decoration: line-through;
+}
 
 /* Submit Page*/
 #newlink .infobar {
@@ -179,6 +189,11 @@ html, body {
  height: auto;
  border: 1px solid black;
  margin-left: 2px;
+}
+
+/* Hide deleted comments */
+.comment.deleted .usertext.grayed {
+ display: none;
 }
 
 /* Tables */

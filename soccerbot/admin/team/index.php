@@ -15,6 +15,8 @@ if (!isset($sprite)) {
   $sprite = 4;
 }
 
+$originalFlair = $_POST['original-flair'];
+
 if (isset($action)) {
   if ($action == 'add-from-file') {
     $fileName = $_FILES['file']['name'];
@@ -70,9 +72,12 @@ if (isset($action)) {
         build_sprite($sprite);
         $action = 'modify';
       } else if ($action == 'modify') {
-        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite WHERE flair='$flair'");
+        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite, flair='$flair' WHERE flair='$originalFlair'");
+        if ($flair != $originalFlair) {
+          $db->query("UPDATE sources SET flair='$flair' WHERE flair='$originalFlair'");
+        }
       } else if ($action == 'delete') {
-        $db->query("DELETE FROM teams WHERE flair='$flair'");
+        $db->query("DELETE FROM teams WHERE flair='$originalFlair'");
         build_sprite($sprite);
       }
     }
@@ -97,6 +102,15 @@ if (isset($action)) {
 <meta charset="utf-8">
 <meta name="author" content="9jack9">
 <link rel="stylesheet" href="../style.css">
+<script>
+function sprite_onchange(sprite) {
+  var flair = document.querySelector("#team-flair");
+  flair.value = flair.value.replace(/\-s\d+$/, '');
+  if (sprite.value != 1) {
+    flair.value += "-s" + sprite.value;
+  }
+}
+</script>
 
 <h1>Soccerbot</h1>
 
@@ -108,6 +122,7 @@ if (isset($action)) {
   <p>
    <label for="team-flair">Flair:</label>
    <input id="team-flair" name="flair" value="<?php echo($flair); ?>">
+   <input type="hidden" name="original-flair" value="<?php echo($flair); ?>">
   </p>
 
   <p>
@@ -142,7 +157,7 @@ if (isset($action)) {
 
   <p>
    <label for="team-sprite">Sprite:</label>
-   <input type="number" id="team-sprite" name="sprite" value="<?php echo($sprite); ?>">
+   <input type="number" id="team-sprite" name="sprite" value="<?php echo($sprite); ?>" onchange="sprite_onchange(this)">
   </p>
  </fieldset>
 
