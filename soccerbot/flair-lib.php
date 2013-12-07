@@ -53,7 +53,7 @@ function flair_batch($subreddit, $data) {
     if ($count == 100) {
       $csv = implode("\n", $batch);
       reddit_flaircsv($subreddit, $csv);
-      echo($csv);
+      echo($csv."\n");
       $batch = array();
       $count = 0;
     }

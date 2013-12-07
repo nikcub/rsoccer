@@ -190,23 +190,23 @@ function download_users($subreddit) {
 function rename_teams($subreddit) {
   global $db;
 
-  print("Renaming teams.\n");
+  print("Renaming teams...\n");
 
   $data = array();
 
   $renames = $db->query("SELECT * FROM renames");
 
-  while ($rename = $query->fetch()) {
+  while ($rename = $renames->fetch()) {
     $flair = $rename['flair'];
     $new_flair = $rename['new_flair'];
     $new_name  = $rename['new_name'];
-    $css_class  = $sprite['css_class'];
+    $css_class  = $rename['css_class'];
 
     $query = $db->query("SELECT * FROM users WHERE flair='$flair'");
 
     while (($row = $query->fetch())) {
       $user = $row['user'];
-      array_push($data, "$user,'$new_name','$css_class'");
+      array_push($data, "$user,$new_name,$css_class");
       if ($flair != $new_flair) {
         $db->query("UPDATE users SET flair='$new_flair' WHERE user='$user'");
       }
@@ -224,7 +224,7 @@ function rename_teams($subreddit) {
 function upload_users($subreddit) {
   global $db;
 
-  print("Uploading new users.\n");
+  print("Uploading new users...\n");
 
   $data = array();
 
@@ -234,7 +234,7 @@ function upload_users($subreddit) {
     $user = $row['user'];
     $text = $row['text'];
     $css_class = $row['css_class'];
-    array_push($data, "$user,'$text','$css_class'");
+    array_push($data, "$user,$text,$css_class");
   }
 
   flair_batch($subreddit, $data);
