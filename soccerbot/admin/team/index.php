@@ -16,6 +16,8 @@ if (!isset($sprite)) {
 }
 
 $originalFlair = $_POST['original-flair'];
+$originalName = $_POST['original-name'];
+$originalSprite = $_POST['original-sprite'];
 
 if (isset($action)) {
   if ($action == 'add-from-file') {
@@ -35,6 +37,10 @@ if (isset($action)) {
     $wikipedia = $_POST['wikipedia'];
     $wikipedia_text = preg_replace('/\'/', "''", $wikipedia);
     $fileName = $_POST['fileName'];
+    $css_class = $flair;
+    if ($sprite != 1) {
+      $css_class .= " s$sprite";
+    }
     if (!isset($fileName)) {
       $fileName = preg_replace('/\-/', '_', preg_replace('/\-s\d$/', '', $flair));
     }
@@ -60,10 +66,6 @@ if (isset($action)) {
       $action = 'modify';
     } else if ($action == 'add-user') {
       $user = $_POST['user'];
-      $css_class = $flair;
-      if ($sprite != 1) {
-        $css_class .= " s$sprite";
-      }
       $db->query("INSERT INTO uploads (user,text,css_class) VALUES ('$user', '$text', '$css_class')");
       $action = 'modify';
     } else {
@@ -75,6 +77,9 @@ if (isset($action)) {
         $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite, flair='$flair' WHERE flair='$originalFlair'");
         if ($flair != $originalFlair) {
           $db->query("UPDATE sources SET flair='$flair' WHERE flair='$originalFlair'");
+        }
+        if ($flair != $originalFlair || $name != $originalName || $sprite != $originalSprite) {
+          $db->query("INSERT INTO renames (flair,new_flair,new_name,css_class) VALUES ('$originalFlair', '$flair', '$name', '$css_class')");
         }
       } else if ($action == 'delete') {
         $db->query("DELETE FROM teams WHERE flair='$originalFlair'");
@@ -123,6 +128,8 @@ function sprite_onchange(sprite) {
    <label for="team-flair">Flair:</label>
    <input id="team-flair" name="flair" value="<?php echo($flair); ?>">
    <input type="hidden" name="original-flair" value="<?php echo($flair); ?>">
+   <input type="hidden" name="original-name" value="<?php echo($name); ?>">
+   <input type="hidden" name="original-sprite" value="<?php echo($sprite); ?>">
   </p>
 
   <p>

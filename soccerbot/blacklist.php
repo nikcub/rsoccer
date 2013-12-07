@@ -46,7 +46,8 @@ $blacklist = array(
   'thehardtackle.com' =>              'spam',
   'blog.gogoalshop.com' =>            'spam',
   'martina22acm.wordpress.com' =>     'spam',
-  'ramrock.wordpress.com' =>          'spam'
+  'ramrock.wordpress.com' =>          'spam',
+  'gogoalshop.com' =>                 'spam'
 );
 
 $url_shorteners = array(

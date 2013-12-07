@@ -27,6 +27,7 @@ upload_css($subreddit);
 flair_bot($subreddit);
 upload_users($subreddit);
 download_users($subreddit);
+rename_teams($subreddit);
 
 if ($bot_subreddit) {
   upload_bot_sidebar($bot_subreddit);
