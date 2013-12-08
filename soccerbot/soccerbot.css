@@ -120,6 +120,7 @@ textarea {
 form + #siteTable .entry .title a {
  color: #369;
 }
+.compressed.link,
 .compressed, .link {
  margin-bottom: 0;
 }
