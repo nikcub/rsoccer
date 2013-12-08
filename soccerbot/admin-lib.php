@@ -35,16 +35,16 @@ function upload_css($subreddit) {
 
   for ($sprite = 1; $sprite <= $SPRITES; $sprite++) {
     $pos = 0;
-    $query = $db->query("SELECT * FROM teams WHERE sprite=$sprite");
+    $query = $db->query("SELECT id FROM teams WHERE sprite=$sprite");
 
     while ($row = $query->fetch()) {
       $pos -= 21;
-      $flair = $row['flair'];
-      $css .= ".flair-$flair";
-      $sources = $db->query("SELECT COUNT(*) as count FROM sources WHERE team='$flair'");
+      $id = $row['id'];
+      $css .= ".flair-$id";
+      $sources = $db->query("SELECT COUNT(*) AS count FROM sources WHERE team=$id");
       $counter = $sources->fetch();
       if ($counter['count'] > 0) {
-        $css .= ",.linkflair-$flair .linkflairlabel";
+        $css .= ",.linkflair-$id .linkflairlabel";
       }
       $css .= "{background-position:0 $pos"."px}\n";
     }
@@ -70,12 +70,16 @@ function upload_bot_css($subreddit) {
 
   for ($sprite = 1; $sprite <= $SPRITES; $sprite++) {
     $pos = 0;
-    $query = $db->query("SELECT * FROM teams WHERE sprite=$sprite");
+    $query = $db->query("SELECT id,sprite FROM teams WHERE sprite=$sprite");
 
     while ($row = $query->fetch()) {
       $pos -= 21;
-      $flair = $row['flair'];
-      $css .= "a[href$=\"=$flair\"]:before{background-position:0 $pos"."px}\n";
+      $href = $row['id'];
+      $sprite = $row['sprite'];
+      if ($sprite != 1) {
+        $href .= "-s$sprite";
+      }
+      $css .= "a[href$=\"=$href\"]:before{background-position:0 $pos"."px}\n";
     }
   }
 
@@ -109,12 +113,12 @@ function upload_bot_index($subreddit) {
 
   $db->sqliteCreateFunction("REGEXP", "preg_match", 2);
 
-  foreach ($bot_index as $id => $where) {
+  foreach ($bot_index as $thing_id => $where) {
     $country = '';
     $text = '';
 
     $query = $db->query(
-      "SELECT teams.flair AS flair,teams.name AS name,teams.count AS count,countries.name AS country,countries.region AS region ".
+      "SELECT teams.id AS id,teams.name AS name,teams.sprite AS sprite,teams.count AS count,countries.name AS country,countries.region AS region ".
       "FROM teams LEFT JOIN countries WHERE country=countries.code AND $where ORDER BY region,countries.name,teams.fileName"
     );
 
@@ -126,13 +130,17 @@ function upload_bot_index($subreddit) {
         }
       }
       $name = $row['name'];
-      $flair = $row['flair'];
+      $message = $row['id'];
+      $sprite = $row['sprite'];
+      if ($sprite != 1) {
+        $message .= "-s$sprite";
+      }
       $count = $row['count'];
 
-      $text .= "\n* [$name *\\($count\\)*](/message/compose/?to=soccerbot&subject=crest&message=$flair)";
+      $text .= "\n* [$name *\\($count\\)*](/message/compose/?to=soccerbot&subject=crest&message=$message)";
     }
 
-    reddit_editusertext($subreddit, $id, $text);
+    reddit_editusertext($subreddit, $thing_id, $text);
   }
 
   print("Index for $subreddit uploaded.\n");
@@ -144,7 +152,7 @@ function download_users($subreddit) {
   print("Creating users table...\n");
 
   $db->query("DROP TABLE users");
-  $db->query("CREATE TABLE users (user TEXT NOT NULL, flair TEXT NOT NULL)");
+  $db->query("CREATE TABLE users (user TEXT NOT NULL, team INTEGER NOT NULL)");
 
   print("Fetching data from reddit...\n");
 
@@ -152,39 +160,41 @@ function download_users($subreddit) {
 
   print("Populating users table...\n");
 
-  $query = $db->prepare("INSERT INTO users (user, flair) VALUES (?,?)");
+  $query = $db->prepare("INSERT INTO users (user, team) VALUES (?,?)");
 
   $db->beginTransaction();
 
   foreach ($list as $entry) {
     $user = $entry->user;
-    $flair = preg_replace('/\s+s\d+$/', '', $entry->flair_css_class);
-    $query->execute(array($user, $flair));
-  }
-
-  $db->commit();
-
-  print("Generating team counts...\n");
-
-  $query = $db->query("SELECT flair FROM teams");
-  $users = $db->prepare("SELECT COUNT(*) AS count FROM users WHERE flair=?");
-  $setCount = $db->prepare("UPDATE teams SET count=? WHERE flair=?");
-
-  $db->beginTransaction();
-
-  while ($row = $query->fetch()) {
-    $flair = $row['flair'];
-    $users->execute(array($flair));
-    $team = $users->fetch();
-    if ($team) {
-      $count = $team['count'];
-      $setCount->execute(array($count, $flair));
-    }
+    $teamId = preg_replace('/\s+s\d+$/', '', $entry->flair_css_class);
+    $query->execute(array($user, $teamId));
   }
 
   $db->commit();
 
   print("User table created.\n");
+
+  print("Generating team counts...\n");
+
+  $query = $db->query("SELECT id FROM teams");
+  $users = $db->prepare("SELECT COUNT(*) AS count FROM users WHERE team=?");
+  $setCount = $db->prepare("UPDATE teams SET count=? WHERE id=?");
+
+  $db->beginTransaction();
+
+  while ($row = $query->fetch()) {
+    $teamId = $row['id'];
+    $users->execute(array($teamId));
+    $team = $users->fetch();
+    if ($team) {
+      $count = $team['count'];
+      $setCount->execute(array($count, $teamId));
+    }
+  }
+
+  $db->commit();
+
+  print("Team counts generated.\n");
 }
 
 function rename_teams($subreddit) {
@@ -197,26 +207,22 @@ function rename_teams($subreddit) {
   $renames = $db->query("SELECT * FROM renames");
 
   while ($rename = $renames->fetch()) {
-    $flair = $rename['flair'];
-    $new_flair = $rename['new_flair'];
+    $teamId = $rename['team'];
     $new_name  = $rename['new_name'];
     $css_class  = $rename['css_class'];
 
-    $query = $db->query("SELECT * FROM users WHERE flair='$flair'");
+    $query = $db->query("SELECT user FROM users WHERE id=$teamId");
 
     while (($row = $query->fetch())) {
       $user = $row['user'];
       array_push($data, "$user,$new_name,$css_class");
-      if ($flair != $new_flair) {
-        $db->query("UPDATE users SET flair='$new_flair' WHERE user='$user'");
-      }
     }
   }
 
   flair_batch($subreddit, $data);
 
   $db->query("DROP TABLE renames");
-  $db->query("CREATE TABLE renames (flair TEXT PRIMARY KEY NOT NULL, new_flair TEXT NOT NULL, new_name TEXT NOT NULL, css_class TEXT NOT NULL)");
+  $db->query("CREATE TABLE renames (team INTEGER PRIMARY KEY NOT NULL, new_name TEXT NOT NULL, css_class TEXT NOT NULL)");
 
   print("Teams renamed.\n");
 }
@@ -251,8 +257,8 @@ function upload_stats($subreddit, $thing_id) {
   print("Generating stats...\n");
 
   $users = sqlCount("SELECT COUNT(*) AS count FROM users");
-  $teams = sqlCount("SELECT COUNT(DISTINCT teams.flair) AS count FROM users LEFT JOIN teams WHERE users.flair=teams.flair");
-  $countries = sqlCount("SELECT COUNT(DISTINCT teams.country) AS count FROM users LEFT JOIN teams WHERE users.flair=teams.flair");
+  $teams = sqlCount("SELECT COUNT(DISTINCT teams.id) AS count FROM users LEFT JOIN teams WHERE users.team=teams.id");
+  $countries = sqlCount("SELECT COUNT(DISTINCT teams.country) AS count FROM users LEFT JOIN teams WHERE users.team=teams.id");
 
   $timestamp = date('Y-m-d');
 
@@ -262,7 +268,7 @@ function upload_stats($subreddit, $thing_id) {
 
   $text .= build_stats_table('Team', 'Top 100 Teams', "SELECT * FROM teams ORDER BY count DESC", 100)."\n\n";
 
-  $text .= build_stats_table('Country', 'Top 30 Countries', "SELECT countries.name AS name, COUNT(countries.name) AS count FROM countries LEFT JOIN teams ON countries.code=teams.country LEFT JOIN users ON users.flair=teams.flair GROUP BY countries.name ORDER BY count DESC", 30)."\n\n";
+  $text .= build_stats_table('Country', 'Top 30 Countries', "SELECT countries.name AS name, COUNT(countries.name) AS count FROM countries LEFT JOIN teams ON countries.code=teams.country LEFT JOIN users ON users.team=teams.id GROUP BY countries.name ORDER BY count DESC", 30)."\n\n";
 
   print("Posting stats...\n");
 

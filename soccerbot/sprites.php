@@ -11,7 +11,7 @@ function build_sprite($sprite) {
   $WIDTH  = $sprite == 3 ? 40 : 20;
   $HEIGHT = 20;
 
-  $query = $db->query("SELECT COUNT(*) as count FROM teams WHERE sprite=$sprite");
+  $query = $db->query("SELECT COUNT(*) AS count FROM teams WHERE sprite=$sprite");
   $row = $query->fetch();
   $count = $row['count'] + 1;
 

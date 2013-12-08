@@ -8,6 +8,8 @@ $ROOT = '../..';
 require("$ROOT/config.php");
 require("$ROOT/sprites.php");
 
+$id = $_GET['id'];
+
 $action = $_POST['action'];
 
 $sprite = $_POST['sprite'];
@@ -15,37 +17,28 @@ if (!isset($sprite)) {
   $sprite = 4;
 }
 
-$originalFlair = $_POST['original-flair'];
 $originalName = $_POST['original-name'];
 $originalSprite = $_POST['original-sprite'];
 
 if (isset($action)) {
   if ($action == 'add-from-file') {
     $fileName = $_FILES['file']['name'];
-    $flair = preg_replace('/_/', '-', substr($fileName, 0, -4));
-    if ($sprite != 1) {
-      $flair .= "-s$sprite";
-    }
     $name = preg_replace_callback('/(^|\s)(\w)/i', create_function(
       '$matches', 'return $matches[1].strtoupper($matches[2]);'
     ), preg_replace('/_/', ' ', substr($fileName, 0, -4)));
   } else {
-    $flair = $_POST['flair'];
     $name = $_POST['name'];
     $text = preg_replace('/\'/', "''", $name);
     $country = $_POST['country'];
     $wikipedia = $_POST['wikipedia'];
     $wikipedia_text = preg_replace('/\'/', "''", $wikipedia);
     $fileName = $_POST['fileName'];
-    $css_class = $flair;
+    $css_class = $id;
     if ($sprite != 1) {
       $css_class .= " s$sprite";
     }
-    if (!isset($fileName)) {
-      $fileName = preg_replace('/\-/', '_', preg_replace('/\-s\d$/', '', $flair));
-    }
     if ($action == 'add') {
-      $query = $db->query("SELECT COUNT(*) as count FROM teams WHERE flair='$flair'");
+      $query = $db->query("SELECT COUNT(*) AS count FROM teams WHERE fileName='$fileName' AND sprite=$sprite");
       $row = $query->fetch();
       if ($row['count'] > 0) {
         $action = 'modify';
@@ -54,15 +47,15 @@ if (isset($action)) {
     if ($action == 'delete-source') {
       foreach ($_POST as $key=>$value) {
         if (preg_match('/^source\-/', $key)) {
-          list($dummy, $id) = explode('-', $key);
-          $db->query("DELETE FROM sources WHERE team='$flair' AND id=$id");
+          list($dummy, $teamId) = explode('-', $key);
+          $db->query("DELETE FROM sources WHERE id=$teamId");
         }
       }
       $action = 'modify';
     } else if ($action == 'add-source') {
       $source = $_POST['source'];
       $sourceType = $_POST['source-type'];
-      $db->query("INSERT INTO sources (team,type,source) VALUES ('$flair', '$sourceType', '$source')");
+      $db->query("INSERT INTO sources (team,type,source) VALUES ($id, '$sourceType', '$source')");
       $action = 'modify';
     } else if ($action == 'add-user') {
       $user = $_POST['user'];
@@ -70,27 +63,23 @@ if (isset($action)) {
       $action = 'modify';
     } else {
       if ($action == 'add') {
-        $db->query("INSERT INTO teams (flair,name,country,wikipedia,fileName,sprite) VALUES ('$flair', '$text', '$country', '$wikipedia_text', '$fileName', $sprite)");
+        $db->query("INSERT INTO teams (name,country,wikipedia,fileName,sprite) VALUES ('$text', '$country', '$wikipedia_text', '$fileName', $sprite)");
         build_sprite($sprite);
         $action = 'modify';
       } else if ($action == 'modify') {
-        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite, flair='$flair' WHERE flair='$originalFlair'");
-        if ($flair != $originalFlair) {
-          $db->query("UPDATE sources SET flair='$flair' WHERE flair='$originalFlair'");
-        }
-        if ($flair != $originalFlair || $name != $originalName || $sprite != $originalSprite) {
-          $db->query("INSERT INTO renames (flair,new_flair,new_name,css_class) VALUES ('$originalFlair', '$flair', '$name', '$css_class')");
+        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite, WHERE id=$id");
+        if ($name != $originalName || $sprite != $originalSprite) {
+          $db->query("INSERT INTO renames (team,new_name,css_class) VALUES ($id, '$name', '$css_class')");
         }
       } else if ($action == 'delete') {
-        $db->query("DELETE FROM teams WHERE flair='$originalFlair'");
+        $db->query("DELETE FROM teams WHERE id=$id");
         build_sprite($sprite);
       }
     }
   }
 } else {
-  $flair = $_GET['flair'];
-  if (isset($flair)) {
-    $query = $db->query("SELECT * FROM teams WHERE flair='$flair'");
+  if (isset($id)) {
+    $query = $db->query("SELECT * FROM teams WHERE id=$id");
     if (is_object($query)) {
       $row = $query->fetch();
       $name = $row['name'];
@@ -109,10 +98,10 @@ if (isset($action)) {
 <link rel="stylesheet" href="../style.css">
 <script>
 function sprite_onchange(sprite) {
-  var flair = document.querySelector("#team-flair");
-  flair.value = flair.value.replace(/\-s\d+$/, '');
+  var id = document.querySelector("#team-id");
+  id.value = id.value.replace(/\-s\d+$/, '');
   if (sprite.value != 1) {
-    flair.value += "-s" + sprite.value;
+    id.value += "-s" + sprite.value;
   }
 }
 </script>
@@ -124,13 +113,8 @@ function sprite_onchange(sprite) {
  <h2>Team: <?php echo($name); ?></h2>
 
  <fieldset>
-  <p>
-   <label for="team-flair">Flair:</label>
-   <input id="team-flair" name="flair" value="<?php echo($flair); ?>">
-   <input type="hidden" name="original-flair" value="<?php echo($flair); ?>">
-   <input type="hidden" name="original-name" value="<?php echo($name); ?>">
-   <input type="hidden" name="original-sprite" value="<?php echo($sprite); ?>">
-  </p>
+  <input type="hidden" name="original-name" value="<?php echo($name); ?>">
+  <input type="hidden" name="original-sprite" value="<?php echo($sprite); ?>">
 
   <p>
    <label for="team-name">Name:</label>
@@ -170,7 +154,7 @@ function sprite_onchange(sprite) {
 
  <p>
 <?php
-if (isset($flair) && $action != 'delete' && $action != 'add-from-file') {
+if (isset($id) && $action != 'delete' && $action != 'add-from-file') {
 ?>
   <button type="submit" name="action" value="modify">Modify</button>
   <button type="submit" name="action" value="delete">Delete</button>
@@ -184,7 +168,7 @@ if (isset($flair) && $action != 'delete' && $action != 'add-from-file') {
 ?>
  </p>
 <?php
-if (isset($flair) && $action != 'add' && $action != 'add-from-file') {
+if (isset($id) && $action != 'add' && $action != 'add-from-file') {
 ?>
  <h3>Add user</h3>
 
@@ -202,7 +186,7 @@ if (isset($flair) && $action != 'add' && $action != 'add-from-file') {
  <fieldset>
  <ul class="sources">
 <?php
-  $query = $db->query("SELECT * FROM sources WHERE team='$flair' ORDER BY type");
+  $query = $db->query("SELECT * FROM sources WHERE team=$id ORDER BY type");
 
   while ($row = $query->fetch()) {
     $sourceType = $row['type'];

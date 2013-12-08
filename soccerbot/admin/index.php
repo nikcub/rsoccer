@@ -21,9 +21,9 @@ require('../config.php');
   $q = $_POST['q'];
 
   if ($action == 'search') {
-    $query = $db->query("SELECT * FROM teams WHERE (name LIKE '%$q%' OR country='$q' or flair LIKE '%$q%') ORDER BY name");
+    $query = $db->query("SELECT * FROM teams WHERE (name LIKE '%$q%' OR country='$q') ORDER BY name");
     while ($row = $query->fetch()) {
-      print('<div><a href="./team?flair='.$row['flair'].'">'.htmlspecialchars($row['name'])."</a></div>\n");
+      print('<div><a href="./team?id='.$row['id'].'">'.htmlspecialchars($row['name'])."</a></div>\n");
     }
   } else {
 ?>
@@ -31,11 +31,6 @@ require('../config.php');
  <h2>Add a new team</h2>
 
  <fieldset>
-  <p>
-   <label for="team-flair">Flair:</label>
-   <input id="team-flair" name="flair">
-  </p>
-
   <p>
    <label for="team-name">Name:</label>
    <input id="team-name" name="name">

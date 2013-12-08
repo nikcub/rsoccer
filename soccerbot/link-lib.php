@@ -63,11 +63,6 @@ function spam_bot($subreddit) { // watches the spam queue
 function link_bot($subreddit) { // watches the new queue
   global $db;
 
-  #$query = $db->query("SELECT * FROM admin WHERE r='$subreddit'");
-  #$row = $query->fetch();
-
-  #$before = $row['last_link'];
-
   $list = reddit_new($subreddit, $before);
 
   if (!empty($list)) {
@@ -106,8 +101,6 @@ function link_bot($subreddit) { // watches the new queue
         }
       }
     }
-
-    #$db->query("UPDATE admin SET last_link='".$link."' WHERE r='$subreddit'");
   }
 }
 
@@ -133,9 +126,6 @@ function link_remove($subreddit, $link, $reason) {
   $comment = reddit_comment($subreddit, $link->name, $prefix.$explanation.$suffix);
 
   reddit_distinguish($subreddit, $comment->name);
-
-  #$message = "Sorry. Your post was removed by a bot:\n\n> [$title](/$id)\n\n".$explanation.$suffix;
-  #reddit_sendMessage($link->author, 'Link Removal', $message);
 }
 
 ?>

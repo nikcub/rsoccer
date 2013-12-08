@@ -8,14 +8,16 @@ require('banners-lib.php');
 
 print(gmdate('c')."\n");
 
-reddit_login();
+if ($username && $password) {
+  reddit_login();
 
-link_bot($subreddit);
-alert_bot($subreddit);
-flair_bot($subreddit);
-spam_bot($subreddit);
+  link_bot($subreddit);
+  alert_bot($subreddit);
+  flair_bot($subreddit);
+  spam_bot($subreddit);
 
-if ($banners_subreddit) {
-  banners_bot($subreddit, $banners_subreddit);
+  if ($banners_subreddit) {
+    banners_bot($subreddit, $banners_subreddit);
+  }
 }
 ?>

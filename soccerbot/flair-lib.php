@@ -11,22 +11,18 @@ function flair_bot($subreddit) {
   foreach ($messages as $message) {
     $message = $message->data;
     if ($message->subject == 'crest') {
+      $author = $message->author;
       if ($message->body == 'none') {
-        array_push($data, $message->author.',,');
+        array_push($data, "$author,,");
       } else {
-        $flair = $message->body;
-        $query = $db->query("SELECT * FROM teams WHERE flair='$flair'");
+        $id = preg_replace('/\-s\d+$/', '', $message->body);
+        $query = $db->query("SELECT name FROM teams WHERE id=$id");
         if (is_object($query)) {
           $row = $query->fetch();
-          $team = $row['name'];
-          if ($team) {
-            $author = $message->author;
-            $css_class = $flair;
-            $sprite = $row['sprite'];
-            if ($sprite != 1) {
-              $css_class .= ' s'.$sprite;
-            }
-            array_push($data, "$author,$team,$css_class");
+          $text = $row['name'];
+          $css_class = preg_replace('/\-/', ' ', $message->body);
+          if ($text) {
+            array_push($data, "$author,$text,$css_class");
           }
         }
       }
@@ -44,13 +40,13 @@ function flair_list($subreddit) {
   }
 }
 
-function flair_batch($subreddit, $data) {
+function flair_batch($subreddit, $data, $limit=100) {
   $count = 0;
   $batch = array();
 
   foreach ($data as $line) {
     $batch[$count++] = $line;
-    if ($count == 100) {
+    if ($count == $limit) {
       $csv = implode("\n", $batch);
       reddit_flaircsv($subreddit, $csv);
       echo($csv."\n");
