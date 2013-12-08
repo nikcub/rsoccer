@@ -33,7 +33,7 @@ if ($bot_subreddit) {
   upload_bot_sidebar($bot_subreddit);
   upload_bot_index($bot_subreddit);
   if ($stats_id) {
-    upload_stats($subreddit, $stats_id);
+    upload_stats($bot_subreddit, $stats_id);
   }
 }
 ?>

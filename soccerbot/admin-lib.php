@@ -257,15 +257,30 @@ function upload_stats($subreddit, $thing_id) {
   $timestamp = date('Y-m-d');
 
   $text  = "LAST UPDATED: $timestamp\n\n";
+
   $text .= "*There are currently $users users supporting $teams teams from $countries countries.*\n\n";
+
+  $text .= build_stats_table('Team', 'Top 100 Teams', "SELECT * FROM teams ORDER BY count DESC", 100)."\n\n";
+
+  $text .= build_stats_table('Country', 'Top 30 Countries', "SELECT countries.name AS name, COUNT(countries.name) AS count FROM countries LEFT JOIN teams ON countries.code=teams.country LEFT JOIN users ON users.flair=teams.flair GROUP BY countries.name ORDER BY count DESC", 30)."\n\n";
+
+  print("Posting stats...\n");
+
+  reddit_editusertext($subreddit, $thing_id, $text);
+
+  print("Stats generated.\n");
+}
+
+function build_stats_table($type, $title, $query, $limit) {
+  global $db;
 
   $index = 0;
   $count = 0;
 
-  $query = $db->query("SELECT * FROM teams ORDER BY count DESC");
+  $query = $db->query($query);
 
-  $text .= "#Top 100 Teams\n";
-  $text .= "Pos|Team|Count|\n";
+  $text .= "#$title\n";
+  $text .= "Pos|$type|Count|\n";
   $text .= "---:|:---|---:\n";
 
   while (($row = $query->fetch())) {
@@ -273,7 +288,7 @@ function upload_stats($subreddit, $thing_id) {
     $name = $row['name'];
     $pos = ' ';
     if ($count != $row['count']) {
-      if ($index > 100) {
+      if ($index > $limit) {
         break;
       }
       $count = $row['count'];
@@ -282,11 +297,7 @@ function upload_stats($subreddit, $thing_id) {
     $text .= "$pos|$name|$count\n";
   }
 
-  print("Posting stats...\n");
-
-  reddit_editusertext($subreddit, $thing_id, $text);
-
-  print("Stats generated.\n");
+  return $text;
 }
 
 function sqlCount($sql) {
