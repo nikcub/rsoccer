@@ -45,17 +45,17 @@ if (isset($action)) {
  <fieldset>
   <p>
    <label for="country-code">Code:</label>
-   <input id="country-code" name="code" size="3" value="<?php echo($code); ?>">
+   <input type="text" id="country-code" name="code" size="3" value="<?php echo($code); ?>">
   </p>
 
   <p>
    <label for="country-name">Name:</label>
-   <input id="country-name" name="name" value="<?php echo($name); ?>">
+   <input type="text" id="country-name" name="name" value="<?php echo($name); ?>">
   </p>
 
   <p>
    <label for="country-region">Region:</label>
-   <select id="country-region" name="region">
+   <select type="text" id="country-region" name="region">
 <?php
   $query = $db->query('SELECT * FROM regions ORDER BY name');
 

@@ -14,26 +14,36 @@ set_time_limit(0);
 
 ob_implicit_flush(1);
 
-reddit_login();
-
-if ($bot_subreddit) {
-  upload_sprites($bot_subreddit);
-  upload_bot_css($bot_subreddit);
+if (isset($argv)) {
+  $password = $argv[1];
+} else {
+  $password = $_GET['password'];
 }
 
-upload_sprites($subreddit, true);
-upload_css($subreddit);
+if ($username && $password) {
+  reddit_login();
 
-flair_bot($subreddit);
-upload_users($subreddit);
-download_users($subreddit);
-rename_teams($subreddit);
-
-if ($bot_subreddit) {
-  upload_bot_sidebar($bot_subreddit);
-  upload_bot_index($bot_subreddit);
-  if ($stats_id) {
-    upload_stats($bot_subreddit, $stats_id);
+  if ($bot_subreddit) {
+    upload_sprites($bot_subreddit);
+    upload_bot_css($bot_subreddit);
   }
+
+  upload_sprites($subreddit, true);
+  upload_css($subreddit);
+
+  flair_bot($subreddit);
+  upload_users($subreddit);
+  download_users($subreddit);
+  rename_teams($subreddit);
+
+  if ($bot_subreddit) {
+    upload_bot_sidebar($bot_subreddit);
+    upload_bot_index($bot_subreddit);
+    if ($stats_id) {
+      upload_stats($bot_subreddit, $stats_id);
+    }
+  }
+} else {
+  print("Username and password required.\n");
 }
 ?>

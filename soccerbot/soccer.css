@@ -6,6 +6,7 @@
 #siteTable .compressed .title {
  margin-top: 0;
 }
+#siteTable a.title[href^="http://www.reddit.com/live/"],
 #siteTable a.title[href*="/pre_match_thread"],
 #siteTable a.title[href*="/prematch_thread"],
 #siteTable a.title[href*="/match_thread"],
@@ -18,6 +19,7 @@
  line-height: 26px;
  color: green;
 }
+#siteTable a.title[href^="http://www.reddit.com/live/"]:before,
 #siteTable a.title[href*="/pre_match_thread"]:before,
 #siteTable a.title[href*="/prematch_thread"]:before,
 #siteTable a.title[href*="/match_thread"]:before,
@@ -37,6 +39,9 @@
  background-repeat: no-repeat;
  vertical-align: bottom;
 }
+#siteTable a.title[href^="http://www.reddit.com/live/"]:before {
+ background-position: 0 -272px;
+}
 #siteTable a.title[href*="/match_thread"]:before,
 #siteTable a.title[href*="/matchthread"]:before {
  background-position: 0 0;
@@ -47,7 +52,7 @@
 }
 #siteTable a.title[href*="/post_match_thread"]:before,
 #siteTable a.title[href*="/postmatch_thread"]:before {
- background-position: 0 -408px;
+ background-position: 0 -476px;
 }
 
 /* Link flair */
@@ -68,7 +73,8 @@
  background-image: url(%%trophy%%);
 }
 #siteTable .linkflair-star .linkflairlabel {
- background-image: url(%%star%%);
+ background-image: url(%%icons-large%%);
+ background-position: 0 -340px;
 }
 #siteTable .linkflair-false .linkflairlabel {
  display: none;
@@ -128,20 +134,23 @@ a[href^="//#"][href$="-big"] {
  display: none!important;
 }
 
-a[href^="//#ball"]{background-position:0 0}
-a[href^="//#clock"]{background-position:0 -34px}
-a[href^="//#down"]{background-position:0 -68px}
-a[href^="//#flag"]{background-position:0 -102px}
-a[href^="//#info"]{background-position:0 -136px}
-a[href^="//#net"]{background-position:0 -170px}
-a[href^="//#news"]{background-position:0 -204px}
-a[href^="//#notes"]{background-position:0 -238px}
-a[href^="//#red"]{background-position:0 -272px}
-a[href^="//#stream"]{background-position:0 -306px}
-a[href^="//#sub"]{background-position:0 -340px}
-a[href^="//#up"]{background-position:0 -374px}
-a[href^="//#whistle"]{background-position:0 -408px}
-a[href^="//#yellow"]{background-position:0 -442px}
+a[href^="//#ball"]{background-position: 0 0}
+a[href^="//#clock"]{background-position: 0 -34px}
+a[href^="//#down"]{background-position: 0 -68px}
+a[href^="//#flag"]{background-position: 0 -102px}
+a[href^="//#info"]{background-position: 0 -136px}
+a[href^="//#net"]{background-position: 0 -170px}
+a[href^="//#news"]{background-position: 0 -204px}
+a[href^="//#notes"]{background-position: 0 -238px}
+a[href^="//#red"]{background-position: 0 -306px}
+a[href^="//#red-ball"]{background-position: 0 -272px}
+a[href^="//#star"]{background-position: 0 -340px}
+a[href^="//#stream"]{background-position: 0 -374px}
+a[href^="//#sub"]{background-position: 0 -408px}
+a[href^="//#up"]{background-position: 0 -442px}
+a[href^="//#whistle"]{background-position: 0 -476px}
+a[href^="//#yellow"]{background-position: 0 -510px}
+
 .titlebox a[href="//#redditch"] {
  width: 20px;
  height: 20px;
@@ -154,6 +163,8 @@ a[href^="//#yellow"]{background-position:0 -442px}
 .md a[href*="youtube.com/watch"],
 .md a[href*="youtu.be/"],
 .md a[href*="vimeo.com/"],
+.md a[href*="vine.co/"],
+.md a[href*="veoh.com/"],
 .md a[href*="twitvid.com/"],
 .md a[href*="/video/"],
 .md a[href*="/videok/"],
@@ -181,6 +192,11 @@ html, body {
  background-color: white;
 }
 
+/* Downvote button */
+.arrow.down {
+ opacity: 0.5;
+}
+
 /* Restrict the size of the logo */
 #header-img {
  max-width: 400px;
@@ -201,6 +217,7 @@ html, body {
  border: 2px solid white;
  background-color: white;
  box-shadow: 0 0 5px #ccc;
+ margin: 1em;
 }
 .md th, .md td {
  padding: 2px 1ex;
@@ -319,7 +336,7 @@ html, body {
 }
 .titlebox li {
  list-style-type: square;
- line-height: 1.4;
+ line-height: 1.67;
 }
 
 .leavemoderator {
@@ -478,6 +495,12 @@ a:link:hover, a:visited:hover,
  outline: 1px solid black;
  margin-top: 2px;
 }
+.res-nightmode .linkflair-modded .linkflairlabel {
+ border: none!important;
+ background-color: transparent!important;
+ outline: none;
+ margin-top: 0;
+}
 .res-nightmode .sidecontentbox, .footer {
  background-color: transparent;
 }
@@ -500,12 +523,30 @@ a:link:hover, a:visited:hover,
 .res-nightmode .md #livescores table td {
  color: #ddd;
 }
-/* Live Scores plugin (night mode) */
-.res-nightmode .md #livescores table td.live {
- color: #6c0;
+.res-nightmode .md blockquote {
+ color: #ccf;
+ border-left-color: #669;
 }
-.res-nightmode .md #livescores tr:hover td {
- color: #222!important;
+.res-nightmode .md blockquote blockquote {
+ color: #cfc;
+ border-left-color: #696;
+}
+.res-nightmode .md blockquote blockquote blockquote {
+ color: #fcc;
+ border-left-color: #966;
+}
+.res-nightmode .md table {
+ border-color: white;
+ background-color: transparent;
+ box-shadow: none;
+}
+.res-nightmode .md th {
+ border-color: white;
+ background-color: black;
+ color: white;
+}
+.res-nightmode .md th a {
+ color: white;
 }
 
 /* Default CSS for a crest */
@@ -542,14 +583,6 @@ a:link:hover, a:visited:hover,
 .collapsed .flair {
  opacity: 0.4
 }
-.comment .flair-unknown {
- display: none;
- background-position: 0 0;
-}
-#siteTable_t3_16fue1 .flair-unknown {
- display: inline-block;
-}
-
 .flair-s2, .linkflair-s2 .linkflairlabel {
  background-image: url(%%s2%%);
 }

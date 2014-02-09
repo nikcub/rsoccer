@@ -38,9 +38,10 @@ if (isset($action)) {
       $css_class .= " s$sprite";
     }
     if ($action == 'add') {
-      $query = $db->query("SELECT COUNT(*) AS count FROM teams WHERE fileName='$fileName' AND sprite=$sprite");
+      $query = $db->query("SELECT id, COUNT(*) AS count FROM teams WHERE fileName='$fileName' AND sprite=$sprite");
       $row = $query->fetch();
       if ($row['count'] > 0) {
+        $id = $row['id'];
         $action = 'modify';
       }
     }
@@ -66,8 +67,13 @@ if (isset($action)) {
         $db->query("INSERT INTO teams (name,country,wikipedia,fileName,sprite) VALUES ('$text', '$country', '$wikipedia_text', '$fileName', $sprite)");
         build_sprite($sprite);
         $action = 'modify';
+        $query = $db->query("SELECT id, COUNT(*) AS count FROM teams WHERE fileName='$fileName' AND sprite=$sprite");
+        $row = $query->fetch();
+        if ($row['count'] > 0) {
+          $id = $row['id'];
+        }
       } else if ($action == 'modify') {
-        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite, WHERE id=$id");
+        $db->query("UPDATE teams SET name='$text', country='$country', wikipedia='$wikipedia_text', fileName='$fileName', sprite=$sprite WHERE id=$id");
         if ($name != $originalName || $sprite != $originalSprite) {
           $db->query("INSERT INTO renames (team,new_name,css_class) VALUES ($id, '$name', '$css_class')");
         }
@@ -108,7 +114,7 @@ function sprite_onchange(sprite) {
 
 <h1>Soccerbot</h1>
 
-<form action="" method="post">
+<form action="<?php if (isset($id)) echo('?id='.$id); ?>" method="post">
 
  <h2>Team: <?php echo($name); ?></h2>
 
@@ -118,7 +124,7 @@ function sprite_onchange(sprite) {
 
   <p>
    <label for="team-name">Name:</label>
-   <input id="team-name" name="name" value="<?php echo($name); ?>">
+   <input type="text" id="team-name" name="name" value="<?php echo($name); ?>">
   </p>
 
   <p>
@@ -138,12 +144,12 @@ function sprite_onchange(sprite) {
 
   <p>
    <label for="team-wikipedia">Wikipedia:</label>
-   <input id="team-wikipedia" name="wikipedia" value="<?php echo($wikipedia); ?>">
+   <input type="text" id="team-wikipedia" name="wikipedia" value="<?php echo($wikipedia); ?>">
   </p>
 
   <p>
    <label for="team-fileName">File name:</label>
-   <input id="team-fileName" name="fileName" value="<?php echo($fileName); ?>">
+   <input type="text" id="team-fileName" name="fileName" value="<?php echo($fileName); ?>">
   </p>
 
   <p>
@@ -158,7 +164,7 @@ if (isset($id) && $action != 'delete' && $action != 'add-from-file') {
 ?>
   <button type="submit" name="action" value="modify">Modify</button>
   <button type="submit" name="action" value="delete">Delete</button>
-  <a href="">Add another</a>
+  <a href="../team">Add another</a>
 <?php
 } else {
 ?>
@@ -175,7 +181,7 @@ if (isset($id) && $action != 'add' && $action != 'add-from-file') {
  <fieldset>
   <p>
    <label for="user-name">User:</label>
-   <input id="user-name" name="user">
+   <input type="text" id="user-name" name="user">
   </p>
  </fieldset>
 
@@ -209,7 +215,7 @@ if (isset($id) && $action != 'add' && $action != 'add-from-file') {
  <fieldset>
   <p>
    <label for="source">Source:</label>
-   <input id="source" name="source">
+   <input type="text" id="source" name="source">
   </p>
   <p>
    <label for="source-type">Type:</label>

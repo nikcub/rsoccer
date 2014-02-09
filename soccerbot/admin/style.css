@@ -30,6 +30,13 @@ fieldset {
   border: none;
 }
 
+input[type=number],
+input[type=search],
+input[type=text] {
+  border: 1px solid #999;
+  padding: 2px 4px;
+}
+
 fieldset p,
 fieldset li {
   display: table-row;

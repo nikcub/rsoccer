@@ -32,6 +32,48 @@ function flair_bot($subreddit) {
   reddit_clearUnreadMail();
 }
 
+function linkflair_bot($subreddit) { // watches the new queue
+  global $db;
+
+  $list = reddit_new($subreddit, $before);
+
+  if (!empty($list)) {
+    $list = array_reverse($list);
+
+    foreach ($list as $entry) {
+      $entry = $entry->data;
+      $link = $entry->name;
+      if (!$entry->is_self) {
+        if (!$entry->link_flair_css_class) {
+          $domain = $entry->domain;
+          if ($domain == 'twitter.com') {
+            $twitter = explode('/', $entry->url);
+            $twitter = $twitter[3];
+            $query = $db->query("SELECT * FROM sources WHERE (type='Twitter' AND source LIKE '$twitter')");
+          } else {
+            $query = $db->query("SELECT * FROM sources WHERE (type='Web' AND source='$domain')");
+          }
+          if (is_object($query)) {
+            $row = $query->fetch();
+            $team = $row['team'];
+            if ($team) {
+              $css_class = $team;
+              $spriteQuery = $db->query("SELECT sprite FROM teams WHERE id=$team");
+              $row = $spriteQuery->fetch();
+              $sprite = $row['sprite'];
+              if ($sprite != 1) {
+                $css_class .= " s$sprite";
+              }
+              reddit_linkflair($subreddit, $link, 'Official', $css_class);
+              print("Link flair ($css_class): '".$entry->title."'\n");
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 function flair_list($subreddit) {
   $list = reddit_flairlist($subreddit);
 

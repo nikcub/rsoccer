@@ -33,7 +33,7 @@ require('../config.php');
  <fieldset>
   <p>
    <label for="team-name">Name:</label>
-   <input id="team-name" name="name">
+   <input type="text" id="team-name" name="name">
   </p>
 
   <p>
@@ -65,12 +65,12 @@ require('../config.php');
  <fieldset>
   <p>
    <label for="country-code">Code:</label>
-   <input id="country-code" name="code" size="3">
+   <input type="text" id="country-code" name="code" size="3">
   </p>
 
   <p>
    <label for="country-name">Name:</label>
-   <input id="country-name" name="name">
+   <input type="text" id="country-name" name="name">
   </p>
 
   <p>
@@ -88,29 +88,5 @@ require('../config.php');
  </fieldset>
 
  <p><button type="submit" name="action" value="add">Add</button></p>
-</form>
-
-<form action="./special/" method="post" enctype="multipart/form-data">
- <h2>Special tasks</h2>
-
- <p>
-  <input type="checkbox" id="admin-reset-new" name="reset-new">
-  <label for="admin-reset-new">Reset the <em>new</em> queue</label>
- </p>
-
- <p>
-  <input type="checkbox" id="admin-remove-alerts" name="remove-alerts">
-  <label for="admin-remove-alerts">Remove alerts</label>
-
-  <label for="admin-alerts-age">older than</label>
-  <select id="admin-alerts-age" name="alerts-age">
-   <option value="7">7 days</option>
-   <option value="14">14 days</option>
-   <option value="30">30 days</option>
-   <option value="all">all</option>
-  </select>
- </p>
-
- <p><button type="submit">Submit</button></p>
 </form>
 <?php } ?>
