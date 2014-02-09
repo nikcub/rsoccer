@@ -211,7 +211,7 @@ function rename_teams($subreddit) {
     $new_name  = $rename['new_name'];
     $css_class  = $rename['css_class'];
 
-    $query = $db->query("SELECT user FROM users WHERE id=$teamId");
+    $query = $db->query("SELECT user FROM users WHERE team=$teamId");
 
     while (($row = $query->fetch())) {
       $user = $row['user'];
