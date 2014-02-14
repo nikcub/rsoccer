@@ -175,6 +175,41 @@ a[href^="//#yellow"]{background-position: 0 -510px}
  padding-left: 20px;
 }
 
+/* Bar Charts */
+
+a[href^="//#bar"] {
+ color: white;
+ background-color: gray;
+ text-align: center;
+ padding: 2px 1px;
+}
+
+a[href^="//#bar-2"]{width: 32px}
+a[href^="//#bar-3"]{width: 48px}
+a[href^="//#bar-4"]{width: 64px}
+a[href^="//#bar-5"]{width: 80px}
+a[href^="//#bar-6"]{width: 96px}
+a[href^="//#bar-7"]{width: 112px}
+a[href^="//#bar-8"]{width: 128px}
+a[href^="//#bar-9"]{width: 144px}
+a[href^="//#bar-10"]{width: 160px}
+a[href^="//#bar-11"]{width: 176px}
+a[href^="//#bar-12"]{width: 192px}
+a[href^="//#bar-13"]{width: 208px}
+a[href^="//#bar-14"]{width: 224px}
+a[href^="//#bar-15"]{width: 240px}
+a[href^="//#bar-16"]{width: 256px}
+a[href^="//#bar"][href$="-black"]{background-color: #222}
+a[href^="//#bar"][href$="-red"]{background-color: #d00}
+a[href^="//#bar"][href$="-blue"]{background-color: #00d}
+a[href^="//#bar"][href$="-green"]{background-color: green}
+a[href^="//#bar"][href$="-white"]{background-color: white; color: black; border: 1px solid silver; padding: 1px 0}
+a[href^="//#bar"][href$="-skyblue"]{background-color: skyblue; color: black}
+a[href^="//#bar"][href$="-orange"]{background-color: orange; color: black}
+a[href^="//#bar"][href$="-yellow"]{background-color: #ee0; color: black}
+a[href^="//#bar"][href$="-claret"]{background-color: #801638}
+a[href^="//#bar"][href$="-gray"]{background-color: gray}
+
 /* User area */
 #header-bottom-right {
  border-top: 1px solid #5f99cf;
@@ -210,6 +245,11 @@ html, body {
 /* Hide deleted comments */
 .comment.deleted .usertext.grayed {
  display: none;
+}
+
+/* hr */
+.md hr {
+ margin: 1.5em 0;
 }
 
 /* Tables */
@@ -432,8 +472,9 @@ form + .sitetable .rank {
 }
 
 /* Links */
-a:link:hover, a:visited:hover,
-#siteTable a:hover {
+a:not([href^="//#"]):link:hover,
+a:not([href^="//#"]):visited:hover,
+#siteTable a:not([href^="//#"]):hover {
  color: darkred!important;
  background-color: #ffc!important;
  text-decoration: none!important;
@@ -442,9 +483,8 @@ a:link:hover, a:visited:hover,
  color: white!important;
 }
 #header-img-a,
-.morelink a:hover,
-.sidebox a:hover,
-#siteTable a[href^="//#"]:hover {
+.morelink a:not([href^="//#"]):hover,
+.sidebox a:not([href^="//#"]):hover {
  color: white!important;
  background-color: transparent!important;
 }
